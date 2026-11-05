@@ -1,4 +1,4 @@
-# Xovra (ringlessai)
+# Xovra site
 
 Marketing site for Xovra, built with Next.js.
 
@@ -19,7 +19,7 @@ npm run build && npm start
 
 ### Swapping images
 
-Images live in `public/images/xovra/`. The `images` map at the bottom of `src/lib/xovra-content.ts` says which file each section uses. Replace a file with the same name, or point the map at a new file.
+Images live in `public/images/xovra/` (3D renders from `scripts/render-images.mjs`; run `node scripts/render-images.mjs [scene]`, needs Playwright). The `images` map at the bottom of `src/lib/xovra-content.ts` says which file each section uses. Replace a file with the same name, or point the map at a new file.
 
 ### Motion
 

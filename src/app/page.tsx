@@ -5,15 +5,16 @@ import {
   Activity,
   Ban,
   BarChart3,
-  Briefcase,
-  Building2,
+  Bot,
   Check,
   Crosshair,
   Hash,
+  MapPin,
+  Phone,
   ShieldCheck,
-  User,
   Users,
 } from 'lucide-react';
+import AudienceTabs from '@/components/xovra/AudienceTabs';
 import Dialer from '@/components/xovra/Dialer';
 import FeatureRows from '@/components/xovra/FeatureRows';
 import Motion from '@/components/xovra/Motion';
@@ -66,7 +67,7 @@ function Checks({ items }: { items: string[] }) {
   );
 }
 
-const audienceIcons = [Briefcase, Building2, User];
+const pillarIcons = [MapPin, Phone, Bot];
 const teamIcons = [Users, Hash, BarChart3, Ban];
 
 export default function Home() {
@@ -96,22 +97,12 @@ export default function Home() {
             {hero.eyebrow}
           </p>
           <h1 id="hero-title" className="display">
-            <span className="h1-top" data-intro-item>
-              {hero.titleTop}
-            </span>
             <span data-split="load" style={{ display: 'block' }}>
               {hero.title}
             </span>
           </h1>
           <div className="hero-foot" data-intro-item>
-            <ul className="hero-bullets">
-              {hero.bullets.map((b) => (
-                <li key={b}>
-                  <Check aria-hidden />
-                  {b}
-                </li>
-              ))}
-            </ul>
+            <strong>{hero.titleTop}</strong>
             <div className="btns">
               <Link className="btn btn-pill" href={links.access}>
                 <span className="wave">Get Early Access</span> <Arrow />
@@ -124,32 +115,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dark stage with the dialer mockup */}
-      <section className="card stage on-dark" style={{ marginTop: 12 }} aria-label="Dialer example">
+      {/* Hero bullets as an icon row */}
+      <ul className="pillars">
+        {hero.bullets.map((b, i) => {
+          const Icon = pillarIcons[i];
+          return (
+            <li className="pillar" key={b} data-fade data-delay={String(i * 0.1)}>
+              <Icon aria-hidden />
+              {b}
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* Dark stage: audience tabs, heading and the dialer mockup */}
+      <section className="card stage on-dark" aria-labelledby="stage-title">
         <div className="stage-bg">
           <Image src={images.stage} alt="" fill sizes="100vw" data-parallax="16" />
         </div>
+        <AudienceTabs />
         <div className="stage-body">
+          <div className="stage-copy">
+            <h2 id="stage-title" className="display h-lg" data-split>
+              {audiences.eyebrow}
+            </h2>
+          </div>
           <Dialer />
         </div>
-      </section>
-
-      {/* Built for */}
-      <section className="audience" aria-label={audiences.eyebrow}>
-        <p className="eyebrow" data-fade>
-          {audiences.eyebrow}
-        </p>
-        <ul className="pillars">
-          {audiences.items.map((label, i) => {
-            const Icon = audienceIcons[i];
-            return (
-              <li className="pillar" key={label} data-fade data-delay={String(i * 0.1)}>
-                <Icon aria-hidden />
-                {label}
-              </li>
-            );
-          })}
-        </ul>
       </section>
 
       {/* How it works */}
@@ -433,9 +425,9 @@ export default function Home() {
             {testimonials.title}
           </h2>
         </div>
-        <div className="quotes" data-stack>
-          {testimonials.items.map((q) => (
-            <figure className="quote" key={q.role}>
+        <div className="quotes">
+          {testimonials.items.map((q, i) => (
+            <figure className="quote" key={q.role} data-fade data-delay={String(i * 0.12)}>
               <blockquote>&ldquo;{q.quote}&rdquo;</blockquote>
               <figcaption className="quote-role">{q.role}</figcaption>
             </figure>

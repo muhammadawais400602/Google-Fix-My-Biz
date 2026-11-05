@@ -651,9 +651,7 @@ dd {
 
 /* Dialer mockup */
 .dialer {
-  background: rgba(22, 23, 25, 0.82);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(20, 21, 23, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 22px;
   padding: 18px;
@@ -1826,26 +1824,19 @@ dd {
     color: var(--ink);
   }
 
-  /* Stage now holds only the dialer */
+  /* Stage: heading left, dialer right */
   .stage {
-    min-height: 0;
+    min-height: 760px;
   }
   .stage-body {
-    grid-template-columns: 1fr;
-    justify-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
     align-items: center;
-    padding: clamp(56px, 9vw, 140px) clamp(16px, 3vw, 48px);
   }
-  .stage .dialer {
-    width: min(100%, 880px);
+  .stage-copy h2 {
+    max-width: 14ch;
   }
-  .stage .dialer-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    gap: 22px;
-  }
-  @media (max-width: 760px) {
-    .stage .dialer-grid {
+  @media (max-width: 960px) {
+    .stage-body {
       grid-template-columns: 1fr;
     }
   }
@@ -2065,9 +2056,7 @@ dd {
     align-items: center;
     padding: 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: #fff;
     box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
     opacity: 0;
   }
@@ -2115,4 +2104,16 @@ dd {
     background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.78));
     pointer-events: none;
   }
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

@@ -4,8 +4,10 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
+import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 // The CSS preloader covers the page for this long; the hero intro starts after it.
 const INTRO_DELAY = 1.55;
@@ -32,6 +34,16 @@ export default function Motion() {
     const cleanups: (() => void)[] = [];
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+      lenis.on('scroll', ScrollTrigger.update);
+      const raf = (time: number) => lenis.raf(time * 1000);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+      cleanups.push(() => {
+        gsap.ticker.remove(raf);
+        lenis.destroy();
+      });
+
       // Hero card opening.
       const intro = document.querySelector<HTMLElement>('[data-intro]');
       if (intro) {
@@ -56,16 +68,19 @@ export default function Motion() {
         });
       });
 
-      // Scrubbed letter reveal (same values as the reference).
+      // Scrubbed reveal (reference values). Headings go letter by letter;
+      // paragraphs go word by word, which is far fewer elements to animate.
       document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
-        const split = SplitText.create(el, { type: 'lines,words,chars', linesClass: 'split-line' });
+        const byWord = el.tagName === 'P';
+        const split = SplitText.create(el, { type: byWord ? 'words' : 'words,chars' });
         splits.push(split);
-        gsap.set(split.chars, { opacity: 0.4, x: -7 });
-        gsap.to(split.chars, {
+        const parts = byWord ? split.words : split.chars;
+        gsap.set(parts, { opacity: 0.4, x: -7, willChange: 'transform, opacity' });
+        gsap.to(parts, {
           x: 0,
           opacity: 1,
           duration: 0.7,
-          stagger: 0.2,
+          stagger: byWord ? 0.1 : 0.2,
           scrollTrigger: { trigger: el, start: 'top 80%', end: 'top 20%', scrub: 1 },
         });
       });
@@ -116,7 +131,7 @@ export default function Motion() {
       // Image zoom 1.5 -> 1 (desktop, like the reference).
       mm.add('(min-width: 1200px)', () => {
         gsap.utils.toArray<HTMLElement>('[data-scale-img]').forEach((el) => {
-          gsap.fromTo(el, { scale: 1.5 }, { scale: 1, ease: 'sine', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'center center', scrub: true } });
+          gsap.fromTo(el, { scale: 1.5, willChange: 'transform' }, { scale: 1, ease: 'sine', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'center center', scrub: true } });
         });
       });
 
@@ -142,7 +157,7 @@ export default function Motion() {
           cards.forEach((c, i) => {
             const next = cards[i + 1];
             if (!next) return;
-            tl.fromTo(c, { scale: 1, filter: 'brightness(1)' }, { scale: 0.9, filter: 'brightness(0.94)' }).to(next, { yPercent: 0 }, '<');
+            tl.fromTo(c, { scale: 1 }, { scale: 0.9 }).to(next, { yPercent: 0 }, '<');
           });
           cleanups.push(() => {
             stack.classList.remove('is-pinned');
