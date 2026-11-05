@@ -1,13 +1,6 @@
-# Xovra homepage
+# Xovra (ringlessai)
 
-Homepage for [xovra.ai](https://www.xovra.ai). Copy comes from xovra.ai; the look and motion follow a monochrome, editorial agency style (big tight DM Sans headlines, rounded cards, grayscale palette, dark mode).
-
-## Stack
-
-- Next.js (App Router) + TypeScript
-- GSAP + ScrollTrigger + SplitText for motion
-- DM Sans via `@fontsource-variable/dm-sans`
-- Icons from `lucide-react`
+Marketing site for Xovra, built with Next.js.
 
 ## Run
 
@@ -17,26 +10,17 @@ npm run dev      # http://localhost:3000
 npm run build && npm start
 ```
 
-## Where things live
+## Homepage redesign
 
-- `lib/content.ts` – all page copy (edit text here)
-- `app/page.tsx` – page sections
-- `app/globals.css` – theme tokens, layout, dark mode
-- `components/Motion.tsx` – scroll animations, driven by `data-*` attributes
-- `components/Dialer.tsx` – interactive dialer mockup (C call, H hang up, 1–6 log outcome)
-- `components/FeatureRows.tsx` – feature list with cursor-follow image preview
-- `scripts/render-images.mjs` – renders the 3D artwork in `public/images` with three.js (`npm run render:images`, needs Playwright)
+- `src/app/page.tsx` – homepage sections
+- `src/lib/xovra-content.ts` – all homepage, header and footer copy (taken verbatim from the previous site; edit text here)
+- `src/app/xovra.css` – homepage, header and footer styles, all scoped under `.xv` so inner pages keep their Tailwind styles
+- `src/components/xovra/` – Header, Footer, Dialer (interactive mockup: C call, H hang up, 1–6 log outcome), FeatureRows, Motion (GSAP)
 
-## Motion
+### Swapping images
 
-| Attribute | Effect |
-| --- | --- |
-| `data-split` | letters rise in |
-| `data-reveal` | words fill from gray to ink on scroll |
-| `data-scale` | headline scales up on enter |
-| `data-fade` | fade up on enter |
-| `data-parallax="N"` | image drifts N% |
-| `data-stack` | sticky cards shrink as next card covers them |
-| `data-zoom` | pinned section, image grows to full screen with marquee |
+Images live in `public/images/xovra/`. The `images` map at the bottom of `src/lib/xovra-content.ts` says which file each section uses. Replace a file with the same name, or point the map at a new file.
 
-All motion is off when the visitor has reduced motion enabled.
+### Motion
+
+GSAP + ScrollTrigger + SplitText, driven by `data-*` attributes (see the comment at the top of `src/components/xovra/Motion.tsx`): CSS preloader, hero reveal, scrubbed letter reveals, pinned card stacks, clip-path scroll zoom, horizontal gallery, image zooms, directional fades, and hover letter waves. All motion turns off when the visitor prefers reduced motion.
