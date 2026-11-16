@@ -3,204 +3,224 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap">
 <style>
 :root{
-  --bg:#efeeea;--bg-2:#e6e5e0;--fg:#0b0b0e;--muted:#6b6b72;--line:rgba(11,11,14,.12);
+  --cream:#e9e5dd;--cream-2:#ddd8cc;--dark:#0a0a0c;--dark-2:#15151a;
+  --fg:#0a0a0c;--fg-inv:#f2f1ec;--muted:#6b6b72;--muted-inv:#9a9aa3;
+  --pink:#ff4d7a;--line:rgba(10,10,12,.12);--line-inv:rgba(255,255,255,.1);
   --g-blue:#4285F4;--g-red:#EA4335;--g-yellow:#FBBC04;--g-green:#34A853;
   color-scheme:light;
   padding-left:max(0px,env(safe-area-inset-left,0px));
   padding-right:max(0px,env(safe-area-inset-right,0px));
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--fg);overflow-x:hidden}
+html,body{background:var(--cream);color:var(--fg);overflow-x:hidden}
 body{font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;cursor:none}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--cream)}
 a,button{color:inherit;text-decoration:none;cursor:none}
 img{max-width:100%;display:block}
-.wrap{width:100%;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px));max-width:1600px;margin:0 auto}
+.wrap{width:100%;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px));max-width:1280px;margin:0 auto}
 .italic{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400}
-.mono{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.serif{font-family:"Fraunces",Georgia,serif;font-weight:400}
+.mono{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
 @media(hover:none){body,a,button{cursor:auto}.cursor,.cursor-label{display:none}}
 
 /* CURSOR */
-.cursor{position:fixed;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--fg);pointer-events:none;z-index:999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
-.cursor.big{width:88px;height:88px;background:var(--g-blue);mix-blend-mode:normal}
-.cursor-label{position:fixed;top:0;left:0;pointer-events:none;z-index:999;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .25s}
+.cursor{position:fixed;top:0;left:0;width:12px;height:12px;border-radius:50%;background:var(--fg);pointer-events:none;z-index:999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+.cursor.big{width:80px;height:80px;background:var(--pink);mix-blend-mode:normal}
+.cursor-label{position:fixed;top:0;left:0;pointer-events:none;z-index:999;transform:translate(-50%,-50%);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .25s}
 .cursor-label.on{opacity:1}
 
 /* NAV */
-nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;padding:18px 0;transition:background .4s,backdrop-filter .4s}
-nav.scrolled{background:rgba(239,238,234,.8);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--line)}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;padding:18px 0;transition:background .4s,backdrop-filter .4s,color .4s}
+nav.scrolled{background:rgba(233,229,221,.8);backdrop-filter:blur(16px) saturate(1.3)}
+nav.inv{color:var(--fg-inv)}
+nav.inv.scrolled{background:rgba(10,10,12,.8)}
 nav .bar{display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.01em}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em}
 .logo .dots{display:inline-grid;grid-template-columns:1fr 1fr;gap:3px}
-.logo .dots i{width:9px;height:9px;border-radius:50%;display:block}
+.logo .dots i{width:8px;height:8px;border-radius:50%;display:block}
 .logo .dots i:nth-child(1){background:var(--g-blue)}
 .logo .dots i:nth-child(2){background:var(--g-red)}
 .logo .dots i:nth-child(3){background:var(--g-yellow)}
 .logo .dots i:nth-child(4){background:var(--g-green)}
-.nav-links{display:flex;gap:36px;align-items:center}
-.nav-links a{font-size:14px;font-weight:500;position:relative}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:var(--fg);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.65,.05,.36,1)}
-.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
-.btn-nav{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--fg);color:var(--bg);font-size:14px;font-weight:500;transition:background .3s}
-.btn-nav:hover{background:var(--g-blue)}
-.btn-nav .dot{width:8px;height:8px;border-radius:50%;background:var(--g-green)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;position:relative;opacity:.9;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid currentColor;font-size:13px;font-weight:500;transition:background .3s,color .3s}
+.btn-nav:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+.btn-nav .dot{width:6px;height:6px;border-radius:50%;background:var(--g-green)}
 @media(max-width:900px){.nav-links{display:none}}
 
-/* HERO */
-.hero{position:relative;padding:180px 0 100px;overflow:hidden;min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end}
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);margin-bottom:40px;font-weight:500}
-.eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--g-green);box-shadow:0 0 0 0 rgba(52,168,83,.5);animation:pulse 2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(52,168,83,0)}100%{box-shadow:0 0 0 0 rgba(52,168,83,0)}}
-h1.hero-title{font-size:clamp(62px,11vw,208px);line-height:.92;letter-spacing:-.045em;font-weight:500;max-width:14ch}
-h1.hero-title .line{display:block;overflow:hidden}
-h1.hero-title .word{display:inline-block;transform:translateY(110%);will-change:transform}
-.hero-sub{margin-top:48px;max-width:640px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--fg)}
-.hero-orbs{position:absolute;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
-.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45}
-.orb.b{width:500px;height:500px;background:var(--g-blue);top:0;right:-80px;opacity:.4}
-.orb.r{width:380px;height:380px;background:var(--g-red);top:40%;left:-80px;opacity:.3}
-.orb.y{width:300px;height:300px;background:var(--g-yellow);bottom:-40px;right:30%;opacity:.35}
-.orb.g{width:320px;height:320px;background:var(--g-green);bottom:-80px;left:20%;opacity:.3}
+/* HERO (small, centered) */
+.hero{padding:140px 0 60px;text-align:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);margin-bottom:28px;font-weight:500}
+.eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--g-green);box-shadow:0 0 0 0 rgba(52,168,83,.5);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(52,168,83,0)}100%{box-shadow:0 0 0 0 rgba(52,168,83,0)}}
+.hero h1{font-size:clamp(34px,4.5vw,64px);line-height:1.02;letter-spacing:-.025em;font-weight:500;max-width:14ch;margin:0 auto}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .w{display:inline-block;transform:translateY(110%);will-change:transform}
+.hero .sub{margin:28px auto 0;max-width:540px;font-size:15px;color:var(--muted);line-height:1.55}
 
-/* MARQUEE */
-.marquee{margin-top:120px;padding-block:32px;border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;display:flex;gap:64px}
-.marquee-track{display:flex;gap:64px;align-items:center;animation:scroll 40s linear infinite;flex-shrink:0}
-.marquee .word{font-family:"Fraunces",serif;font-size:clamp(44px,8vw,112px);font-weight:400;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:56px;line-height:1}
-.marquee .word em{font-style:italic}
-.marquee .star{width:32px;height:32px;flex:0 0 32px}
-@keyframes scroll{to{transform:translateX(-50%)}}
+/* Hero visual block (like "a platform" tile) */
+.hero-visual{margin:56px auto 0;max-width:960px;aspect-ratio:16/9;border-radius:24px;background:linear-gradient(135deg,#efede6,#e6e3d9);position:relative;overflow:hidden;display:grid;place-items:center}
+.hero-visual .ribbon{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);height:1px;background:rgba(10,10,12,.08)}
+.hero-visual .label{position:absolute;top:28px;left:28px;font-family:"Fraunces",serif;font-style:italic;font-size:clamp(28px,3.4vw,52px);letter-spacing:-.02em;z-index:2}
+.hero-visual .label .dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--pink);vertical-align:.1em;margin-left:4px}
+.hero-visual .meta{position:absolute;bottom:28px;right:28px;font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.hero-visual .map{position:absolute;inset:0;display:grid;place-items:center}
+.hero-visual .map svg{width:70%;max-width:420px;height:auto;filter:drop-shadow(0 20px 60px rgba(66,133,244,.25));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}
+.hero-visual .map .orb-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(234,67,53,.3),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulseOrb 4s ease-in-out infinite}
+@keyframes pulseOrb{50%{transform:translate(-50%,-50%) scale(1.15);opacity:.6}}
 
-/* SECTION */
-section.sec{padding:140px 0}
-.sec-head{display:grid;grid-template-columns:160px 1fr;gap:28px;align-items:baseline;margin-bottom:80px}
-.sec-head h2{font-size:clamp(44px,7vw,120px);line-height:.92;letter-spacing:-.04em;font-weight:500;max-width:14ch}
-.sec-head .intro{color:var(--muted);font-size:17px;max-width:46ch;line-height:1.55;margin-top:20px}
-@media(max-width:820px){.sec-head{grid-template-columns:1fr}}
+/* Section headings */
+section{padding:100px 0}
+.sec-title{font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.025em;font-weight:500;text-align:center;margin-bottom:56px}
+.sec-title .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
 
-/* SERVICES (what we do) */
-.services{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.srv{padding:48px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:120px 1fr 1.1fr 180px;gap:48px;align-items:center;cursor:none}
-.srv .idx{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:22px}
-.srv .thumb{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#ddd;position:relative}
-.srv .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.9,.2,1);will-change:transform}
-.srv:hover .thumb img{transform:scale(1.08)}
-.srv .body h3{font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:-.025em;line-height:1.05}
-.srv .body h3 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
-.srv .body p{margin-top:14px;color:var(--muted);font-size:16px;max-width:52ch;line-height:1.55}
-.srv .explore{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:600;justify-self:end;transition:gap .3s}
-.srv:hover .explore{gap:18px}
-.srv .explore .r{width:48px;height:48px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
-.srv:hover .explore .r{transform:rotate(-45deg) scale(1.1)}
-@media(max-width:1100px){.srv{grid-template-columns:48px 220px 1fr 60px;gap:28px}.srv .explore span:first-child{display:none}}
-@media(max-width:720px){.srv{grid-template-columns:1fr;gap:16px;padding:32px 0}.srv .thumb{aspect-ratio:16/9}.srv .explore{justify-self:start}}
+/* WHAT WE DO - accordion */
+.services{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.srv{background:var(--cream-2);border-radius:20px;overflow:hidden;cursor:none;transition:background .3s}
+.srv .head{padding:22px 28px;display:flex;align-items:center;justify-content:space-between;font-size:18px;font-weight:500}
+.srv .head .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
+.srv .head .plus{width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.08);display:grid;place-items:center;font-size:18px;transition:transform .4s cubic-bezier(.2,.9,.2,1),background .3s;color:var(--fg)}
+.srv.open{background:#fff}
+.srv.open .head .plus{transform:rotate(45deg);background:var(--fg);color:#fff}
+.srv .panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.9,.2,1)}
+.srv.open .panel{grid-template-rows:1fr}
+.srv .panel-inner{min-height:0;overflow:hidden}
+.srv .panel-content{padding:0 28px 28px}
+.srv .media{aspect-ratio:21/9;border-radius:12px;overflow:hidden;background:#ddd;margin-bottom:24px;position:relative}
+.srv .media img{width:100%;height:100%;object-fit:cover}
+.srv .panel-content h3{font-family:"Fraunces",serif;font-size:clamp(22px,2.6vw,36px);font-weight:500;letter-spacing:-.015em;line-height:1.1;margin-bottom:12px;max-width:16ch}
+.srv .panel-content h3 .italic{font-style:italic}
+.srv .panel-content p{color:var(--muted);font-size:15px;line-height:1.6;max-width:62ch;margin-bottom:24px}
+.srv .exp{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--fg);color:#fff;border-radius:999px;font-size:13px;font-weight:600;transition:background .3s}
+.srv .exp:hover{background:var(--pink)}
+.srv .exp .arr{width:18px;height:18px;transform:rotate(-45deg)}
 
-/* LOGO STRIP */
-.logos{padding:72px 0;border-block:1px solid var(--line)}
-.logos .lead{font-family:"Fraunces",serif;font-size:clamp(28px,3vw,44px);line-height:1.15;letter-spacing:-.02em;font-weight:400;margin-bottom:48px;max-width:28ch}
-.logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:48px 56px;align-items:center}
-.logo-grid .brand{font-family:"Fraunces",serif;font-size:22px;font-weight:500;color:var(--muted);text-align:center;letter-spacing:-.01em;opacity:.7;transition:opacity .3s,color .3s}
-.logo-grid .brand:hover{opacity:1;color:var(--fg)}
-@media(max-width:900px){.logo-grid{grid-template-columns:repeat(3,1fr)}}
+/* LOGOS */
+.logos-sec{padding:60px 0;text-align:center}
+.logos-sec .lead{font-size:13px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:40px;font-weight:500}
+.logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:40px 48px;align-items:center;max-width:1080px;margin:0 auto}
+.logo-grid .brand{font-family:"Fraunces",serif;font-size:17px;font-weight:500;color:var(--fg);text-align:center;letter-spacing:-.01em;opacity:.55;transition:opacity .3s}
+.logo-grid .brand:hover{opacity:1}
+@media(max-width:900px){.logo-grid{grid-template-columns:repeat(3,1fr);gap:32px}}
 
-/* WORK */
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
-@media(max-width:820px){.work-grid{grid-template-columns:1fr;gap:28px}}
-.card{position:relative;overflow:hidden;border-radius:24px;cursor:none;display:block}
-.card .cover{aspect-ratio:4/3;overflow:hidden;background:#ccc;position:relative}
-.card .cover img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.9,.2,1);will-change:transform}
-.card:hover .cover img{transform:scale(1.06)}
-.card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.45));opacity:0;transition:opacity .4s}
-.card:hover .cover::after{opacity:1}
-.card .cap{padding:24px 4px 0;font-family:"Fraunces",serif;font-size:clamp(20px,1.6vw,26px);line-height:1.3;letter-spacing:-.015em;max-width:40ch}
-.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:0 4px;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-.card .meta .arr{color:var(--fg);transition:transform .4s}
-.card:hover .meta .arr{transform:translateX(6px)}
-.view-all{display:flex;justify-content:center;margin-top:72px}
-.view-all a{display:inline-flex;align-items:center;gap:16px;padding:20px 32px;border:1.5px solid var(--fg);border-radius:999px;font-size:16px;font-weight:600;transition:background .3s,color .3s}
-.view-all a:hover{background:var(--fg);color:var(--bg)}
-.view-all .r{width:36px;height:36px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;transform:rotate(-45deg);transition:background .3s,color .3s}
-.view-all a:hover .r{background:var(--bg);color:var(--fg)}
+/* DARK SECTIONS */
+.dark{background:var(--dark);color:var(--fg-inv)}
+.dark .mono{color:var(--muted-inv)}
+.dark .sec-title{color:var(--fg-inv)}
 
-/* TESTIMONIALS */
-.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
-@media(max-width:820px){.tgrid{grid-template-columns:1fr}}
-.tcard{padding:40px;background:var(--bg-2);border-radius:28px;display:flex;flex-direction:column;gap:28px;transition:transform .4s cubic-bezier(.2,.9,.2,1)}
-.tcard:hover{transform:translateY(-4px)}
-.tcard .brand{font-family:"Fraunces",serif;font-size:22px;font-weight:500;letter-spacing:-.01em}
-.tcard blockquote{font-family:"Fraunces",serif;font-size:clamp(20px,1.7vw,24px);line-height:1.4;letter-spacing:-.015em}
-.tcard .quote-mark{font-family:"Fraunces",serif;font-size:72px;line-height:.5;color:var(--muted);height:36px;display:block}
-.tcard footer{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px;margin-top:auto}
-.tcard .av{width:40px;height:40px;border-radius:50%;background:conic-gradient(from 45deg,var(--g-blue),var(--g-red),var(--g-yellow),var(--g-green),var(--g-blue));color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;font-family:"Fraunces",serif}
+/* SELECTED WORK - dark image grid */
+.work-sec{padding:120px 0}
+.work-sec .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap}
+.work-sec .head h2{font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.025em;font-weight:500}
+.work-sec .head h2 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
+.work-sec .head .count{font-family:"Fraunces",serif;font-style:italic;color:var(--muted-inv);font-size:16px}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){.work-grid{grid-template-columns:1fr}}
+.wcard{position:relative;border-radius:20px;overflow:hidden;cursor:none;aspect-ratio:4/3;background:#222}
+.wcard img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.9,.2,1)}
+.wcard:hover img{transform:scale(1.05)}
+.wcard .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 40%,rgba(0,0,0,.75));display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.wcard .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:10px}
+.wcard .cap{font-family:"Fraunces",serif;font-size:clamp(18px,1.7vw,24px);line-height:1.25;letter-spacing:-.015em;color:#fff;max-width:34ch}
+.wcard .arr{position:absolute;top:24px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff;transition:background .3s,transform .4s}
+.wcard:hover .arr{background:var(--pink);transform:rotate(-45deg)}
+.view-all{text-align:center;margin-top:56px}
+.view-all a{display:inline-flex;align-items:center;gap:12px;padding:18px 28px;border:1px solid var(--line-inv);border-radius:999px;font-size:14px;font-weight:500;color:var(--fg-inv);transition:background .3s,color .3s}
+.view-all a:hover{background:var(--fg-inv);color:var(--dark)}
 
-/* WHY */
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-@media(max-width:900px){.why-grid{grid-template-columns:1fr;gap:48px}}
-.why-copy h3{font-size:clamp(34px,4.5vw,64px);line-height:1;letter-spacing:-.03em;font-weight:500;margin-bottom:28px;max-width:14ch}
-.why-copy h3 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
-.why-copy p{color:var(--muted);font-size:17px;line-height:1.55;max-width:46ch}
-.stats{display:grid;grid-template-columns:1fr;gap:28px}
-.stat{padding:40px;border:1px solid var(--line);border-radius:28px;display:flex;flex-direction:column;gap:12px;background:var(--bg-2)}
-.stat .num{font-family:"Fraunces",serif;font-size:clamp(72px,10vw,140px);font-weight:500;letter-spacing:-.045em;line-height:.9;background:linear-gradient(135deg,var(--g-blue),var(--g-green));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat .lab{font-size:15px;color:var(--muted);line-height:1.4;max-width:34ch}
+/* TESTIMONIALS - overlapping cards */
+.ts-sec{padding:120px 0}
+.ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1120px;margin:0 auto}
+@media(max-width:820px){.ts-grid{grid-template-columns:1fr}}
+.tcard{background:#fff;color:var(--fg);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:20px;position:relative;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
+.tcard:nth-child(2){transform:translateY(24px) rotate(-1deg)}
+.tcard:nth-child(4){transform:translateY(16px) rotate(1deg)}
+.tcard:nth-child(5){transform:translateY(-16px) rotate(-.5deg)}
+.tcard:hover{transform:translateY(-6px) rotate(0)}
+.tcard .brand{font-family:"Fraunces",serif;font-size:17px;font-weight:500;letter-spacing:-.01em}
+.tcard blockquote{font-family:"Fraunces",serif;font-size:15px;line-height:1.45;color:var(--fg);flex:1}
+.tcard footer{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.tcard .av{width:28px;height:28px;border-radius:50%;background:conic-gradient(from 45deg,var(--g-blue),var(--g-red),var(--g-yellow),var(--g-green),var(--g-blue));color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px;font-family:"Fraunces",serif}
+
+/* WHY - dark with big stats */
+.why-sec{padding:120px 0;text-align:center}
+.why-sec h2{font-family:"Fraunces",serif;font-size:clamp(34px,4vw,56px);line-height:1.05;letter-spacing:-.02em;font-weight:400;max-width:20ch;margin:0 auto 24px}
+.why-sec .sub{color:var(--muted-inv);font-size:15px;max-width:48ch;margin:0 auto 72px;line-height:1.55}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:960px;margin:0 auto;padding-top:48px;border-top:1px solid var(--line-inv)}
+@media(max-width:720px){.stats-row{grid-template-columns:1fr;gap:32px}}
+.stat-item .num{font-family:"Fraunces",serif;font-size:clamp(68px,8vw,120px);font-weight:400;letter-spacing:-.04em;line-height:.95;color:var(--fg-inv)}
+.stat-item .num .star{display:inline-block;color:var(--pink);font-style:italic;margin-left:6px}
+.stat-item .lab{font-size:13px;color:var(--muted-inv);margin-top:14px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.stat-item .desc{color:var(--muted-inv);font-size:14px;margin-top:10px;line-height:1.5;max-width:28ch}
 
 /* INSIGHTS */
-.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.ins-sec{padding:120px 0}
+.ins-sec .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.ins-sec .head h2{font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.025em;font-weight:500}
+.ins-sec .head h2 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
+.ins-sec .head .visit{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--line-inv);border-radius:999px;font-size:13px;color:var(--fg-inv);transition:background .3s,color .3s}
+.ins-sec .head .visit:hover{background:var(--fg-inv);color:var(--dark)}
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:900px){.ins-grid{grid-template-columns:1fr}}
-.icard{display:block;border-radius:20px;overflow:hidden;background:var(--bg-2);cursor:none;transition:transform .4s cubic-bezier(.2,.9,.2,1)}
+.icard{display:block;border-radius:18px;overflow:hidden;background:var(--dark-2);cursor:none;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
 .icard:hover{transform:translateY(-4px)}
 .icard .cov{aspect-ratio:16/10;overflow:hidden}
 .icard .cov img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.9,.2,1)}
 .icard:hover .cov img{transform:scale(1.06)}
-.icard .body{padding:24px 24px 28px}
-.icard .cat{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:14px}
-.icard h4{font-family:"Fraunces",serif;font-size:22px;font-weight:500;line-height:1.25;letter-spacing:-.01em}
-.icard .date{margin-top:14px;font-size:13px;color:var(--muted)}
+.icard .body{padding:22px 24px 26px}
+.icard .cat{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);font-weight:600;margin-bottom:12px}
+.icard h4{font-family:"Fraunces",serif;font-size:19px;font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--fg-inv)}
+.icard .date{margin-top:12px;font-size:12px;color:var(--muted-inv)}
 
 /* FAQ */
-.faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start}
-@media(max-width:820px){.faq-grid{grid-template-columns:1fr;gap:28px}}
-.faq-left h3{font-family:"Fraunces",serif;font-size:clamp(34px,4vw,56px);line-height:1;letter-spacing:-.025em;font-weight:500}
-.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.faq{padding:28px 0;border-bottom:1px solid var(--line);cursor:none}
-.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:32px;font-family:"Fraunces",serif;font-size:clamp(20px,1.6vw,26px);font-weight:500;letter-spacing:-.015em;line-height:1.3}
+.faq-sec{padding:120px 0}
+.faq-sec .head{text-align:center;margin-bottom:56px}
+.faq-sec .head h2{font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.025em;font-weight:500}
+.faq-sec .head h2 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
+.faq-list{max-width:900px;margin:0 auto;border-top:1px solid var(--line-inv)}
+.faq{padding:24px 0;border-bottom:1px solid var(--line-inv);cursor:none}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:32px;font-size:16px;font-weight:500;letter-spacing:-.005em}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary .plus{width:40px;height:40px;border-radius:50%;background:var(--bg-2);display:grid;place-items:center;flex-shrink:0;transition:transform .4s cubic-bezier(.2,.9,.2,1),background .3s}
-.faq[open] summary .plus{transform:rotate(45deg);background:var(--fg);color:var(--bg)}
-.faq .a{padding-top:16px;color:var(--muted);font-size:16px;line-height:1.6;max-width:64ch}
+.faq summary .plus{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;flex-shrink:0;transition:transform .4s cubic-bezier(.2,.9,.2,1),background .3s;color:var(--fg-inv)}
+.faq[open] summary .plus{transform:rotate(45deg);background:var(--pink)}
+.faq .a{padding-top:14px;color:var(--muted-inv);font-size:14px;line-height:1.6;max-width:70ch}
 
 /* CTA */
-.cta-sec{padding:80px 0 140px}
-.cta-card{position:relative;overflow:hidden;border-radius:40px;padding:120px 60px;color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;gap:32px;isolation:isolate}
-.cta-card .bgwrap{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.cta-card .bg{width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform 8s linear;transform:scale(1.05)}
+.cta-sec{padding:60px 0 120px}
+.cta-card{position:relative;overflow:hidden;border-radius:32px;padding:120px 48px;text-align:center;isolation:isolate;min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.cta-card .bgwrap{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#000}
+.cta-card .bg{width:100%;height:100%;object-fit:cover;filter:brightness(.4);transform:scale(1.05);transition:transform 8s linear}
 .cta-card:hover .bg{transform:scale(1.12)}
-.cta-card::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 20% 30%,rgba(66,133,244,.45),transparent 50%),radial-gradient(circle at 80% 70%,rgba(234,67,53,.3),transparent 50%),radial-gradient(circle at 70% 20%,rgba(251,188,4,.25),transparent 50%),radial-gradient(circle at 30% 80%,rgba(52,168,83,.3),transparent 50%)}
-.cta-card h2{font-family:"Fraunces",serif;font-size:clamp(44px,6.5vw,104px);line-height:.95;letter-spacing:-.035em;font-weight:500;max-width:18ch}
+.cta-card::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 30% 40%,rgba(66,133,244,.35),transparent 60%),radial-gradient(circle at 70% 60%,rgba(255,77,122,.3),transparent 60%)}
+.cta-card h2{font-family:"Fraunces",serif;font-size:clamp(40px,6vw,88px);line-height:1;letter-spacing:-.03em;font-weight:500;max-width:14ch;color:#fff}
 .cta-card h2 .italic{font-style:italic}
-.cta-card p{font-size:18px;line-height:1.55;max-width:44ch;opacity:.9}
-.cta-btn{display:inline-flex;align-items:center;gap:16px;padding:22px 36px;background:#fff;color:var(--fg);border-radius:999px;font-size:16px;font-weight:600;transition:background .3s}
-.cta-btn:hover{background:var(--g-yellow)}
-.cta-btn .r{width:40px;height:40px;border-radius:50%;background:var(--fg);color:#fff;display:grid;place-items:center;transform:rotate(-45deg)}
-.cta-contact{display:flex;gap:48px;margin-top:16px;color:#fff;opacity:.85;font-size:14px;flex-wrap:wrap;justify-content:center}
-.cta-contact a{font-weight:600}
+.cta-card p{font-size:16px;line-height:1.55;max-width:44ch;color:rgba(255,255,255,.75)}
+.cta-btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;background:#fff;color:var(--fg);border-radius:999px;font-size:14px;font-weight:600;transition:background .3s,color .3s}
+.cta-btn:hover{background:var(--pink);color:#fff}
+.cta-btn .r{width:32px;height:32px;border-radius:50%;background:var(--fg);color:#fff;display:grid;place-items:center;transform:rotate(-45deg)}
 
 /* FOOTER */
-footer{padding:100px 0 40px;border-top:1px solid var(--line);position:relative;overflow:hidden}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;padding-bottom:80px}
+footer{background:var(--dark);color:var(--fg-inv);padding:72px 0 32px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:48px;border-bottom:1px solid var(--line-inv)}
 @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
-.foot-col h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;font-weight:600}
-.foot-col a{display:block;font-size:16px;margin-bottom:10px;transition:color .2s}
-.foot-col a:hover{color:var(--g-blue)}
-.foot-col .mail{font-family:"Fraunces",serif;font-size:32px;margin-bottom:12px;letter-spacing:-.01em}
-.foot-huge{font-family:"Fraunces",serif;font-size:clamp(90px,22vw,360px);letter-spacing:-.045em;line-height:.85;font-weight:500;white-space:nowrap;overflow:hidden;margin-bottom:40px}
-.foot-huge .italic{font-style:italic;font-weight:400}
+.foot-col h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-inv);margin-bottom:18px;font-weight:600}
+.foot-col a{display:block;font-size:14px;margin-bottom:8px;transition:color .2s;opacity:.9}
+.foot-col a:hover{opacity:1;color:var(--pink)}
+.foot-col .mail{font-family:"Fraunces",serif;font-size:22px;margin-bottom:10px;letter-spacing:-.01em;color:var(--fg-inv)}
+.foot-col .mail:hover{color:var(--pink)}
+.foot-huge{font-family:"Fraunces",serif;font-size:clamp(90px,22vw,320px);letter-spacing:-.045em;line-height:.88;font-weight:400;white-space:nowrap;overflow:hidden;margin:48px 0;color:var(--fg-inv)}
+.foot-huge .italic{font-style:italic}
 .foot-huge .hb{color:var(--g-blue)}.foot-huge .hr{color:var(--g-red)}.foot-huge .hy{color:var(--g-yellow)}.foot-huge .hg{color:var(--g-green)}
-.copy{padding-top:28px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.social{display:flex;gap:12px}
-.social a{width:40px;height:40px;border-radius:50%;background:var(--bg-2);display:grid;place-items:center;transition:background .3s,color .3s;margin:0}
-.social a:hover{background:var(--fg);color:var(--bg)}
+.copy{padding-top:28px;color:var(--muted-inv);font-size:12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.copy a{color:var(--muted-inv);opacity:.9}
+.social{display:flex;gap:10px;margin-top:0}
+.social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;transition:background .3s;margin:0}
+.social a:hover{background:var(--pink)}
 
-.reveal-up{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.9,.2,1),transform .9s cubic-bezier(.2,.9,.2,1)}
+.reveal-up{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.2,.9,.2,1),transform .8s cubic-bezier(.2,.9,.2,1)}
 .reveal-up.in{opacity:1;transform:none}
 </style>
 
@@ -215,105 +235,109 @@ footer{padding:100px 0 40px;border-top:1px solid var(--line);position:relative;o
       <a href="#work">Projects</a>
       <a href="#why">About</a>
       <a href="#insights">Blog</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Contacts</a>
     </div>
     <a href="#audit" class="btn-nav" data-mag><span class="dot"></span>Free audit</a>
   </div>
 </nav>
 
-<main>
-
-<!-- 1. HERO -->
+<!-- HERO -->
 <header class="hero">
-  <div class="hero-orbs"><div class="orb b"></div><div class="orb r"></div><div class="orb y"></div><div class="orb g"></div></div>
   <div class="wrap">
-    <div class="eyebrow reveal-up"><span class="pulse"></span>Google Business Profile recovery agency · Est. 2019</div>
-    <h1 class="hero-title">
-      <span class="line"><span class="word">Google</span> <span class="word italic">Business</span></span>
-      <span class="line"><span class="word">Profile</span> <span class="word">rescue</span></span>
-      <span class="line"><span class="word italic">&amp;</span> <span class="word">growth.</span></span>
+    <div class="eyebrow"><span class="pulse"></span>Google Business Profile recovery agency</div>
+    <h1>
+      <span class="line"><span class="w">Google</span> <span class="w italic">Business</span></span>
+      <span class="line"><span class="w">Profile</span> <span class="w">recovery</span> <span class="w italic">&amp;</span></span>
+      <span class="line"><span class="w">growth</span> <span class="w italic">agency</span></span>
     </h1>
-    <p class="hero-sub reveal-up">We reinstate suspended listings, clean up broken citations, and rebuild local rankings for businesses ready to stop losing customers to the map pack.</p>
-  </div>
+    <p class="sub">We reinstate suspended listings, rebuild local rankings, and recover reviews for businesses ready to stop losing customers to the map pack.</p>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="word">Suspensions <em>lifted</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#4285F4"/></svg></span>
-      <span class="word">Rankings <em>rebuilt</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#EA4335"/></svg></span>
-      <span class="word">Reviews <em>recovered</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#FBBC04"/></svg></span>
-      <span class="word">Calls <em>flowing</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#34A853"/></svg></span>
-      <span class="word">Suspensions <em>lifted</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#4285F4"/></svg></span>
-      <span class="word">Rankings <em>rebuilt</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#EA4335"/></svg></span>
-      <span class="word">Reviews <em>recovered</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#FBBC04"/></svg></span>
-      <span class="word">Calls <em>flowing</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#34A853"/></svg></span>
+    <div class="hero-visual">
+      <div class="label"><span class="italic">a profile</span><span class="dot"></span></div>
+      <div class="meta">Austin · remote · est. 2019</div>
+      <div class="map">
+        <div class="orb-glow"></div>
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 10 C50 10 20 50 20 100 c0 70 80 130 80 130s80-60 80-130c0-50-30-90-80-90z" fill="url(#pinGrad)"/>
+          <circle cx="100" cy="100" r="34" fill="#fff"/>
+          <defs>
+            <linearGradient id="pinGrad" x1="20" y1="10" x2="180" y2="230">
+              <stop offset="0" stop-color="#4285F4"/>
+              <stop offset=".33" stop-color="#EA4335"/>
+              <stop offset=".66" stop-color="#FBBC04"/>
+              <stop offset="1" stop-color="#34A853"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- 2. WHAT WE DO -->
-<section class="sec" id="services">
+<!-- WHAT WE DO - accordion -->
+<section id="services">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="mono reveal-up">(01) What we do</span>
-      <div>
-        <h2 class="reveal-up">Specialists in local search, one profile at a time.</h2>
-        <p class="intro reveal-up">Since 2019, we've worked with independent shops, multi-location franchises, and venture-backed brands to rescue their Google presence and rebuild it to rank — ethically and permanently.</p>
-      </div>
-    </div>
+    <h2 class="sec-title reveal-up">What we <span class="italic">do.</span></h2>
     <div class="services">
-      <a href="#" class="srv" data-cursor="explore">
-        <span class="idx">01</span>
-        <div class="thumb"><img src="https://picsum.photos/seed/gfmb-recovery/640/480" alt="" loading="lazy"></div>
-        <div class="body">
-          <h3>Suspension <span class="italic">recovery</span></h3>
-          <p>We handle hard and soft suspensions end-to-end — documentation, reinstatement filing, follow-ups with Google. 94% of profiles come back live inside 72 hours.</p>
-        </div>
-        <span class="explore"><span>Explore</span><span class="r"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span>
-      </a>
-      <a href="#" class="srv" data-cursor="explore">
-        <span class="idx">02</span>
-        <div class="thumb"><img src="https://picsum.photos/seed/gfmb-mappack/640/480" alt="" loading="lazy"></div>
-        <div class="body">
-          <h3>Map-pack <span class="italic">optimization</span></h3>
-          <p>Primary category, services, posts, geo-photos, Q&amp;A, product tiles — we tune every signal Google weighs when picking the local three, then track your rank across the city grid.</p>
-        </div>
-        <span class="explore"><span>Explore</span><span class="r"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span>
-      </a>
-      <a href="#" class="srv" data-cursor="explore">
-        <span class="idx">03</span>
-        <div class="thumb"><img src="https://picsum.photos/seed/gfmb-reviews/640/480" alt="" loading="lazy"></div>
-        <div class="body">
-          <h3>Review <span class="italic">management</span></h3>
-          <p>Flag and remove fake reviews. Respond to every real one. Build an automated drip of five-stars from happy customers via SMS and email. No gray hats, no bought reviews.</p>
-        </div>
-        <span class="explore"><span>Explore</span><span class="r"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span>
-      </a>
-      <a href="#" class="srv" data-cursor="explore">
-        <span class="idx">04</span>
-        <div class="thumb"><img src="https://picsum.photos/seed/gfmb-citations/640/480" alt="" loading="lazy"></div>
-        <div class="body">
-          <h3>NAP &amp; <span class="italic">citation cleanup</span></h3>
-          <p>We audit 300+ directories, delete duplicates, and sync name, address, phone across every surface Google trusts — Yelp, Apple Maps, Bing Places, industry-specific sites, and data aggregators.</p>
-        </div>
-        <span class="explore"><span>Explore</span><span class="r"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span>
-      </a>
-      <a href="#" class="srv" data-cursor="explore">
-        <span class="idx">05</span>
-        <div class="thumb"><img src="https://picsum.photos/seed/gfmb-strategy/640/480" alt="" loading="lazy"></div>
-        <div class="body">
-          <h3>Local SEO <span class="italic">strategy</span></h3>
-          <p>Ongoing partnership for brands serious about local dominance — service-area expansion, competitor gap analysis, review velocity planning, and monthly reporting against calls and revenue.</p>
-        </div>
-        <span class="explore"><span>Explore</span><span class="r"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span>
-      </a>
+
+      <div class="srv open" data-cursor="close">
+        <div class="head"><span>Suspension <span class="italic">recovery</span></span><span class="plus">+</span></div>
+        <div class="panel"><div class="panel-inner"><div class="panel-content">
+          <div class="media"><img src="https://picsum.photos/seed/gfmb-recovery/1200/520" alt="" loading="lazy"></div>
+          <h3>Hard or soft suspended? We handle the full reinstatement.</h3>
+          <p>Documentation, filing, and follow-up with Google — a 94% success rate on recoverable profiles, typically inside 72 hours. We've handled service-area suspensions, keyword-stuffing violations, duplicate-listing takedowns, and policy-change mass bans. If your pin is gone, we probably know why.</p>
+          <a href="#" class="exp">Explore <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+
+      <div class="srv" data-cursor="open">
+        <div class="head"><span>Map-pack <span class="italic">optimization</span></span><span class="plus">+</span></div>
+        <div class="panel"><div class="panel-inner"><div class="panel-content">
+          <div class="media"><img src="https://picsum.photos/seed/gfmb-mappack/1200/520" alt="" loading="lazy"></div>
+          <h3>Every signal Google uses, tuned and tracked.</h3>
+          <p>Primary category, services, posts, geo-photos, Q&amp;A seeding, product tiles, attribute flags. We rebuild your profile against Google's current ranking model and measure progress with a city-wide rank grid you can read in real coordinates.</p>
+          <a href="#" class="exp">Explore <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+
+      <div class="srv" data-cursor="open">
+        <div class="head"><span>Review <span class="italic">management</span></span><span class="plus">+</span></div>
+        <div class="panel"><div class="panel-inner"><div class="panel-content">
+          <div class="media"><img src="https://picsum.photos/seed/gfmb-reviews/1200/520" alt="" loading="lazy"></div>
+          <h3>Legitimate review strategy, nothing gray-hat.</h3>
+          <p>We flag policy-violating reviews, draft responses that protect your reputation, and set up a drip campaign that pulls real five-star reviews from happy customers over SMS and email. No bought reviews, no staff-only accounts.</p>
+          <a href="#" class="exp">Explore <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+
+      <div class="srv" data-cursor="open">
+        <div class="head"><span>NAP &amp; <span class="italic">citation cleanup</span></span><span class="plus">+</span></div>
+        <div class="panel"><div class="panel-inner"><div class="panel-content">
+          <div class="media"><img src="https://picsum.photos/seed/gfmb-citations/1200/520" alt="" loading="lazy"></div>
+          <h3>One business name, one address, one phone — everywhere.</h3>
+          <p>We audit 300+ directories, delete duplicates, and sync name, address, and phone across Yelp, Apple Maps, Bing Places, industry-specific sites, and the data aggregators Google trusts. Inconsistent citations are the single most common reason local rankings quietly stall.</p>
+          <a href="#" class="exp">Explore <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+
+      <div class="srv" data-cursor="open">
+        <div class="head"><span>Local SEO <span class="italic">strategy</span></span><span class="plus">+</span></div>
+        <div class="panel"><div class="panel-inner"><div class="panel-content">
+          <div class="media"><img src="https://picsum.photos/seed/gfmb-strategy/1200/520" alt="" loading="lazy"></div>
+          <h3>A monthly operating rhythm for brands serious about local.</h3>
+          <p>Ongoing partnership that covers service-area expansion, competitor gap analysis, review velocity planning, and monthly reporting against calls, directions, and revenue. Best for multi-location businesses and anyone in a competitive metro category.</p>
+          <a href="#" class="exp">Explore <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- 3. TRUSTED BY LOGOS -->
-<section class="logos">
+<!-- LOGOS -->
+<section class="logos-sec">
   <div class="wrap">
-    <p class="lead reveal-up">Trusted by <span class="italic">1,200+</span> local businesses — from single-location indies to multi-city franchises.</p>
+    <div class="lead reveal-up">Trusted by remarkable local brands</div>
     <div class="logo-grid">
       <span class="brand">Riverstone &amp; Co.</span>
       <span class="brand">Oakline Dental</span>
@@ -331,185 +355,164 @@ footer{padding:100px 0 40px;border-top:1px solid var(--line);position:relative;o
   </div>
 </section>
 
-<!-- 4. SELECTED WORK -->
-<section class="sec" id="work">
+<!-- DARK WRAPPER -->
+<div class="dark">
+
+<!-- SELECTED WORK -->
+<section class="work-sec" id="work">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="mono reveal-up">(02) Selected work</span>
-      <h2 class="reveal-up">Businesses back <span class="italic">on the map.</span></h2>
+    <div class="head">
+      <h2>Selected <span class="italic">work</span></h2>
+      <span class="count">( 10 projects )</span>
     </div>
     <div class="work-grid">
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-sakura/1200/900" alt="" loading="lazy"></div><div class="cap">Sakura Ramen House climbed from page two to the Portland map pack in six weeks.</div><div class="meta"><span>Restaurant · Portland</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-plumb/1200/900" alt="" loading="lazy"></div><div class="cap">Northline Plumbing reinstated after a hard suspension — live again in under 48 hours.</div><div class="meta"><span>Home service · Denver</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-dental/1200/900" alt="" loading="lazy"></div><div class="cap">Dr. Alvarez Dental quadrupled new-patient calls after a full profile and review overhaul.</div><div class="meta"><span>Healthcare · Miami</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-yoga/1200/900" alt="" loading="lazy"></div><div class="cap">Harbor Yoga rebuilt a 4.9-star reputation and tripled bookings in one quarter.</div><div class="meta"><span>Fitness · Seattle</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-retail/1200/900" alt="" loading="lazy"></div><div class="cap">Linden Boutique went from invisible to top three for every "women's clothing near me" query.</div><div class="meta"><span>Retail · Chicago</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-auto/1200/900" alt="" loading="lazy"></div><div class="cap">Rivera Auto added $38k in monthly revenue after a NAP sweep and category correction.</div><div class="meta"><span>Automotive · Austin</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-realty/1200/900" alt="" loading="lazy"></div><div class="cap">Meridian Realty consolidated 14 duplicate profiles into one authoritative listing.</div><div class="meta"><span>Real estate · Phoenix</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-spa/1200/900" alt="" loading="lazy"></div><div class="cap">Clearwater Spa recovered 220+ removed reviews after a competitor flagging attack.</div><div class="meta"><span>Wellness · San Diego</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-law/1200/900" alt="" loading="lazy"></div><div class="cap">Fieldstone Law expanded into three service areas without triggering a suspension.</div><div class="meta"><span>Legal · Boston</span><span class="arr">→</span></div></a>
-      <a class="card" href="#" data-cursor="view"><div class="cover"><img src="https://picsum.photos/seed/gfmb-coffee/1200/900" alt="" loading="lazy"></div><div class="cap">Oakline Coffee rolled out 22 franchise profiles in a single quarter, all compliant.</div><div class="meta"><span>Franchise · National</span><span class="arr">→</span></div></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-sakura/1200/900" alt=""><div class="overlay"><span class="tag">Restaurant · Portland</span><span class="cap">Sakura Ramen climbed from page two to the Portland map pack in six weeks.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-plumb/1200/900" alt=""><div class="overlay"><span class="tag">Home service · Denver</span><span class="cap">Northline Plumbing reinstated after a hard suspension — live in under 48 hours.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-dental/1200/900" alt=""><div class="overlay"><span class="tag">Healthcare · Miami</span><span class="cap">Dr. Alvarez Dental quadrupled new-patient calls after a full overhaul.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-yoga/1200/900" alt=""><div class="overlay"><span class="tag">Fitness · Seattle</span><span class="cap">Harbor Yoga rebuilt a 4.9-star reputation and tripled bookings in one quarter.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-retail/1200/900" alt=""><div class="overlay"><span class="tag">Retail · Chicago</span><span class="cap">Linden Boutique went from invisible to top three for every nearby query.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-auto/1200/900" alt=""><div class="overlay"><span class="tag">Automotive · Austin</span><span class="cap">Rivera Auto added $38k in monthly revenue after a NAP sweep and category correction.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-realty/1200/900" alt=""><div class="overlay"><span class="tag">Real estate · Phoenix</span><span class="cap">Meridian Realty consolidated 14 duplicate profiles into one authoritative listing.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-spa/1200/900" alt=""><div class="overlay"><span class="tag">Wellness · San Diego</span><span class="cap">Clearwater Spa recovered 220+ removed reviews after a competitor flagging attack.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-law/1200/900" alt=""><div class="overlay"><span class="tag">Legal · Boston</span><span class="cap">Fieldstone Law expanded into three service areas without triggering a suspension.</span></div><span class="arr">→</span></a>
+      <a class="wcard" href="#" data-cursor="view"><img src="https://picsum.photos/seed/gfmb-coffee/1200/900" alt=""><div class="overlay"><span class="tag">Franchise · National</span><span class="cap">Oakline Coffee rolled out 22 franchise profiles in a single quarter, all compliant.</span></div><span class="arr">→</span></a>
     </div>
-    <div class="view-all">
-      <a href="#" data-mag>View all projects <span class="r"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-    </div>
+    <div class="view-all"><a href="#" data-mag>View all projects →</a></div>
   </div>
 </section>
 
-<!-- 5. TESTIMONIALS -->
-<section class="sec" style="padding-top:40px">
+<!-- TESTIMONIALS -->
+<section class="ts-sec">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="mono reveal-up">(03) Trusted by our clients</span>
-      <h2 class="reveal-up">What owners say <span class="italic">after the pin is back.</span></h2>
-    </div>
-    <div class="tgrid">
-      <div class="tcard reveal-up">
-        <div class="brand">Sakura Ramen House</div>
-        <span class="quote-mark">"</span>
-        <blockquote>We'd been suspended for 11 days when we called. Google Fix My Biz had us reinstated in 36 hours and ranking in the top three within a month. The dashboards made every step visible — it never felt like a black box.</blockquote>
+    <h2 class="sec-title">Trusted by <span class="italic">our clients</span></h2>
+    <div class="ts-grid">
+      <div class="tcard">
+        <div class="brand">Sakura Ramen</div>
+        <blockquote>We'd been suspended 11 days when we called. They had us reinstated in 36 hours and ranking top three within a month. Every step was visible in the dashboard — never felt like a black box.</blockquote>
         <footer><span class="av">KM</span><span>Kenji Mori · Owner</span></footer>
       </div>
-      <div class="tcard reveal-up">
+      <div class="tcard">
         <div class="brand">Northline Plumbing</div>
-        <span class="quote-mark">"</span>
-        <blockquote>Our listing was gone on a Friday morning — a Monday morning in business for us means the phones don't ring. They fixed it over the weekend and walked us through the policy violation so it wouldn't happen again. Best money we've spent on marketing.</blockquote>
+        <blockquote>Our listing was gone on a Friday morning. They fixed it over the weekend and walked us through the policy violation so it wouldn't happen again. Best money we've spent on marketing.</blockquote>
         <footer><span class="av">RB</span><span>Rachel Beckett · Operations</span></footer>
       </div>
-      <div class="tcard reveal-up">
+      <div class="tcard">
         <div class="brand">Dr. Alvarez Dental</div>
-        <span class="quote-mark">"</span>
-        <blockquote>We tried two other agencies before them. The difference is the reporting — real call tracking, real rank data, real review sources. No vague "we posted on social" nonsense. New-patient bookings are up 387% since we signed.</blockquote>
+        <blockquote>Two other agencies, then them. The difference is the reporting — real call tracking, real rank data, real review sources. No vague "we posted on social" talk. Bookings up 387% since signing.</blockquote>
         <footer><span class="av">MA</span><span>Dr. Maria Alvarez · Founder</span></footer>
       </div>
-      <div class="tcard reveal-up">
-        <div class="brand">Oakline Coffee Franchise</div>
-        <span class="quote-mark">"</span>
-        <blockquote>Managing 22 franchise profiles used to be a part-time job for someone on our marketing team. They took the whole thing over — rollouts, reviews, suspensions, local posts — and our regional rankings have never been stronger.</blockquote>
+      <div class="tcard">
+        <div class="brand">Oakline Coffee</div>
+        <blockquote>22 franchise profiles used to be a part-time job for someone on our marketing team. They took the whole thing over — rollouts, reviews, suspensions — and regional rankings have never been stronger.</blockquote>
         <footer><span class="av">TN</span><span>Tom Nguyen · Head of Growth</span></footer>
       </div>
-      <div class="tcard reveal-up">
+      <div class="tcard">
         <div class="brand">Harbor Yoga Studio</div>
-        <span class="quote-mark">"</span>
-        <blockquote>Three competitors were flagging our reviews — we watched our rating drop from 4.9 to 4.4 in a month. Google Fix My Biz reversed all the fake removals and built us a drip to stay ahead of it. We're back to 4.9 and climbing.</blockquote>
+        <blockquote>Three competitors were flagging our reviews — we dropped from 4.9 to 4.4 in a month. They reversed all the fake removals and built a drip to stay ahead. We're back to 4.9 and climbing.</blockquote>
         <footer><span class="av">LC</span><span>Lena Chen · Owner</span></footer>
       </div>
-      <div class="tcard reveal-up">
+      <div class="tcard">
         <div class="brand">Linden Boutique</div>
-        <span class="quote-mark">"</span>
-        <blockquote>I'm a one-woman shop. I don't have time to figure out Google. They audited, fixed, and now just send me a monthly update showing I'm the top boutique on the north side. That's what I pay for — the result, not the jargon.</blockquote>
+        <blockquote>I'm a one-woman shop. I don't have time to figure out Google. They audited, fixed, and now I get a monthly update showing I'm the top boutique on the north side. That's what I pay for.</blockquote>
         <footer><span class="av">AP</span><span>Anika Patel · Founder</span></footer>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 6. WHY US -->
-<section class="sec" id="why" style="padding-top:60px">
+<!-- WHY -->
+<section class="why-sec" id="why">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="mono reveal-up">(04) Why Google Fix My Biz</span>
-    </div>
-    <div class="why-grid">
-      <div class="why-copy reveal-up">
-        <h3>Six years of nothing but <span class="italic">local search.</span></h3>
-        <p>We don't do websites. We don't do social. We don't do paid ads. We rescue, rebuild, and rank Google Business Profiles — and because that's all we do, we know every category rule, every suspension pattern, every ranking signal before Google documents it. If your listing is in trouble, we've probably seen the exact situation before.</p>
+    <h2 class="reveal-up">Six years of nothing but <span class="italic">local search.</span></h2>
+    <p class="sub reveal-up">We don't do websites. We don't do social. We don't do paid ads. We rescue, rebuild, and rank Google Business Profiles — and because that's all we do, we know every category rule, every suspension pattern, every ranking signal before Google documents it.</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="num">6<span class="star">+</span></div>
+        <div class="lab">Years of experience</div>
+        <div class="desc">Dedicated to Google Business Profile recovery and local search since 2019.</div>
       </div>
-      <div class="stats reveal-up">
-        <div class="stat"><span class="num">94%</span><span class="lab">Reinstatement rate on suspended profiles, typically inside 72 hours.</span></div>
-        <div class="stat"><span class="num">1,200+</span><span class="lab">Profiles recovered or rebuilt across 48 US states and 6 countries.</span></div>
+      <div class="stat-item">
+        <div class="num">1,200<span class="star">+</span></div>
+        <div class="lab">Profiles recovered</div>
+        <div class="desc">Across 48 US states, six countries, and every major local-business category.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 7. INSIGHTS -->
-<section class="sec" id="insights">
+<!-- INSIGHTS -->
+<section class="ins-sec" id="insights">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="mono reveal-up">(05) Insights</span>
-      <h2 class="reveal-up">The latest from <span class="italic">the local search desk.</span></h2>
+    <div class="head">
+      <h2>Insights <span class="italic">from the desk</span></h2>
+      <a href="#" class="visit" data-mag>Visit the blog →</a>
     </div>
     <div class="ins-grid">
       <a class="icard" href="#" data-cursor="read">
-        <div class="cov"><img src="https://picsum.photos/seed/gfmb-blog1/900/560" alt="" loading="lazy"></div>
-        <div class="body"><span class="cat">Suspensions</span><h4>Why Google is suspending more service-area businesses in 2026 — and how to appeal</h4><div class="date">November 4, 2026</div></div>
+        <div class="cov"><img src="https://picsum.photos/seed/gfmb-blog1/900/560" alt=""></div>
+        <div class="body"><span class="cat">Suspensions</span><h4>Why Google is suspending more service-area businesses in 2026</h4><div class="date">11 / 04 / 2026</div></div>
       </a>
       <a class="icard" href="#" data-cursor="read">
-        <div class="cov"><img src="https://picsum.photos/seed/gfmb-blog2/900/560" alt="" loading="lazy"></div>
-        <div class="body"><span class="cat">Rankings</span><h4>The 23-point map-pack audit we run before every engagement</h4><div class="date">October 22, 2026</div></div>
+        <div class="cov"><img src="https://picsum.photos/seed/gfmb-blog2/900/560" alt=""></div>
+        <div class="body"><span class="cat">Rankings</span><h4>The 23-point map-pack audit we run before every engagement</h4><div class="date">10 / 22 / 2026</div></div>
       </a>
       <a class="icard" href="#" data-cursor="read">
-        <div class="cov"><img src="https://picsum.photos/seed/gfmb-blog3/900/560" alt="" loading="lazy"></div>
-        <div class="body"><span class="cat">Reviews</span><h4>How to legitimately remove fake reviews (without getting flagged yourself)</h4><div class="date">October 8, 2026</div></div>
+        <div class="cov"><img src="https://picsum.photos/seed/gfmb-blog3/900/560" alt=""></div>
+        <div class="body"><span class="cat">Reviews</span><h4>How to legitimately remove fake reviews — without getting flagged yourself</h4><div class="date">10 / 08 / 2026</div></div>
       </a>
-    </div>
-    <div class="view-all">
-      <a href="#" data-mag>Visit the blog <span class="r"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<!-- 8. FAQ -->
-<section class="sec">
+<!-- FAQ -->
+<section class="faq-sec">
   <div class="wrap">
-    <div class="faq-grid">
-      <div class="faq-left reveal-up">
-        <span class="mono" style="display:block;margin-bottom:16px">(06) FAQ</span>
-        <h3>Answers to the <span class="italic">honest questions</span> every owner asks.</h3>
-      </div>
-      <div class="faq-list">
-        <details class="faq" data-cursor="open"><summary>What does the suspension recovery process look like?<span class="plus">+</span></summary><div class="a">We start with a free profile audit to identify the likely violation. If it's recoverable, we file the reinstatement request with full supporting documentation (business license, utility bills, photos, signage), then follow up with Google every 48 hours until it's resolved. Most reinstatements land within 72 hours. You'll see every step inside your client dashboard.</div></details>
-        <details class="faq" data-cursor="open"><summary>What services does Google Fix My Biz provide?<span class="plus">+</span></summary><div class="a">Everything inside Google Business Profile: suspension recovery, reinstatements, NAP and citation cleanup across 300+ directories, review management (responses, flagging, drip programs), map-pack optimization, category and service tuning, posts, Q&A seeding, photo and video optimization, insights reporting, and local SEO strategy. We do not do general websites, Google Ads, or social media.</div></details>
-        <details class="faq" data-cursor="open"><summary>How long does it take to see map-pack ranking improvements?<span class="plus">+</span></summary><div class="a">Most clients see meaningful rank movement within 30 days of the initial optimization, and top-three placement within 60–90 days for moderately competitive categories. Harder niches (lawyers, dentists in major metros) typically take 3–6 months. We send you a city-wide rank grid every two weeks so you can see progress in real coordinates, not vague "trending up" language.</div></details>
-        <details class="faq" data-cursor="open"><summary>Do you work with multi-location brands and franchises?<span class="plus">+</span></summary><div class="a">Yes. We've rolled out and manage profiles for franchises with up to 80 locations. Multi-location clients get a bulk-management dashboard, centralized review handling, and consistent brand voice across every listing — plus franchisee-level reporting if needed.</div></details>
-        <details class="faq" data-cursor="open"><summary>Can you remove fake or bad-faith reviews?<span class="plus">+</span></summary><div class="a">We can flag any review that violates Google's content policies (fake, off-topic, from competitors, spam). We can't remove legitimate negative reviews — nobody can — but we'll draft public responses that preserve your reputation and, where appropriate, reach out to the reviewer directly to resolve the underlying issue so they update or remove it themselves.</div></details>
-        <details class="faq" data-cursor="open"><summary>What if my profile gets suspended again later?<span class="plus">+</span></summary><div class="a">All active clients are covered — if a profile we manage gets suspended during the engagement, we reinstate it at no extra cost. For one-off recovery clients, we include a 90-day warranty: if the same suspension reason recurs within 90 days, the follow-up filing is free.</div></details>
-        <details class="faq" data-cursor="open"><summary>Do you offer fixed-price work or monthly retainers?<span class="plus">+</span></summary><div class="a">Both. Suspension recovery and audits are fixed-price, so you know the cost before you start. Ongoing optimization and multi-location work are monthly retainers scaled to the number of profiles and the competitive intensity of your markets. We'll quote both options after the free audit.</div></details>
-        <details class="faq" data-cursor="open"><summary>What businesses are you not a fit for?<span class="plus">+</span></summary><div class="a">We don't take on businesses in categories Google restricts (adult, gambling, unlicensed medical, counterfeit goods, high-risk financial). We also decline clients looking for black-hat tactics — fake reviews, keyword-stuffed business names, fake addresses. Everything we do is within Google's published guidelines, which is why reinstatements last.</div></details>
-      </div>
+    <div class="head"><h2>FAQ</h2></div>
+    <div class="faq-list">
+      <details class="faq" data-cursor="open"><summary>What does the suspension recovery process look like?<span class="plus">+</span></summary><div class="a">We start with a free audit to identify the violation. If recoverable, we file the reinstatement with full documentation — business license, utility bills, photos, signage — then follow up with Google every 48 hours until resolved. Most reinstatements land within 72 hours. Every step shows in your dashboard.</div></details>
+      <details class="faq" data-cursor="open"><summary>What services does Google Fix My Biz provide?<span class="plus">+</span></summary><div class="a">Everything inside Google Business Profile: suspension recovery, NAP and citation cleanup across 300+ directories, review management, map-pack optimization, category and service tuning, posts, Q&amp;A seeding, photo and video optimization, insights reporting, and local SEO strategy. We do not do general websites, Google Ads, or social media.</div></details>
+      <details class="faq" data-cursor="open"><summary>How long does it take to see map-pack ranking improvements?<span class="plus">+</span></summary><div class="a">Most clients see rank movement within 30 days, and top-three placement within 60–90 days for moderately competitive categories. Harder niches (lawyers, dentists in major metros) take 3–6 months. We send a city-wide rank grid every two weeks so you see progress in real coordinates.</div></details>
+      <details class="faq" data-cursor="open"><summary>Do you work with multi-location brands and franchises?<span class="plus">+</span></summary><div class="a">Yes. We've rolled out and manage profiles for franchises with up to 80 locations. Multi-location clients get a bulk-management dashboard, centralized review handling, and consistent brand voice across every listing, plus franchisee-level reporting.</div></details>
+      <details class="faq" data-cursor="open"><summary>Can you remove fake or bad-faith reviews?<span class="plus">+</span></summary><div class="a">We can flag any review that violates Google's content policies — fake, off-topic, from competitors, spam. We can't remove legitimate negative reviews (nobody can), but we'll draft public responses that preserve your reputation and, where appropriate, reach out directly to resolve the issue.</div></details>
+      <details class="faq" data-cursor="open"><summary>What if my profile gets suspended again later?<span class="plus">+</span></summary><div class="a">Active clients are covered — if a managed profile gets suspended, we reinstate it at no extra cost. One-off recovery clients get a 90-day warranty: same-reason recurrences within 90 days get free follow-up filings.</div></details>
+      <details class="faq" data-cursor="open"><summary>Do you offer fixed-price work or monthly retainers?<span class="plus">+</span></summary><div class="a">Both. Suspension recovery and audits are fixed-price. Ongoing optimization and multi-location work are monthly retainers scaled to profile count and competitive intensity. Both quotes come after the free audit.</div></details>
+      <details class="faq" data-cursor="open"><summary>What businesses are you not a fit for?<span class="plus">+</span></summary><div class="a">We don't take on Google-restricted categories — adult, gambling, unlicensed medical, counterfeit goods, high-risk financial. We also decline clients looking for black-hat tactics like fake reviews or keyword-stuffed names. Everything we do stays inside Google's guidelines, which is why reinstatements last.</div></details>
     </div>
   </div>
 </section>
 
-<!-- 9. CTA -->
+<!-- CTA -->
 <section class="cta-sec" id="audit">
   <div class="wrap">
-    <div class="cta-card reveal-up">
+    <div class="cta-card">
       <div class="bgwrap"><img src="https://picsum.photos/seed/gfmb-cta/1800/900" alt="" class="bg"></div>
       <h2>Have a profile to <span class="italic">rescue or rank?</span></h2>
       <p>Tell us where the listing is today, what's broken, and what you've already tried. Free audit, straight answer, no pitch deck.</p>
-      <a href="#contact" class="cta-btn" data-mag>Get in touch <span class="r"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      <div class="cta-contact">
-        <a href="mailto:hello@googlefixmybiz.co">hello@googlefixmybiz.co</a>
-        <span>Main office · Austin, TX</span>
-        <span>Second office · Toronto, ON</span>
-      </div>
+      <a href="#contact" class="cta-btn" data-mag>Get in touch <span class="r"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<!-- 10. FOOTER -->
+<!-- FOOTER -->
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
         <h4>Say hello</h4>
-        <div class="mail">hello@googlefixmybiz.co</div>
-        <div style="color:var(--muted);font-size:14px;line-height:1.55">
-          Mon–Fri · 9a–6p CT · We reply within 4 business hours.<br>
-          Main office: 1801 E 6th St, Austin, TX 78702<br>
-          Second office: 325 Front St W, Toronto, ON M5V 2Y1
+        <a href="mailto:hello@googlefixmybiz.co" class="mail">hello@googlefixmybiz.co</a>
+        <div style="color:var(--muted-inv);font-size:13px;line-height:1.55;margin-top:10px">
+          Main office · 1801 E 6th St, Austin, TX 78702<br>
+          Second office · 325 Front St W, Toronto, ON
         </div>
       </div>
-      <div class="foot-col"><h4>Services</h4><a href="#">Suspension recovery</a><a href="#">Map-pack optimization</a><a href="#">Review management</a><a href="#">Citation cleanup</a><a href="#">Local SEO strategy</a></div>
+      <div class="foot-col"><h4>Services</h4><a href="#">Suspension recovery</a><a href="#">Map-pack</a><a href="#">Reviews</a><a href="#">Citations</a><a href="#">Local SEO</a></div>
       <div class="foot-col"><h4>Studio</h4><a href="#">About</a><a href="#">Projects</a><a href="#">Blog</a><a href="#">Pricing</a><a href="#">Careers</a></div>
       <div class="foot-col"><h4>Follow</h4>
         <div class="social">
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11.02 5 2.5 2.5 0 01-.02-5zM3 9h4v12H3V9zm7.5 0H14v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3-1.9 0-2.2 1.5-2.2 3V21h-4V9z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.52 7.46L22 22h-6.84l-4.74-6.2L4.8 22H2l7.03-8.04L2 2h7.03l4.28 5.66L18.24 2zm-2.4 18h1.84L7.24 4H5.3l10.55 16z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c0-1.8-1.4-3.2-3.2-3.2-2.2-.3-6.8-.3-7.8-.3s-5.6 0-7.8.3C2.4 4.3 1 5.7 1 7.5 .7 9.6 .7 12 .7 12s0 2.4.3 4.5c0 1.8 1.4 3.2 3.2 3.2 2.2.3 7.8.3 7.8.3s4.6 0 7.8-.3c1.8 0 3.2-1.4 3.2-3.2.3-2.1.3-4.5.3-4.5s0-2.4-.3-4.5zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11.02 5 2.5 2.5 0 01-.02-5zM3 9h4v12H3V9zm7.5 0H14v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3-1.9 0-2.2 1.5-2.2 3V21h-4V9z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="X / Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.52 7.46L22 22h-6.84l-4.74-6.2L4.8 22H2l7.03-8.04L2 2h7.03l4.28 5.66L18.24 2z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c0-1.8-1.4-3.2-3.2-3.2-2.2-.3-6.8-.3-7.8-.3s-5.6 0-7.8.3C2.4 4.3 1 5.7 1 7.5 .7 9.6 .7 12 .7 12s0 2.4.3 4.5c0 1.8 1.4 3.2 3.2 3.2 2.2.3 7.8.3 7.8.3s4.6 0 7.8-.3c1.8 0 3.2-1.4 3.2-3.2.3-2.1.3-4.5.3-4.5s0-2.4-.3-4.5zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg></a>
         </div>
       </div>
     </div>
@@ -517,13 +520,13 @@ footer{padding:100px 0 40px;border-top:1px solid var(--line);position:relative;o
       <span class="hb">G</span><span class="hr">o</span><span class="hy">o</span><span class="hg">g</span><span class="hb">l</span><span class="hr">e</span>&nbsp;<span class="italic">Fix My Biz.</span>
     </div>
     <div class="copy">
-      <span>© 2026 Google Fix My Biz — Not affiliated with Google LLC. All brand marks are property of their respective owners.</span>
+      <span>© 2026 Google Fix My Biz — Not affiliated with Google LLC.</span>
       <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
     </div>
   </div>
 </footer>
 
-</main>
+</div><!-- /dark -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -568,19 +571,36 @@ footer{padding:100px 0 40px;border-top:1px solid var(--line);position:relative;o
       var r = el.getBoundingClientRect();
       var x = e.clientX - (r.left + r.width/2);
       var y = e.clientY - (r.top + r.height/2);
-      gsap.to(el, { x: x*0.25, y: y*0.25, duration: 0.5, ease: 'power3.out' });
+      gsap.to(el, { x: x*0.2, y: y*0.2, duration: 0.5, ease: 'power3.out' });
     });
     el.addEventListener('pointerleave', function(){
       gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.4)' });
     });
   });
 
-  // Nav scroll class
+  // Service accordion
+  document.querySelectorAll('.srv .head').forEach(function(head){
+    head.addEventListener('click', function(){
+      var card = head.closest('.srv');
+      document.querySelectorAll('.srv').forEach(function(s){ if (s !== card) s.classList.remove('open'); });
+      card.classList.toggle('open');
+      setTimeout(function(){ ScrollTrigger.refresh(); }, 520);
+    });
+  });
+
+  // Nav scroll + invert over dark sections
   var nav = document.getElementById('nav');
-  ScrollTrigger.create({ start: 'top -50', end: 99999, onUpdate: function(s){ nav.classList.toggle('scrolled', s.scroll() > 50); } });
+  var darkTop = document.querySelector('.dark')?.offsetTop || 99999;
+  var darkEnd = (document.querySelector('.dark')?.offsetTop || 0) + (document.querySelector('.dark')?.offsetHeight || 0);
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 50);
+    var dt = document.querySelector('.dark')?.getBoundingClientRect();
+    if (dt){ nav.classList.toggle('inv', dt.top <= 60 && dt.bottom >= 60); }
+  });
 
   // Hero word reveal
-  gsap.to('.hero-title .word', { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08, delay: 0.2 });
+  gsap.to('.hero h1 .w', { y: 0, duration: 1, ease: 'expo.out', stagger: 0.06, delay: 0.25 });
 
   // Reveal-up
   gsap.utils.toArray('.reveal-up').forEach(function(el){
