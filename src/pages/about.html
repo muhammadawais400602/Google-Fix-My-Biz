@@ -1,0 +1,213 @@
+<!--
+title: About
+description: googlefixmybiz is a team of 40+ specialists in Austin and Toronto that has recovered 1,200+ Google Business Profiles since 2019, using white-hat methods only.
+nav: about
+-->
+<style>
+.ab-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+@media(max-width:960px){.ab-hero-grid{grid-template-columns:1fr;gap:40px}}
+.ab-hero-img{position:relative;border-radius:36px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 50px 90px -50px rgba(11,26,59,.6)}
+.ab-hero-img img{width:100%;height:116%;object-fit:cover}
+.ab-float{position:absolute;background:#fff;border-radius:18px;padding:14px 18px;box-shadow:0 20px 40px -16px rgba(0,0,0,.35);font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;z-index:2}
+.ab-float b{font-size:22px;letter-spacing:-.03em}
+.ab-mission{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+@media(max-width:900px){.ab-mission{grid-template-columns:1fr;gap:28px}}
+.ab-mission blockquote{font-family:"Poppins",sans-serif;font-weight:500;font-size:clamp(26px,3.2vw,42px);letter-spacing:-.035em;line-height:1.2}
+.ab-mission p{font-size:18px;color:var(--muted);line-height:1.65}
+.ab-mission p+p{margin-top:16px}
+.ab-val{border-radius:28px;padding:34px 30px;color:#fff;min-height:290px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.ab-val .n{font-size:13px;font-weight:700;letter-spacing:.14em;opacity:.8}
+.ab-val h3{font-size:28px}
+.ab-val p{font-size:16px;line-height:1.55;opacity:.95}
+.ab-val::after{content:"";position:absolute;right:-60px;bottom:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.14);transition:transform .6s var(--ease)}
+.ab-val:hover::after{transform:scale(1.5)}
+.ab-v1{background:#4285F4}.ab-v2{background:#EA4335}.ab-v3{background:#FBBC04;color:#2b1d00}.ab-v4{background:#34A853}
+.ab-tl .tl-step h3{font-size:24px}
+.ab-ethic{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.ab-ethic{grid-template-columns:1fr}}
+.ab-never,.ab-always{border-radius:28px;padding:34px}
+.ab-never{background:#fff;border:1px solid rgba(234,67,53,.35)}
+.ab-always{background:#fff;border:1px solid rgba(52,168,83,.4)}
+.ab-never h3,.ab-always h3{font-size:24px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.ab-never ul,.ab-always ul{list-style:none;display:grid;gap:12px}
+.ab-never li,.ab-always li{display:flex;gap:12px;font-size:16px;line-height:1.45}
+.ab-never li::before{content:"✕";flex:0 0 22px;height:22px;border-radius:50%;background:var(--lav);color:#a50e0e;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:1px}
+.ab-always li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;background:#dff3e5;color:#188038;display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:1px}
+.ab-why{margin-top:24px;border-radius:28px;background:var(--forest);color:#fff;padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.ab-why b.big{font-size:clamp(56px,7vw,92px);letter-spacing:-.05em;line-height:1;font-weight:600;color:#8ab4f8}
+.ab-why p{color:rgba(255,255,255,.82);font-size:17px;line-height:1.6;max-width:760px}
+@media(max-width:700px){.ab-why{grid-template-columns:1fr;padding:28px 22px}}
+.ab-team{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:1000px){.ab-team{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ab-team{grid-template-columns:1fr}}
+.ab-person{background:#fff;border-radius:28px;overflow:hidden;border:1px solid var(--line)}
+.ab-person .ph{aspect-ratio:1;overflow:hidden;position:relative}
+.ab-person .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.ab-person:hover .ph img{transform:scale(1.07)}
+.ab-person .ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--c,#4285F4)}
+.ab-person .tx{padding:22px 24px 26px}
+.ab-person h3{font-size:22px}
+.ab-person .role{color:var(--c,#4285F4);font-weight:700;font-size:14px;margin-top:4px;filter:brightness(.8)}
+.ab-person p{color:var(--muted);font-size:15px;margin-top:10px;line-height:1.5}
+.ab-off{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.ab-off{grid-template-columns:1fr}}
+.ab-office{border-radius:28px;padding:32px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:#fff;border:1px solid var(--line)}
+@media(max-width:500px){.ab-office{grid-template-columns:1fr}}
+.ab-office h3{font-size:26px}
+.ab-office address{font-style:normal;color:var(--muted);margin-top:8px;line-height:1.55}
+.ab-office .tag{margin-bottom:10px}
+.ab-office a.link-arrow{margin-top:12px}
+.ab-roles{display:grid;gap:16px}
+.ab-role{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:28px 32px;border-radius:24px;background:#fff;border:1px solid var(--line);transition:border-color .25s,box-shadow .3s}
+.ab-role:hover{border-color:var(--g-blue);box-shadow:0 24px 50px -30px rgba(66,133,244,.6)}
+@media(max-width:700px){.ab-role{grid-template-columns:1fr;padding:24px 22px}.ab-role .btn{width:100%}}
+.ab-role h3{font-size:24px}
+.ab-role p{color:var(--muted);margin-top:6px;font-size:16px}
+.ab-role .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ab-perks{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;justify-content:center}
+.ab-perks span{padding:9px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px;font-weight:600}
+</style>
+
+<section class="phero left">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="ab-hero-grid">
+      <div>
+        <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>About</span></nav>
+        <span class="pill rv d1" style="margin-top:20px"><svg><use href="#spark"/></svg>Founded 2019 &middot; Austin, TX</span>
+        <h1 data-split style="max-width:13ch">We fix what Google breaks for local business</h1>
+        <p class="lead rv d2">googlefixmybiz started when our founder watched a family taqueria lose its Google profile overnight and found nobody who could explain why. Seven years later, 40+ specialists in Austin and Toronto have recovered more than 1,200 profiles.</p>
+        <div class="acts rv d3"><a href="#careers" class="btn btn-green" data-mag>We are hiring</a><a href="/case-studies" class="btn btn-outline">See our results</a></div>
+      </div>
+      <div class="rv-s">
+        <div class="ab-hero-img">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=75&w=1100&h=900" alt="Our team working together at laptops" data-speed=".05">
+          <div class="ab-float float" style="left:18px;bottom:22px"><b>1,200+</b>profiles recovered</div>
+          <div class="ab-float float d" style="right:18px;top:22px"><b>94%</b>reinstated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- mission -->
+<section class="sec">
+  <div class="wrap">
+    <div class="ab-mission">
+      <blockquote class="rv-l">Every local business deserves to be found by the neighbours looking for it.</blockquote>
+      <div class="rv-r">
+        <p>Our mission is simple: when a Google Business Profile breaks, a real person who understands Google&rsquo;s policies should answer the phone and fix it, quickly and honestly.</p>
+        <p>We treat a suspended profile as what it is: a shut storefront. That is why recovery is a fixed $499, comes with a 72-hour typical SLA and carries a 90-day warranty. No retainers, no mystery hours, no promises we cannot keep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- values -->
+<section class="sec sec--soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>What we believe</span><h2 data-split>Four values behind every case</h2></div>
+    <div class="grid g4">
+      <article class="ab-val ab-v1 rv" data-tilt><span class="n">01</span><h3>Honesty first</h3><p>We tell you when a case is unwinnable before you pay. Straight answers beat comfortable ones.</p></article>
+      <article class="ab-val ab-v2 rv d1" data-tilt><span class="n">02</span><h3>Speed matters</h3><p>Every suspended day is lost revenue. We work in hours, not weeks, and publish our SLA.</p></article>
+      <article class="ab-val ab-v3 rv d2" data-tilt><span class="n">03</span><h3>Craft over shortcuts</h3><p>Hand-built citations, documented appeals and careful audits, not spam at scale.</p></article>
+      <article class="ab-val ab-v4 rv d3" data-tilt><span class="n">04</span><h3>Own the outcome</h3><p>Our 90-day warranty means we stay accountable long after the invoice is paid.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- timeline -->
+<section class="sec">
+  <div class="wrap narrow">
+    <div class="sec-head left"><span class="pill rv"><svg><use href="#spark"/></svg>Our story</span><h2 data-split>Seven years, one obsession</h2></div>
+    <div class="tl ab-tl">
+      <div class="tl-step"><span class="n">19</span><div class="when">2019</div><h3>A garage, two laptops, one taqueria</h3><p>Our founder recovers a friend&rsquo;s suspended profile in nine days and writes down every step. The playbook becomes a business in Austin.</p></div>
+      <div class="tl-step"><span class="n">20</span><div class="when">2020</div><h3>The year everything went local</h3><p>Pandemic closures and hours changes trigger a wave of suspensions. We take on 300 cases and hire our first five specialists.</p></div>
+      <div class="tl-step"><span class="n">21</span><div class="when">2021</div><h3>The first 500 recoveries</h3><p>We publish our reinstatement SLA, introduce the fixed-price recovery and add citation building at $2 each.</p></div>
+      <div class="tl-step"><span class="n">22</span><div class="when">2022</div><h3>The dashboard launches</h3><p>Rank grids, listings and reviews arrive in one place at $31 per location per month.</p></div>
+      <div class="tl-step"><span class="n">23</span><div class="when">2023</div><h3>Franchises and agencies</h3><p>Our first 40-location franchise onboards, and the Scale plan with white-label reporting is born.</p></div>
+      <div class="tl-step"><span class="n">24</span><div class="when">2024</div><h3>Toronto opens</h3><p>A second office extends our hours into the evening and brings Canadian specialists to the team.</p></div>
+      <div class="tl-step"><span class="n">25</span><div class="when">2025</div><h3>1,000 profiles recovered</h3><p>We cross a thousand reinstatements and introduce the 90-day warranty on every case.</p></div>
+      <div class="tl-step"><span class="n">26</span><div class="when">2026</div><h3>1,200+ and counting</h3><p>With 40+ specialists, a 94% reinstatement rate and a 4.9 star average across 1,377 reviews, we are just getting started.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- nums -->
+<section class="sec sec--soft sec--tight">
+  <div class="wrap">
+    <div class="nums">
+      <div class="num rv"><b data-count="1200" data-suffix="+">1,200+</b><span>Profiles recovered</span></div>
+      <div class="num rv d1"><b data-count="94" data-suffix="%">94%</b><span>Reinstatement rate</span></div>
+      <div class="num rv d2"><b data-count="40" data-suffix="+">40+</b><span>Specialists in two countries</span></div>
+      <div class="num rv d3"><b data-count="42000">42,000</b><span>Newsletter subscribers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ethics -->
+<section class="sec" id="how-we-work">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>How we work</span><h2 data-split>White-hat, every time</h2><p class="rv d2">Shortcuts can get a profile reinstated this week and suspended again next month. We only do work that lasts.</p></div>
+    <div class="ab-ethic">
+      <div class="ab-never rv-l"><h3><span aria-hidden="true">🚫</span> We never</h3>
+        <ul><li>Buy, write or trade fake reviews</li><li>Create fake addresses, PO boxes or virtual offices</li><li>Impersonate Google or fake Google correspondence</li><li>Keyword-stuff business names</li><li>Guarantee a result we cannot control</li></ul></div>
+      <div class="ab-always rv-r"><h3><span aria-hidden="true">✅</span> We always</h3>
+        <ul><li>Diagnose the real policy trigger first</li><li>Submit genuine proof of business, signage and licences</li><li>Build citations by hand and verify each one</li><li>Teach you the rules so it does not happen again</li><li>Stand behind recoveries with a 90-day warranty</li></ul></div>
+    </div>
+    <div class="ab-why rv">
+      <b class="big" data-count="90" data-suffix="d">90d</b>
+      <p><b style="color:#fff">Why reinstatements last.</b> Google re-reviews profiles that were reinstated through loopholes. Because we fix the underlying issue, such as address, category or name, and document it properly, the profiles we recover stay recovered, and we back that with a 90-day warranty.</p>
+    </div>
+  </div>
+</section>
+
+<!-- team -->
+<section class="sec sec--soft" id="team">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>The team</span><h2 data-split>The people on your case</h2><p class="rv d2">Six of our 40+ specialists. You will talk to a human, always.</p></div>
+    <div class="ab-team">
+      <article class="ab-person rv" data-tilt style="--c:#4285F4"><div class="ph"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Daniel Reyes, founder and CEO" loading="lazy"></div><div class="tx"><h3>Daniel Reyes</h3><div class="role">Founder and CEO</div><p>Recovered the first profile in 2019 and still reads every escalated case.</p></div></article>
+      <article class="ab-person rv d1" data-tilt style="--c:#EA4335"><div class="ph"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Priya Nair, head of suspension recovery" loading="lazy"></div><div class="tx"><h3>Priya Nair</h3><div class="role">Head of Suspension Recovery</div><p>Leads the team behind our 94% reinstatement rate.</p></div></article>
+      <article class="ab-person rv d2" data-tilt style="--c:#FBBC04"><div class="ph"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Marcus Webb, director of local SEO" loading="lazy"></div><div class="tx"><h3>Marcus Webb</h3><div class="role">Director of Local SEO</div><p>Builds the geo-grid methods behind every map-pack climb.</p></div></article>
+      <article class="ab-person rv" data-tilt style="--c:#34A853"><div class="ph"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Sofia Marin, customer success lead" loading="lazy"></div><div class="tx"><h3>Sofia Marin</h3><div class="role">Customer Success Lead</div><p>Your first call when something looks wrong, answered within the hour.</p></div></article>
+      <article class="ab-person rv d1" data-tilt style="--c:#4285F4"><div class="ph"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Ethan Cole, head of partnerships" loading="lazy"></div><div class="tx"><h3>Ethan Cole</h3><div class="role">Head of Partnerships</div><p>Works with agencies, franchises and platforms on the Scale plan and API.</p></div></article>
+      <article class="ab-person rv d2" data-tilt style="--c:#EA4335"><div class="ph"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Hannah Brooks, Toronto office lead" loading="lazy"></div><div class="tx"><h3>Hannah Brooks</h3><div class="role">Toronto Office Lead</div><p>Opened our Toronto office in 2024 and runs the evening recovery desk.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- offices -->
+<section class="sec" id="offices">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>Offices</span><h2 data-split>Two cities, one team</h2></div>
+    <div class="ab-off">
+      <div class="ab-office rv" data-tilt><div class="ripple" aria-hidden="true"><svg><use href="#pinlogo"/></svg></div><div><span class="tag">Headquarters</span><h3>Austin</h3><address>1801 E 6th St<br>Austin, TX 78702</address><a class="link-arrow" href="/contact">Get in touch <svg><use href="#chev"/></svg></a></div></div>
+      <div class="ab-office rv d1" data-tilt><div class="ripple" aria-hidden="true"><svg><use href="#pinlogo"/></svg></div><div><span class="tag red">Second office</span><h3>Toronto</h3><address>325 Front St W<br>Toronto, ON</address><a class="link-arrow" href="/contact">Get in touch <svg><use href="#chev"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- careers -->
+<section class="sec sec--soft" id="careers">
+  <div class="wrap narrow">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>Careers</span><h2 data-split>Help us rescue more storefronts</h2><p class="rv d2">Three open roles, remote-friendly across the US and Canada, with Austin and Toronto hubs.</p></div>
+    <div class="ab-roles">
+      <article class="ab-role rv"><div><h3>Suspension Specialist</h3><p>Diagnose policy violations, build appeals and take cases from suspended to reinstated.</p><div class="meta"><span class="tag">Austin or remote</span><span class="tag green">Full-time</span></div></div><a class="btn btn-green" href="mailto:careers@googlefixmybiz.co?subject=Application%3A%20Suspension%20Specialist">Apply now</a></article>
+      <article class="ab-role rv d1"><div><h3>Local SEO Analyst</h3><p>Run geo-grid audits, citation clean-ups and monthly reporting for managed clients.</p><div class="meta"><span class="tag red">Toronto or remote</span><span class="tag green">Full-time</span></div></div><a class="btn btn-green" href="mailto:careers@googlefixmybiz.co?subject=Application%3A%20Local%20SEO%20Analyst">Apply now</a></article>
+      <article class="ab-role rv d2"><div><h3>Customer Success Lead</h3><p>Own onboarding and retention for our agency and franchise accounts.</p><div class="meta"><span class="tag yellow">Austin</span><span class="tag green">Full-time</span></div></div><a class="btn btn-green" href="mailto:careers@googlefixmybiz.co?subject=Application%3A%20Customer%20Success%20Lead">Apply now</a></article>
+    </div>
+    <div class="ab-perks rv"><span>🏥 Health, dental and vision</span><span>🌴 Flexible time off</span><span>📚 Learning budget</span><span>🏡 Remote-friendly</span></div>
+    <p class="rv" style="text-align:center;color:var(--muted);margin-top:26px">Don&rsquo;t see your role? Email <a href="mailto:careers@googlefixmybiz.co" style="color:var(--g-blue);text-decoration:underline">careers@googlefixmybiz.co</a>.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-band rv-s">
+      <h2 data-split>Let&rsquo;s get your business found</h2>
+      <p>Start with a free audit and talk to a real specialist, not a chatbot.</p>
+      <div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/contact" class="btn btn-ghost-w btn-lg">Contact us</a></div>
+    </div>
+  </div>
+</section>

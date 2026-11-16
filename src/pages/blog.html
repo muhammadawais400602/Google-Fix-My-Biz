@@ -1,0 +1,213 @@
+<!--
+title: Learning Hub
+description: Free guides, research and news on Google Business Profile recovery, reviews, citations and local SEO, written by the specialists who have recovered 1,200+ profiles.
+nav: blog
+-->
+<style>
+.bl-hero{padding-bottom:64px}
+.bl-hero h1{max-width:16ch}
+.bl-search{position:relative;max-width:620px;margin:34px auto 0}
+.bl-search svg{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted);pointer-events:none}
+.bl-search input{width:100%;padding:18px 22px 18px 54px;border-radius:999px;border:1.5px solid #d3d9e3;background:#fff;font:inherit;font-size:17px;color:var(--ink);box-shadow:0 18px 40px -26px rgba(17,20,18,.4);transition:border-color .2s,box-shadow .2s}
+.bl-search input:focus{outline:0;border-color:var(--g-blue);box-shadow:0 0 0 4px rgba(66,133,244,.18)}
+.bl-chips{justify-content:center;margin-top:24px}
+.bl-stats{display:flex;gap:10px 28px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:var(--muted);font-size:14px;font-weight:500}
+.bl-stats b{color:var(--ink)}
+
+/* featured */
+.bl-feat{display:grid;grid-template-columns:1.15fr .85fr;border-radius:36px;overflow:hidden;background:var(--forest);color:#fff;transition:box-shadow .4s}
+.bl-feat:hover{box-shadow:0 40px 70px -40px rgba(11,26,59,.8)}
+.bl-feat .im{position:relative;overflow:hidden;min-height:420px;background:var(--forest-2)}
+.bl-feat .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.bl-feat:hover .im img{transform:scale(1.05)}
+.bl-feat .tx{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:18px;justify-content:center}
+.bl-feat .ft{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bl-feat .ft em{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g-yellow)}
+.bl-feat h2{font-size:clamp(28px,3.2vw,46px);letter-spacing:-.04em;line-height:1.08}
+.bl-feat p{color:rgba(255,255,255,.78);font-size:17px;line-height:1.55}
+.bl-feat .meta{color:rgba(255,255,255,.7);font-size:14px}
+.bl-feat .au{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600}
+.bl-feat .au img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.bl-feat .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#fff;margin-top:6px}
+.bl-feat .go svg{width:14px;height:14px;transition:transform .25s}
+.bl-feat:hover .go svg{transform:translateX(5px)}
+
+/* grid */
+.bl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.bl-card{display:flex;flex-direction:column;border-radius:28px;overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;will-change:transform}
+.bl-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -30px rgba(17,20,18,.45);border-color:transparent}
+.bl-card .im{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--sky)}
+.bl-card .im img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.bl-card:hover .im img{transform:scale(1.07)}
+.bl-card .im .tag{position:absolute;left:16px;top:16px;background:#fff}
+.bl-card .tx{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.bl-card .meta{font-size:13px;color:var(--muted);font-weight:500}
+.bl-card h3{font-size:22px;letter-spacing:-.03em;line-height:1.2}
+.bl-card p{color:var(--muted);font-size:15.5px;line-height:1.55;flex:1}
+.bl-card .au{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;margin-top:6px;padding-top:16px;border-top:1px solid var(--line)}
+.bl-card .au img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.bl-card .au span{margin-left:auto;color:var(--g-blue);transition:transform .25s}
+.bl-card:hover .au span{transform:translateX(4px)}
+.bl-empty{text-align:center;padding:72px 20px;border-radius:28px;background:var(--soft)}
+.bl-empty[hidden]{display:none}
+.bl-empty b{display:block;font-size:26px;letter-spacing:-.03em;margin-bottom:8px}
+.bl-empty p{color:var(--muted)}
+.bl-empty button{margin-top:20px}
+
+/* topics */
+.bl-topics{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.bl-topics .fcard{padding:28px;transition:transform .35s var(--ease)}
+.bl-topics .fcard:hover{transform:translateY(-6px)}
+.bl-topics .fcard h3{font-size:21px}
+.bl-topics .fcard p{font-size:15px}
+.bl-topics .fcard .link-arrow{margin-top:auto;font-size:15px}
+
+@media(max-width:1100px){.bl-grid{grid-template-columns:1fr 1fr}.bl-topics{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.bl-feat{grid-template-columns:1fr}.bl-feat .im{min-height:0;aspect-ratio:16/10}}
+@media(max-width:700px){.bl-grid,.bl-topics{grid-template-columns:1fr}.bl-search input{font-size:16px}}
+</style>
+
+<section class="phero bl-hero">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Learning Hub</span></nav>
+    <span class="pill rv d1" style="margin-top:22px"><svg><use href="#spark"/></svg>Free guides, research and news</span>
+    <h1 data-split>The Learning Hub</h1>
+    <p class="lead rv d2">Practical, no-fluff advice on suspensions, reviews, citations and map-pack rankings, from the team that has recovered 1,200+ Google Business Profiles.</p>
+
+    <form class="bl-search rv d3" role="search" onsubmit="return false">
+      <label for="bl-q" class="sr" style="position:absolute;left:-999px">Search articles</label>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="bl-q" type="search" placeholder="Search guides, research and news" autocomplete="off">
+    </form>
+
+    <div class="chips bl-chips rv d3" data-filters="#bl-grid" role="group" aria-label="Filter articles by category">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="guides" aria-pressed="false">Guides</button>
+      <button type="button" data-filter="research" aria-pressed="false">Research</button>
+      <button type="button" data-filter="news" aria-pressed="false">News</button>
+    </div>
+    <p class="bl-stats rv d4"><span><b>6</b> featured articles</span><span><b>42,000</b> newsletter subscribers</span><span>Updated <b>November 2026</b></span></p>
+  </div>
+</section>
+
+<section class="sec sec--tight" id="bl-featured" style="padding-top:24px">
+  <div class="wrap">
+    <a class="bl-feat rv" href="/blog/suspension-recovery-checklist" aria-label="Featured: The complete suspension-recovery checklist">
+      <div class="im"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=75&w=1200&h=900" alt="A woman reviewing a tablet in a server corridor, working through a technical checklist" width="1200" height="900"></div>
+      <div class="tx">
+        <div class="ft"><span class="tag yellow">Guide</span><em>Featured</em></div>
+        <h2>The complete suspension-recovery checklist (+ downloadable template)</h2>
+        <p>How to get a suspended profile reinstated, and keep it that way. Most owners make the same three mistakes when they file. Here is the exact sequence our team follows.</p>
+        <div class="au"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Kate Herbert-Smith</div>
+        <div class="meta">Nov 12, 2026 &bull; 12 min read</div>
+        <span class="go">Read the checklist <svg><use href="#chev"/></svg></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="sec sec--tight" style="padding-top:24px" id="articles">
+  <div class="wrap">
+    <div id="bl-wrap">
+      <div class="bl-grid" id="bl-grid">
+
+        <a class="bl-card rv" href="/blog/suspension-recovery-checklist" data-cat="guides">
+          <div class="im"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=75&w=900&h=560" alt="A woman reviewing a tablet in a server corridor" loading="lazy" width="900" height="560"><span class="tag">Guide</span></div>
+          <div class="tx"><div class="meta">Nov 12, 2026 &bull; 12 min read</div>
+            <h3>The complete suspension-recovery checklist (+ downloadable template)</h3>
+            <p>How to get a suspended profile reinstated, and keep it that way. Most owners make the same three mistakes when they file.</p>
+            <div class="au"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Kate Herbert-Smith<span aria-hidden="true">&rarr;</span></div></div>
+        </a>
+
+        <a class="bl-card rv d1" href="/blog/small-business-marketing-report-2026" data-cat="research">
+          <div class="im"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=75&w=900&h=560" alt="Two women planning a marketing strategy at a laptop" loading="lazy" width="900" height="560"><span class="tag green">Research</span></div>
+          <div class="tx"><div class="meta">Oct 21, 2026 &bull; 9 min read</div>
+            <h3>Small Business Marketing Report 2026</h3>
+            <p>Is confidence misdirected? We found that small businesses were overwhelmingly confident about their Google presence, and much less sure when asked to check it.</p>
+            <div class="au"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Mike Hawkes<span aria-hidden="true">&rarr;</span></div></div>
+        </a>
+
+        <a class="bl-card rv d2" href="/blog/chatgpt-business-hub" data-cat="news">
+          <div class="im"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=75&w=900&h=560" alt="Two developers working at monitors" loading="lazy" width="900" height="560"><span class="tag red">News</span></div>
+          <div class="tx"><div class="meta">Nov 11, 2026 &bull; 6 min read</div>
+            <h3>ChatGPT launches &lsquo;Business Hub&rsquo;. Claim your business profile to get recommended and track your clicks.</h3>
+            <p>Finally, one of the AIs is being transparent about click data. Here is how local businesses should prepare for AI-driven discovery.</p>
+            <div class="au"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Mike Hawkes<span aria-hidden="true">&rarr;</span></div></div>
+        </a>
+
+        <a class="bl-card rv" href="/blog/fake-review-removal-guide" data-cat="guides">
+          <div class="im"><img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=75&w=900&h=560" alt="A woman taking a card payment at a cafe counter" loading="lazy" width="900" height="560"><span class="tag">Guide</span></div>
+          <div class="tx"><div class="meta">Oct 8, 2026 &bull; 8 min read</div>
+            <h3>How to legitimately remove fake reviews without getting flagged yourself</h3>
+            <p>A fake one-star review is infuriating. Here is the policy-based way to get it removed, and the shortcuts that put your own profile at risk.</p>
+            <div class="au"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Kate Herbert-Smith<span aria-hidden="true">&rarr;</span></div></div>
+        </a>
+
+        <a class="bl-card rv d1" href="/blog/nap-citation-cleanup-playbook" data-cat="guides">
+          <div class="im"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=75&w=900&h=560" alt="A team working at laptops, auditing listings" loading="lazy" width="900" height="560"><span class="tag">Guide</span></div>
+          <div class="tx"><div class="meta">Sep 24, 2026 &bull; 10 min read</div>
+            <h3>The NAP and citation cleanup playbook: one name, address and phone everywhere</h3>
+            <p>Inconsistent name, address and phone data quietly drags rankings down. Here is the playbook we use to find every mismatch and fix it.</p>
+            <div class="au"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Kate Herbert-Smith<span aria-hidden="true">&rarr;</span></div></div>
+        </a>
+
+        <a class="bl-card rv d2" href="/blog/map-pack-ranking-factors-2026" data-cat="research">
+          <div class="im"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=75&w=900&h=560" alt="A boardroom meeting reviewing ranking data" loading="lazy" width="900" height="560"><span class="tag green">Research</span></div>
+          <div class="tx"><div class="meta">Sep 10, 2026 &bull; 11 min read</div>
+            <h3>Map-pack ranking factors in 2026: what actually moves you into the top three</h3>
+            <p>Proximity, relevance and prominence still decide the map pack. Here is what our team sees moving the needle in 2026, and what does not.</p>
+            <div class="au"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=75&crop=faces&w=96&h=96" alt="" loading="lazy">Mike Hawkes<span aria-hidden="true">&rarr;</span></div></div>
+        </a>
+
+      </div>
+      <div class="bl-empty" data-empty hidden role="status">
+        <b>No articles match that search</b>
+        <p>Try a different keyword, such as &ldquo;reviews&rdquo;, &ldquo;suspension&rdquo; or &ldquo;citations&rdquo;.</p>
+        <button type="button" class="btn btn-dark btn-sm" id="bl-reset">Clear search and filters</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>What we cover</span><h2 data-split>Four topics, one goal: get found</h2><p class="rv">Everything in the hub maps to a problem local businesses actually face.</p></div>
+    <div class="bl-topics">
+      <div class="fcard t-red rv"><div class="ico">🚫</div><h3>Suspensions</h3><p>Why profiles get suspended, how appeals work and how to stay reinstated.</p><a href="/suspension-recovery" class="link-arrow">Recovery service <svg><use href="#chev"/></svg></a></div>
+      <div class="fcard t-blue rv d1"><div class="ico">📍</div><h3>Map-pack rankings</h3><p>Relevance, proximity and prominence, and the changes that move you up.</p><a href="/blog/map-pack-ranking-factors-2026" class="link-arrow">Ranking factors <svg><use href="#chev"/></svg></a></div>
+      <div class="fcard t-yellow rv d2"><div class="ico">⭐</div><h3>Reviews</h3><p>Earning genuine reviews, replying well and handling fake ones safely.</p><a href="/blog/fake-review-removal-guide" class="link-arrow">Review guide <svg><use href="#chev"/></svg></a></div>
+      <div class="fcard t-green rv d3"><div class="ico">🧭</div><h3>Citations and data</h3><p>One name, address and phone everywhere, plus readiness for AI search.</p><a href="/blog/nap-citation-cleanup-playbook" class="link-arrow">Cleanup playbook <svg><use href="#chev"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var q = document.getElementById('bl-q');
+  var grid = document.getElementById('bl-grid');
+  if (!q || !grid) return;
+  var cards = [].slice.call(grid.querySelectorAll('[data-cat]'));
+  var empty = document.querySelector('[data-empty]');
+  var feat = document.getElementById('bl-featured');
+  var chips = [].slice.call(document.querySelectorAll('[data-filters] [data-filter]'));
+  cards.forEach(function(c){ c._t = c.textContent.toLowerCase(); });
+  function allOn(){ var a = chips.filter(function(c){ return c.getAttribute('aria-pressed') === 'true'; })[0]; return !a || a.dataset.filter === 'all'; }
+  function run(){
+    var term = q.value.trim().toLowerCase(), words = term.split(/\s+/).filter(Boolean);
+    cards.forEach(function(c){
+      var ok = words.every(function(w){ return c._t.indexOf(w) > -1; });
+      c.style.display = ok ? '' : 'none';
+    });
+    var vis = cards.filter(function(c){ return c.style.display !== 'none' && !c.classList.contains('hide'); }).length;
+    if (empty) empty.hidden = vis > 0;
+    if (feat) feat.style.display = (term || !allOn()) ? 'none' : '';
+  }
+  q.addEventListener('input', run);
+  chips.forEach(function(c){ c.addEventListener('click', run); });
+  window.addEventListener('hashchange', run);
+  var r = document.getElementById('bl-reset');
+  if (r) r.addEventListener('click', function(){ q.value = ''; var a = chips.filter(function(c){ return c.dataset.filter === 'all'; })[0]; if (a) a.click(); run(); });
+  run();
+})();
+</script>
