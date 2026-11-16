@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
-<script>(function(){try{var r=matchMedia('(prefers-reduced-motion: reduce)').matches,f=/[?&]intro=1/.test(location.search);if(!r&&(f||!sessionStorage.getItem('gfmb-intro'))){document.documentElement.classList.add('intro-on');window.__introT0=performance.now();sessionStorage.setItem('gfmb-intro','1');}}catch(e){}})();</script>
+<script>(function(){try{var r=matchMedia('(prefers-reduced-motion: reduce)').matches,f=/[?&]intro=1/.test(location.search);if(!r&&(f||!sessionStorage.getItem('gfmb-intro'))){var d=document.documentElement;d.classList.add('intro-on','intro-lock');window.__introT0=performance.now();sessionStorage.setItem('gfmb-intro','1');setTimeout(function(){d.classList.remove('intro-lock')},3400);}}catch(e){}})();</script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"googlefixmybiz","description":"Google Business Profile recovery, local ranking and review management.","url":"https://google-fix-my-biz.vercel.app","areaServed":"US","priceRange":"$$"}</script>
 </head>

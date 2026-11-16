@@ -12,7 +12,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg);scroll-padding-top:96px}
+html{background:var(--bg);scroll-padding-top:96px;scrollbar-gutter:stable}
 body{font-family:"Inter",system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body.no-scroll{overflow:hidden}
 a{color:inherit;text-decoration:none}
@@ -54,6 +54,8 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.035em;line-height:1.08}
 html.intro-lock{overflow:hidden}
 html.intro-on .intro{display:block;position:fixed;inset:0;z-index:300;animation:introGone 0s linear 2.8s forwards}
 @keyframes introGone{to{visibility:hidden;pointer-events:none}}
+html.intro-on .orbs i{animation-play-state:paused}
+.intro-panel,.intro-center{will-change:transform;backface-visibility:hidden}
 .intro-panel{position:absolute;left:0;right:0;height:50%}
 .intro-panel.top{top:0;background:linear-gradient(180deg,#fff,#f1f5fd);animation:ipTop .85s cubic-bezier(.76,0,.24,1) 1.9s forwards}
 .intro-panel.bot{bottom:0;background:linear-gradient(180deg,#f1f5fd,#fff);animation:ipBot .85s cubic-bezier(.76,0,.24,1) 1.9s forwards}

@@ -274,7 +274,7 @@
       onScroll();
     };
     var elapsed = performance.now() - (window.__introT0 || performance.now());
-    var tReveal = setTimeout(startReveals, Math.max(0, 1850 - elapsed));
+    var tReveal = setTimeout(startReveals, Math.max(0, 2200 - elapsed));
     var tEnd = setTimeout(finish, Math.max(0, 2800 - elapsed));
     var skip = function(){
       if (finished || intro.classList.contains('out')) return;
