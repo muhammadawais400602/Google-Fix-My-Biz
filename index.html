@@ -1,309 +1,229 @@
 <title>Google Fix My Biz</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap">
 <style>
-/* Cuberto-style white studio page: oversized serif+sans hero, marquee of services, cards with Google-hued gradient blobs, case tiles, massive footer wordmark. */
+/* Cuberto-replica: smooth-scrolled canvas with custom cursor, GSAP word-reveal hero, hover image-circle services, horizontally-pinned cases, giant marquee footer. Google logo accents on white. */
 :root{
-  --bg:#ffffff;
+  --bg:#efeeea;
   --fg:#0b0b0e;
   --muted:#6b6b72;
-  --soft:#f4f4f2;
-  --soft-2:#eceae4;
-  --line:rgba(11,11,14,.1);
+  --soft:#e6e5e0;
+  --line:rgba(11,11,14,.12);
   --g-blue:#4285F4;
   --g-red:#EA4335;
   --g-yellow:#FBBC04;
   --g-green:#34A853;
-  color-scheme: light;
-  padding-left: max(0px, env(safe-area-inset-left, 0px));
-  padding-right: max(0px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+  padding-left:max(0px, env(safe-area-inset-left, 0px));
+  padding-right:max(0px, env(safe-area-inset-right, 0px));
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--fg);overflow-x:hidden}
-body{
-  font-family:"Inter",system-ui,-apple-system,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  line-height:1.4;
-}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
-a{color:inherit;text-decoration:none}
+body{font-family:"Inter",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.4;cursor:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--bg)}
+a,button{color:inherit;text-decoration:none;cursor:none}
 img{max-width:100%;display:block}
-.wrap{
-  width:100%;
-  padding-left:max(28px, env(safe-area-inset-left, 0px));
-  padding-right:max(28px, env(safe-area-inset-right, 0px));
-}
+.wrap{width:100%;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
 .serif{font-family:"Fraunces",Georgia,serif;font-weight:400;letter-spacing:-.025em}
-.mono{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.italic{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400}
+.mono{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
-/* ========= NAV ========= */
-nav{
-  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
-  background:rgba(255,255,255,.75);backdrop-filter:blur(16px) saturate(1.3);
-  border-bottom:1px solid var(--line);
-}
-nav .bar{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:16px}
+/* ===== CURSOR ===== */
+.cursor{position:fixed;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--fg);pointer-events:none;z-index:999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .3s ease,height .3s ease,background .3s}
+.cursor.big{width:72px;height:72px;background:var(--g-blue);mix-blend-mode:normal}
+.cursor-label{position:fixed;top:0;left:0;pointer-events:none;z-index:999;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .25s}
+.cursor-label.on{opacity:1}
+@media(hover:none){body,a,button{cursor:auto}.cursor,.cursor-label{display:none}}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;padding:18px 0;transition:background .4s,backdrop-filter .4s}
+nav.scrolled{background:rgba(239,238,234,.75);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--line)}
+nav .bar{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.01em}
 .logo .dots{display:inline-grid;grid-template-columns:1fr 1fr;gap:3px}
-.logo .dots i{width:8px;height:8px;border-radius:50%;display:block}
+.logo .dots i{width:9px;height:9px;border-radius:50%;display:block}
 .logo .dots i:nth-child(1){background:var(--g-blue)}
 .logo .dots i:nth-child(2){background:var(--g-red)}
 .logo .dots i:nth-child(3){background:var(--g-yellow)}
 .logo .dots i:nth-child(4){background:var(--g-green)}
-.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{font-size:14px;color:var(--fg);font-weight:500;position:relative}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:var(--fg);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.65,.05,.36,1)}
 .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
-.cta{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 22px;border-radius:999px;background:var(--fg);color:var(--bg);
-  font-size:14px;font-weight:500;
-  transition:transform .4s cubic-bezier(.2,.9,.2,1),background .3s,color .3s;
-  position:relative;overflow:hidden;
-}
-.cta:hover{background:var(--g-blue)}
-.cta .dot{width:8px;height:8px;border-radius:50%;background:var(--g-green)}
+.btn-nav{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--fg);color:var(--bg);font-size:14px;font-weight:500;transition:background .3s}
+.btn-nav:hover{background:var(--g-blue)}
+.btn-nav .dot{width:8px;height:8px;border-radius:50%;background:var(--g-green)}
 @media(max-width:820px){.nav-links{display:none}}
 
-/* ========= HERO ========= */
-.hero{position:relative;padding-block:72px 48px;overflow:hidden}
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted);margin-bottom:36px}
+/* ===== HERO ===== */
+.hero{position:relative;padding:160px 0 80px;overflow:hidden}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted);margin-bottom:40px}
 .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--g-green);box-shadow:0 0 0 0 rgba(52,168,83,.5);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 12px rgba(52,168,83,0)}100%{box-shadow:0 0 0 0 rgba(52,168,83,0)}}
 
-h1.hero-title{
-  font-size:clamp(72px, 13.5vw, 232px);
-  line-height:.88;
-  letter-spacing:-.04em;
-  font-weight:600;
-}
+h1.hero-title{font-size:clamp(68px,13vw,240px);line-height:.88;letter-spacing:-.045em;font-weight:500}
+h1.hero-title .line{display:block;overflow:hidden}
+h1.hero-title .word{display:inline-block;transform:translateY(110%);will-change:transform}
 h1.hero-title .italic{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400}
-h1.hero-title .pin{display:inline-flex;align-items:center;vertical-align:-.08em;margin:0 .05em}
-h1.hero-title .pin svg{width:.9em;height:.9em}
+.pin-svg{display:inline-flex;align-items:center;vertical-align:-.08em;margin:0 .05em;transform:translateY(110%)}
+.pin-svg svg{width:.95em;height:.95em}
 
-.hero-bottom{
-  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;
-  margin-top:60px;
-}
-.hero-lede{max-width:540px;font-size:20px;line-height:1.5;color:var(--fg)}
+.hero-bottom{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:72px}
+.hero-lede{max-width:540px;font-size:20px;line-height:1.5}
 .hero-lede b{font-weight:600}
-.hero-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:14px;
-  padding:16px 22px;border:1.5px solid var(--fg);border-radius:999px;
-  font-size:14px;font-weight:600;color:var(--fg);
-  transition:background .3s,color .3s;
-}
+.btn-ghost{display:inline-flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px solid var(--fg);border-radius:999px;font-size:14px;font-weight:600;transition:background .3s,color .3s;position:relative;overflow:hidden}
 .btn-ghost:hover{background:var(--fg);color:var(--bg)}
-.btn-ghost .ring{width:28px;height:28px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;transition:background .3s, color .3s}
+.btn-ghost .ring{width:30px;height:30px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;transition:background .3s,color .3s;transform:rotate(-45deg)}
 .btn-ghost:hover .ring{background:var(--bg);color:var(--fg)}
 
-@media(max-width:720px){
-  .hero-bottom{grid-template-columns:1fr}
-  .hero-actions{align-items:stretch}
-}
+.hero-orbs{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.5}
+.orb.b{width:420px;height:420px;background:var(--g-blue);top:10%;right:-80px;opacity:.4}
+.orb.r{width:320px;height:320px;background:var(--g-red);top:50%;left:-60px;opacity:.3}
+.orb.y{width:280px;height:280px;background:var(--g-yellow);bottom:-40px;right:30%;opacity:.35}
+.orb.g{width:300px;height:300px;background:var(--g-green);bottom:-60px;left:20%;opacity:.35}
 
-/* orbit blobs */
-.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;pointer-events:none;z-index:-1}
-.blob.b{width:360px;height:360px;background:var(--g-blue);top:10%;right:-80px}
-.blob.r{width:300px;height:300px;background:var(--g-red);top:40%;left:-60px;opacity:.35}
-.blob.y{width:260px;height:260px;background:var(--g-yellow);bottom:-80px;right:30%;opacity:.4}
-.blob.g{width:280px;height:280px;background:var(--g-green);bottom:-40px;left:20%;opacity:.4}
+@media(max-width:720px){.hero-bottom{grid-template-columns:1fr}}
 
-/* ========= MARQUEE ========= */
-.marquee{
-  margin-top:80px;padding-block:28px;
-  border-block:1px solid var(--line);
-  overflow:hidden;white-space:nowrap;display:flex;gap:56px;
-}
-.marquee-track{display:flex;gap:56px;align-items:center;animation:scroll 32s linear infinite;flex-shrink:0}
-.marquee .word{font-family:"Fraunces",serif;font-size:clamp(40px,7vw,96px);font-weight:400;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:56px}
-.marquee .word em{font-style:italic;font-weight:400}
-.marquee .star{display:inline-block;width:28px;height:28px;flex:0 0 28px}
+/* ===== MARQUEE ===== */
+.marquee{margin-top:100px;padding-block:32px;border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;display:flex;gap:64px}
+.marquee-track{display:flex;gap:64px;align-items:center;animation:scroll 36s linear infinite;flex-shrink:0}
+.marquee .word{font-family:"Fraunces",serif;font-size:clamp(44px,8vw,112px);font-weight:400;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:56px;line-height:1}
+.marquee .word em{font-style:italic}
+.marquee .star{width:32px;height:32px;flex:0 0 32px}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
-/* ========= SERVICES ========= */
-.section{padding-block:120px}
-.section-head{display:grid;grid-template-columns:140px 1fr;gap:28px;align-items:baseline;margin-bottom:64px}
-.section-head h2{font-size:clamp(44px,7vw,112px);line-height:.95;letter-spacing:-.035em;font-weight:600}
+/* ===== SERVICES ===== */
+section.section{padding:140px 0}
+.section-head{display:grid;grid-template-columns:160px 1fr;gap:28px;align-items:baseline;margin-bottom:72px}
+.section-head h2{font-size:clamp(48px,7.5vw,128px);line-height:.92;letter-spacing:-.04em;font-weight:500}
 .section-head h2 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
 @media(max-width:720px){.section-head{grid-template-columns:1fr}}
 
-.services{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:820px){.services{grid-template-columns:1fr}}
-.service{
-  position:relative;overflow:hidden;
-  border-radius:28px;background:var(--soft);
-  padding:40px;min-height:360px;
-  display:flex;flex-direction:column;justify-content:space-between;gap:48px;
-  cursor:pointer;
-  transition:background .4s;
-}
-.service:hover{background:var(--soft-2)}
-.service .top{display:flex;justify-content:space-between;align-items:center}
-.service .num{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:18px}
-.service .arrow{
-  width:52px;height:52px;border-radius:50%;background:var(--fg);color:var(--bg);
-  display:grid;place-items:center;transition:transform .4s cubic-bezier(.2,.9,.2,1);
-}
-.service:hover .arrow{transform:rotate(-45deg) scale(1.1)}
-.service h3{font-size:clamp(28px,3vw,42px);line-height:1.05;letter-spacing:-.02em;font-weight:500;max-width:14ch}
-.service p{color:var(--muted);font-size:15px;margin-top:12px;max-width:40ch;line-height:1.5}
-.service .visual{
-  position:absolute;right:-60px;bottom:-60px;width:260px;height:260px;border-radius:50%;
-  opacity:.9;filter:blur(2px);pointer-events:none;transition:transform .6s cubic-bezier(.2,.9,.2,1);
-}
-.service:hover .visual{transform:scale(1.15) translate(-10px,-10px)}
-.service.a .visual{background:radial-gradient(circle at 30% 30%, #ff8578, var(--g-red) 60%)}
-.service.b .visual{background:radial-gradient(circle at 30% 30%, #8bb5ff, var(--g-blue) 60%)}
-.service.c .visual{background:radial-gradient(circle at 30% 30%, #ffe082, var(--g-yellow) 60%)}
-.service.d .visual{background:radial-gradient(circle at 30% 30%, #8de0a7, var(--g-green) 60%)}
+.service-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.service-item{position:relative;padding:36px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:60px 1fr auto 72px;gap:32px;align-items:center;cursor:none;transition:padding .4s cubic-bezier(.2,.9,.2,1)}
+.service-item:hover{padding-inline:12px}
+.service-item .num{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:20px}
+.service-item h3{font-size:clamp(32px,5vw,68px);font-weight:500;letter-spacing:-.025em;line-height:1}
+.service-item h3 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
+.service-item .desc{color:var(--muted);font-size:15px;max-width:34ch;text-align:right}
+.service-item .arrow{width:60px;height:60px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;justify-self:end;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
+.service-item:hover .arrow{transform:rotate(-45deg) scale(1.1)}
+.service-item .circle{position:absolute;width:280px;height:280px;border-radius:50%;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;transition:transform .6s cubic-bezier(.2,.9,.2,1),opacity .4s;z-index:-1}
+.service-item:hover .circle{transform:translate(-50%,-50%) scale(1);opacity:1}
+.service-item.a .circle{background:radial-gradient(circle at 30% 30%,#ff9d91,var(--g-red))}
+.service-item.b .circle{background:radial-gradient(circle at 30% 30%,#8bb5ff,var(--g-blue))}
+.service-item.c .circle{background:radial-gradient(circle at 30% 30%,#ffe082,var(--g-yellow))}
+.service-item.d .circle{background:radial-gradient(circle at 30% 30%,#8de0a7,var(--g-green))}
+@media(max-width:820px){.service-item{grid-template-columns:40px 1fr 48px}.service-item .desc{display:none}.service-item .arrow{width:48px;height:48px}}
 
-/* ========= BIG STATEMENT ========= */
-.statement{padding-block:140px;position:relative}
-.statement-text{
-  font-family:"Fraunces",serif;font-weight:400;
-  font-size:clamp(40px,5.8vw,92px);line-height:1.02;letter-spacing:-.025em;
-  max-width:18ch;
-}
-.statement-text .u{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:10px}
+/* ===== HORIZONTAL CASES ===== */
+.h-cases-wrap{position:relative;height:500vh}
+.h-cases-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.h-cases-track{display:flex;padding-left:4vw;gap:40px;height:72vh;will-change:transform}
+.h-case{flex:0 0 68vh;height:72vh;border-radius:24px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:36px;color:#fff}
+.h-case.b{background:linear-gradient(135deg,#1a6cf4,var(--g-blue))}
+.h-case.r{background:linear-gradient(135deg,#f06354,var(--g-red))}
+.h-case.y{background:linear-gradient(135deg,#ffd454,var(--g-yellow));color:#2d2200}
+.h-case.g{background:linear-gradient(135deg,#4ec879,var(--g-green))}
+.h-case .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.9}
+.h-case h4{font-family:"Fraunces",serif;font-size:clamp(32px,3.5vw,56px);font-weight:500;line-height:1.02;letter-spacing:-.025em;margin-top:12px;max-width:16ch}
+.h-case h4 .italic{font-style:italic}
+.h-case .foot{display:flex;justify-content:space-between;align-items:flex-end}
+.h-case .result .big{font-family:"Fraunces",serif;font-size:48px;font-weight:600;line-height:1;display:block}
+.h-case .result .lab{font-size:12px;opacity:.85;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;display:block}
+.h-case .arrow{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;backdrop-filter:blur(8px)}
+.h-case.y .arrow{background:rgba(45,34,0,.15)}
+.h-case .blob{position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.12);top:30%;right:-100px;filter:blur(20px);animation:float 8s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-20px,20px)}}
+.h-progress{position:absolute;bottom:40px;left:4vw;right:4vw;height:2px;background:var(--line);overflow:hidden}
+.h-progress i{display:block;height:100%;background:var(--fg);width:0;transform-origin:left}
+
+/* ===== BIG STATEMENT ===== */
+.statement{padding:200px 0;position:relative}
+.statement-text{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(44px,6.2vw,112px);line-height:1.02;letter-spacing:-.025em;max-width:20ch}
+.statement-text .line{display:block;overflow:hidden}
+.statement-text .word{display:inline-block;transform:translateY(110%);will-change:transform}
 .statement-text .hb{color:var(--g-blue)}
 .statement-text .hr{color:var(--g-red)}
 .statement-text .hy{color:var(--g-yellow)}
 .statement-text .hg{color:var(--g-green)}
 .statement-text .italic{font-style:italic}
+.statement-text .u{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:10px}
 
-/* ========= PROCESS ========= */
-.process{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-@media(max-width:820px){.process{grid-template-columns:1fr}}
-.process-card{
-  border-radius:32px;overflow:hidden;position:relative;
-  background:linear-gradient(135deg, #f8f8f5, #ecece7);
-  padding:40px;aspect-ratio:1/1;
-}
-.gbp-mock{
-  background:#fff;border-radius:20px;padding:22px;box-shadow:0 20px 60px rgba(11,11,14,.08);
-  display:flex;flex-direction:column;gap:16px;height:100%;
-}
+/* ===== PROCESS + MOCK ===== */
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:900px){.process-grid{grid-template-columns:1fr;gap:48px}}
+.process-card{border-radius:36px;overflow:hidden;position:relative;background:linear-gradient(135deg,#f7f6f2,#e3e1d9);padding:48px;aspect-ratio:1/1;display:grid;place-items:center}
+.gbp-mock{background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 80px rgba(11,11,14,.12);display:flex;flex-direction:column;gap:18px;width:100%;max-width:420px}
 .gbp-mock .head{display:flex;gap:14px;align-items:flex-start}
-.gbp-avatar{
-  width:52px;height:52px;border-radius:14px;flex:0 0 52px;
-  background:conic-gradient(from 45deg,var(--g-blue),var(--g-red),var(--g-yellow),var(--g-green),var(--g-blue));
-  display:grid;place-items:center;color:#fff;font-family:"Fraunces",serif;font-size:22px;font-weight:600;
-}
-.gbp-mock h5{font-size:17px;font-weight:600}
-.gbp-mock .sub{color:var(--muted);font-size:13px;margin-top:2px}
-.gbp-mock .stars{color:var(--g-yellow);font-size:13px;margin-top:6px;letter-spacing:1px}
+.gbp-avatar{width:56px;height:56px;border-radius:14px;flex:0 0 56px;background:conic-gradient(from 45deg,var(--g-blue),var(--g-red),var(--g-yellow),var(--g-green),var(--g-blue));display:grid;place-items:center;color:#fff;font-family:"Fraunces",serif;font-size:24px;font-weight:600}
+.gbp-mock h5{font-size:18px;font-weight:600}
+.gbp-mock .sub{color:var(--muted);font-size:13px;margin-top:3px}
+.gbp-mock .stars{color:var(--g-yellow);font-size:14px;margin-top:6px;letter-spacing:1px}
 .gbp-mock .stars span{color:var(--muted);margin-left:6px;letter-spacing:0}
 .gbp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .gbp-cell{border:1px solid var(--line);border-radius:12px;padding:12px}
-.gbp-cell .k{color:var(--muted);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
-.gbp-cell .v{font-size:19px;font-weight:600;margin-top:6px}
+.gbp-cell .k{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.gbp-cell .v{font-size:20px;font-weight:600;margin-top:6px}
 .gbp-cell .v.good{color:var(--g-green)}
-.gbp-bar{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:auto}
+.gbp-bar{border:1px solid var(--line);border-radius:12px;padding:14px}
 .gbp-bar .row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
 .gbp-bar .row b{color:var(--g-green);font-weight:600}
 .gbp-bar .trk{height:6px;border-radius:3px;background:#eee;margin-top:10px;overflow:hidden}
-.gbp-bar .trk i{display:block;height:100%;background:linear-gradient(90deg,var(--g-red),var(--g-yellow),var(--g-green));border-radius:3px;width:0;animation:fill 2s .5s cubic-bezier(.2,.9,.2,1) forwards}
-@keyframes fill{to{width:92%}}
+.gbp-bar .trk i{display:block;height:100%;background:linear-gradient(90deg,var(--g-red),var(--g-yellow),var(--g-green));border-radius:3px;width:0}
 
 .process-copy .mono{margin-bottom:16px;display:block}
-.process-copy h3{font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.03em;font-weight:500;margin-bottom:24px}
-.process-copy .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
+.process-copy h3{font-size:clamp(32px,4.5vw,64px);line-height:1;letter-spacing:-.03em;font-weight:500;margin-bottom:28px}
 .process-copy p{color:var(--muted);font-size:17px;line-height:1.55;max-width:38ch}
-.steps{margin-top:36px;display:flex;flex-direction:column;gap:18px}
-.step{display:flex;gap:18px;align-items:flex-start;padding-top:18px;border-top:1px solid var(--line)}
-.step .n{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:16px;flex:0 0 32px}
-.step h6{font-size:17px;font-weight:600;margin-bottom:4px}
+.steps{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.step{display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:flex-start;padding-top:20px;border-top:1px solid var(--line)}
+.step .n{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:18px}
+.step h6{font-size:18px;font-weight:600;margin-bottom:4px}
 .step small{color:var(--muted);font-size:14px}
 
-/* ========= CASES ========= */
-.cases{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-@media(max-width:820px){.cases{grid-template-columns:1fr}}
-.case{
-  position:relative;overflow:hidden;border-radius:28px;
-  aspect-ratio:5/4;padding:32px;display:flex;flex-direction:column;justify-content:space-between;
-  color:#fff;cursor:pointer;transition:transform .5s cubic-bezier(.2,.9,.2,1);
-}
-.case:hover{transform:translateY(-6px)}
-.case.b{background:linear-gradient(135deg,#1a6cf4,var(--g-blue))}
-.case.r{background:linear-gradient(135deg,#f06354,var(--g-red))}
-.case.y{background:linear-gradient(135deg,#ffd454,var(--g-yellow));color:#2d2200}
-.case.g{background:linear-gradient(135deg,#4ec879,var(--g-green))}
-.case .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.85}
-.case h4{font-family:"Fraunces",serif;font-size:clamp(28px,3vw,44px);font-weight:500;line-height:1.02;letter-spacing:-.02em;margin-top:8px}
-.case .foot{display:flex;justify-content:space-between;align-items:flex-end}
-.case .result{display:flex;flex-direction:column;gap:4px}
-.case .result .big{font-family:"Fraunces",serif;font-size:36px;font-weight:600;line-height:1}
-.case .result .lab{font-size:12px;opacity:.85;letter-spacing:.1em;text-transform:uppercase}
-.case .arrow{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.2);color:inherit;display:grid;place-items:center;backdrop-filter:blur(8px);transition:transform .4s}
-.case:hover .arrow{transform:rotate(-45deg)}
-.case.y .arrow{background:rgba(45,34,0,.15)}
-
-/* ========= AUDIT CTA ========= */
-.audit-section{padding-block:140px}
-.audit-card{
-  background:var(--fg);color:var(--bg);border-radius:40px;
-  padding:72px 56px;position:relative;overflow:hidden;
-}
-.audit-card::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(66,133,244,.35), transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(234,67,53,.3), transparent 40%),
-    radial-gradient(circle at 80% 10%, rgba(251,188,4,.25), transparent 40%),
-    radial-gradient(circle at 20% 90%, rgba(52,168,83,.3), transparent 40%);
-  opacity:.9;
-}
+/* ===== AUDIT CTA ===== */
+.audit-section{padding:140px 0}
+.audit-card{background:var(--fg);color:var(--bg);border-radius:40px;padding:80px 60px;position:relative;overflow:hidden}
+.audit-card::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 10% 20%,rgba(66,133,244,.4),transparent 40%),radial-gradient(circle at 90% 80%,rgba(234,67,53,.35),transparent 40%),radial-gradient(circle at 80% 10%,rgba(251,188,4,.3),transparent 40%),radial-gradient(circle at 20% 90%,rgba(52,168,83,.3),transparent 40%);opacity:.9}
 .audit-card>*{position:relative;z-index:1}
 .audit-card .mono{color:rgba(255,255,255,.6)}
-.audit-card h2{
-  font-size:clamp(42px,6.5vw,104px);line-height:.95;letter-spacing:-.03em;font-weight:500;
-  margin-top:12px;max-width:16ch;
-}
+.audit-card h2{font-size:clamp(44px,6.5vw,112px);line-height:.95;letter-spacing:-.03em;font-weight:500;margin-top:12px;max-width:16ch}
 .audit-card h2 .italic{font-family:"Fraunces",serif;font-style:italic;font-weight:400}
-.audit-form{
-  margin-top:48px;display:flex;gap:10px;padding:10px 10px 10px 24px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;
-  max-width:640px;align-items:center;
-}
-.audit-form input{
-  flex:1;background:transparent;border:0;color:var(--bg);
-  font-family:inherit;font-size:16px;outline:0;min-width:0;padding:12px 0;
-}
+.audit-form{margin-top:52px;display:flex;gap:10px;padding:10px 10px 10px 26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;max-width:680px;align-items:center}
+.audit-form input{flex:1;background:transparent;border:0;color:var(--bg);font-family:inherit;font-size:16px;outline:0;min-width:0;padding:14px 0}
 .audit-form input::placeholder{color:rgba(255,255,255,.55)}
-.audit-form button{
-  border:0;cursor:pointer;padding:14px 24px;border-radius:999px;
-  background:var(--bg);color:var(--fg);
-  font-family:inherit;font-weight:600;font-size:14px;transition:background .3s,color .3s;
-}
-.audit-form button:hover{background:var(--g-yellow);color:var(--fg)}
+.audit-form button{border:0;padding:16px 26px;border-radius:999px;background:var(--bg);color:var(--fg);font-family:inherit;font-weight:600;font-size:14px;transition:background .3s,color .3s}
+.audit-form button:hover{background:var(--g-yellow)}
 
-/* ========= FOOTER ========= */
-footer{padding-block:72px 40px;border-top:1px solid var(--line)}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;padding-bottom:64px}
+/* ===== FOOTER ===== */
+footer{padding:80px 0 40px;border-top:1px solid var(--line);position:relative;overflow:hidden}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;padding-bottom:72px}
 @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
-.foot-col h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:600}
-.foot-col a{display:block;font-size:15px;margin-bottom:10px;transition:color .2s}
+.foot-col h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;font-weight:600}
+.foot-col a{display:block;font-size:16px;margin-bottom:10px;transition:color .2s}
 .foot-col a:hover{color:var(--g-blue)}
-.foot-col .mail{font-family:"Fraunces",serif;font-size:28px;margin-bottom:10px;letter-spacing:-.01em}
-.foot-huge{
-  font-family:"Fraunces",serif;
-  font-size:clamp(90px,22vw,340px);
-  letter-spacing:-.045em;line-height:.88;font-weight:500;
-  white-space:nowrap;overflow:hidden;
-}
+.foot-col .mail{font-family:"Fraunces",serif;font-size:32px;margin-bottom:12px;letter-spacing:-.01em}
+.foot-huge{font-family:"Fraunces",serif;font-size:clamp(92px,23vw,360px);letter-spacing:-.045em;line-height:.85;font-weight:500;white-space:nowrap;overflow:hidden}
 .foot-huge .italic{font-style:italic;font-weight:400}
 .foot-huge .hb{color:var(--g-blue)}
 .foot-huge .hr{color:var(--g-red)}
 .foot-huge .hy{color:var(--g-yellow)}
 .foot-huge .hg{color:var(--g-green)}
 .copy{margin-top:40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* reveal helpers */
+.reveal-up{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.9,.2,1),transform .9s cubic-bezier(.2,.9,.2,1)}
+.reveal-up.in{opacity:1;transform:none}
 </style>
 
-<nav>
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-label" id="curLabel"></div>
+
+<nav id="nav">
   <div class="wrap bar">
-    <a href="#" class="logo">
+    <a href="#" class="logo" data-mag>
       <span class="dots"><i></i><i></i><i></i><i></i></span>
       <span>Google Fix My Biz</span>
     </a>
@@ -313,154 +233,159 @@ footer{padding-block:72px 40px;border-top:1px solid var(--line)}
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="#audit" class="cta"><span class="dot"></span>Free audit</a>
+    <a href="#audit" class="btn-nav" data-mag><span class="dot"></span>Free audit</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="blob b"></div><div class="blob r"></div><div class="blob y"></div><div class="blob g"></div>
-  <div class="wrap">
-    <div class="eyebrow"><span class="pulse"></span>Google Business Profile specialists · Austin, remote-first</div>
-    <h1 class="hero-title">
-      We <span class="italic">fix</span><br>
-      broken<br>
-      Google
-      <span class="pin" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2C7 2 4 5.8 4 10c0 5.5 7 11.5 7.3 11.8.4.3.9.3 1.3 0C13 21.5 20 15.5 20 10c0-4.2-3-8-8-8z" fill="url(#pg)"/>
-          <circle cx="12" cy="10" r="3" fill="#fff"/>
-          <defs>
-            <linearGradient id="pg" x1="4" y1="2" x2="20" y2="22">
-              <stop offset="0" stop-color="#4285F4"/>
-              <stop offset=".33" stop-color="#EA4335"/>
-              <stop offset=".66" stop-color="#FBBC04"/>
-              <stop offset="1" stop-color="#34A853"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </span>
-      <span class="italic">profiles.</span>
-    </h1>
+<main id="smooth">
 
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-orbs"><div class="orb b"></div><div class="orb r"></div><div class="orb y"></div><div class="orb g"></div></div>
+  <div class="wrap">
+    <div class="eyebrow reveal-up"><span class="pulse"></span>Google Business Profile specialists · Austin, remote-first</div>
+    <h1 class="hero-title">
+      <span class="line"><span class="word">We</span> <span class="word italic">fix</span></span>
+      <span class="line"><span class="word">broken</span></span>
+      <span class="line">
+        <span class="word">Google</span>
+        <span class="pin-svg" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C7 2 4 5.8 4 10c0 5.5 7 11.5 7.3 11.8.4.3.9.3 1.3 0C13 21.5 20 15.5 20 10c0-4.2-3-8-8-8z" fill="url(#pg)"/>
+            <circle cx="12" cy="10" r="3" fill="#fff"/>
+            <defs><linearGradient id="pg" x1="4" y1="2" x2="20" y2="22"><stop offset="0" stop-color="#4285F4"/><stop offset=".33" stop-color="#EA4335"/><stop offset=".66" stop-color="#FBBC04"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs>
+          </svg>
+        </span>
+        <span class="word italic">profiles.</span>
+      </span>
+    </h1>
     <div class="hero-bottom">
-      <p class="hero-lede">
-        Suspended, de-ranked, or overrun by duplicates? <b>We rescue Google Business Profiles</b> — reinstating listings, cleaning citations, and rebuilding map-pack rankings so your phone starts ringing again.
-      </p>
-      <div class="hero-actions">
-        <a href="#audit" class="btn-ghost">
-          Get a free profile audit
-          <span class="ring">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </span>
-        </a>
-      </div>
+      <p class="hero-lede reveal-up">Suspended, de-ranked, or overrun by duplicates? <b>We rescue Google Business Profiles</b> — reinstating listings, cleaning citations, and rebuilding map-pack rankings so your phone starts ringing again.</p>
+      <a href="#audit" class="btn-ghost reveal-up" data-mag data-cursor="audit">
+        Get a free profile audit
+        <span class="ring"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
   </div>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span class="word">Suspensions <em>lifted</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#4285F4"/></svg>
-      </span>
-      <span class="word">Rankings <em>rebuilt</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#EA4335"/></svg>
-      </span>
-      <span class="word">Reviews <em>recovered</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#FBBC04"/></svg>
-      </span>
-      <span class="word">Calls <em>flowing</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#34A853"/></svg>
-      </span>
-      <span class="word">Suspensions <em>lifted</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#4285F4"/></svg>
-      </span>
-      <span class="word">Rankings <em>rebuilt</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#EA4335"/></svg>
-      </span>
-      <span class="word">Reviews <em>recovered</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#FBBC04"/></svg>
-      </span>
-      <span class="word">Calls <em>flowing</em>
-        <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#34A853"/></svg>
-      </span>
+      <span class="word">Suspensions <em>lifted</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#4285F4"/></svg></span>
+      <span class="word">Rankings <em>rebuilt</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#EA4335"/></svg></span>
+      <span class="word">Reviews <em>recovered</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#FBBC04"/></svg></span>
+      <span class="word">Calls <em>flowing</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#34A853"/></svg></span>
+      <span class="word">Suspensions <em>lifted</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#4285F4"/></svg></span>
+      <span class="word">Rankings <em>rebuilt</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#EA4335"/></svg></span>
+      <span class="word">Reviews <em>recovered</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#FBBC04"/></svg></span>
+      <span class="word">Calls <em>flowing</em><svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="#34A853"/></svg></span>
     </div>
   </div>
 </header>
 
-<!-- Big statement -->
-<section class="section">
+<!-- STATEMENT with word reveal -->
+<section class="section statement">
   <div class="wrap">
-    <div class="statement-text serif">
-      A <span class="hb">broken</span> profile is a <span class="italic">shut</span> door. <span class="hg u">We reopen it</span> — <span class="italic">fast</span>, by the book, with results you can measure.
+    <div class="statement-text" id="stmt">
+      <span class="line"><span class="word">A</span> <span class="word hr">broken</span></span>
+      <span class="line"><span class="word">profile</span> <span class="word">is</span> <span class="word">a</span></span>
+      <span class="line"><span class="word italic">shut</span> <span class="word">door.</span></span>
+      <span class="line"><span class="word hg">We</span> <span class="word hg">reopen</span> <span class="word hg">it</span></span>
+      <span class="line"><span class="word italic">fast</span><span class="word">,</span> <span class="word">by</span> <span class="word">the</span> <span class="word">book.</span></span>
     </div>
   </div>
 </section>
 
-<!-- Services -->
+<!-- SERVICES -->
 <section class="section" id="services">
   <div class="wrap">
     <div class="section-head">
-      <span class="mono">(01) Services</span>
-      <h2>Everything a profile needs, <span class="italic">one fix at a time.</span></h2>
+      <span class="mono reveal-up">(01) Services</span>
+      <h2 class="reveal-up">Everything a profile needs, <span class="italic">one fix at a time.</span></h2>
     </div>
-    <div class="services">
-      <article class="service a">
-        <div class="visual"></div>
-        <div class="top">
-          <span class="num">/ 01</span>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-        <div>
-          <h3>Suspension recovery</h3>
-          <p>Hard or soft suspended? We handle reinstatement requests, appeals and documentation — with a 94% success rate inside 72 hours.</p>
-        </div>
-      </article>
-      <article class="service b">
-        <div class="visual"></div>
-        <div class="top">
-          <span class="num">/ 02</span>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-        <div>
-          <h3>NAP & citation cleanup</h3>
-          <p>We audit 300+ directories, delete duplicates, and sync name, address and phone across every surface Google trusts.</p>
-        </div>
-      </article>
-      <article class="service c">
-        <div class="visual"></div>
-        <div class="top">
-          <span class="num">/ 03</span>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-        <div>
-          <h3>Review management</h3>
-          <p>Respond, flag fakes, and build a steady drip of real five-stars from happy customers. No gray hats, no takedowns.</p>
-        </div>
-      </article>
-      <article class="service d">
-        <div class="visual"></div>
-        <div class="top">
-          <span class="num">/ 04</span>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-        <div>
-          <h3>Map-pack ranking</h3>
-          <p>Primary category, services, posts, geo-photos, Q&A — we tune every signal Google uses to pick the local three.</p>
-        </div>
-      </article>
+    <div class="service-list">
+      <a href="#" class="service-item a" data-cursor="see">
+        <div class="circle"></div>
+        <span class="num">/ 01</span>
+        <h3>Suspension <span class="italic">recovery</span></h3>
+        <p class="desc">Hard or soft suspended? We file reinstatements with a 94% success rate in under 72h.</p>
+        <span class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a href="#" class="service-item b" data-cursor="see">
+        <div class="circle"></div>
+        <span class="num">/ 02</span>
+        <h3>NAP & <span class="italic">citations</span></h3>
+        <p class="desc">Sync name, address, phone across 300+ directories. Duplicates deleted.</p>
+        <span class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a href="#" class="service-item c" data-cursor="see">
+        <div class="circle"></div>
+        <span class="num">/ 03</span>
+        <h3>Review <span class="italic">management</span></h3>
+        <p class="desc">Respond, flag fakes, drip real five-stars. No gray hats.</p>
+        <span class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a href="#" class="service-item d" data-cursor="see">
+        <div class="circle"></div>
+        <span class="num">/ 04</span>
+        <h3>Map-pack <span class="italic">ranking</span></h3>
+        <p class="desc">Categories, services, posts, geo-photos, Q&A — every signal Google uses.</p>
+        <span class="arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- Process + GBP mock -->
+<!-- HORIZONTAL CASES -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono reveal-up">(02) Selected work</span>
+      <h2 class="reveal-up">Businesses back <span class="italic">on the map.</span></h2>
+    </div>
+  </div>
+  <div class="h-cases-wrap" id="hcases">
+    <div class="h-cases-stick">
+      <div class="h-cases-track" id="hTrack">
+        <article class="h-case b" data-cursor="view">
+          <div class="blob"></div>
+          <div><span class="tag">Restaurant · Portland</span><h4>Sakura Ramen House — <span class="italic">page two</span> to the local three.</h4></div>
+          <div class="foot"><div class="result"><span class="big">#9 → #1</span><span class="lab">Map-pack rank</span></div><span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></div>
+        </article>
+        <article class="h-case r" data-cursor="view">
+          <div class="blob"></div>
+          <div><span class="tag">Home service · Denver</span><h4>Northline Plumbing <span class="italic">reinstated</span> in under 48 hours.</h4></div>
+          <div class="foot"><div class="result"><span class="big">48h</span><span class="lab">Reinstatement</span></div><span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></div>
+        </article>
+        <article class="h-case y" data-cursor="view">
+          <div class="blob"></div>
+          <div><span class="tag">Healthcare · Miami</span><h4>Dr. Alvarez Dental <span class="italic">quadrupled</span> new-patient calls.</h4></div>
+          <div class="foot"><div class="result"><span class="big">+387%</span><span class="lab">Monthly calls</span></div><span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></div>
+        </article>
+        <article class="h-case g" data-cursor="view">
+          <div class="blob"></div>
+          <div><span class="tag">Fitness · Seattle</span><h4>Harbor Yoga rebuilt a <span class="italic">4.9-star</span> reputation.</h4></div>
+          <div class="foot"><div class="result"><span class="big">4.6 → 4.9</span><span class="lab">Avg rating</span></div><span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></div>
+        </article>
+        <article class="h-case b" data-cursor="view">
+          <div class="blob"></div>
+          <div><span class="tag">Retail · Chicago</span><h4>Linden Boutique went from <span class="italic">invisible</span> to top three.</h4></div>
+          <div class="foot"><div class="result"><span class="big">+612%</span><span class="lab">Direction requests</span></div><span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span></div>
+        </article>
+      </div>
+      <div class="h-progress"><i id="hProg"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
 <section class="section" id="process">
   <div class="wrap">
     <div class="section-head">
-      <span class="mono">(02) Process</span>
-      <h2>How we <span class="italic">fix it.</span></h2>
+      <span class="mono reveal-up">(03) Process</span>
+      <h2 class="reveal-up">How we <span class="italic">fix it.</span></h2>
     </div>
-    <div class="process">
-      <div class="process-card">
+    <div class="process-grid">
+      <div class="process-card reveal-up">
         <div class="gbp-mock">
           <div class="head">
             <div class="gbp-avatar">R</div>
@@ -478,13 +403,13 @@ footer{padding-block:72px 40px;border-top:1px solid var(--line)}
           </div>
           <div class="gbp-bar">
             <div class="row"><span>Profile health</span><b>Excellent</b></div>
-            <div class="trk"><i></i></div>
+            <div class="trk"><i id="healthBar"></i></div>
           </div>
         </div>
       </div>
-      <div class="process-copy">
+      <div class="process-copy reveal-up">
         <span class="mono">Our method</span>
-        <h3>A playbook built on <span class="italic">suspension reinstatement.</span></h3>
+        <h3>A playbook built on <span class="italic">reinstatement.</span></h3>
         <p>Every engagement starts with a public health score and a shortlist of the exact signals Google is penalising. Then we fix them, in order of impact.</p>
         <div class="steps">
           <div class="step"><span class="n">01</span><div><h6>Audit</h6><small>23-point profile scan + off-site citation sweep.</small></div></div>
@@ -497,50 +422,10 @@ footer{padding-block:72px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- Cases -->
-<section class="section" id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="mono">(03) Selected work</span>
-      <h2>Businesses back <span class="italic">on the map.</span></h2>
-    </div>
-    <div class="cases">
-      <a class="case b" href="#">
-        <div><span class="tag">Restaurant · Portland</span><h4>Sakura Ramen House rose from page two to the local three.</h4></div>
-        <div class="foot">
-          <div class="result"><span class="big">#9 → #1</span><span class="lab">Map-pack rank</span></div>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-      </a>
-      <a class="case r" href="#">
-        <div><span class="tag">Home service · Denver</span><h4>Northline Plumbing reinstated in under 48 hours.</h4></div>
-        <div class="foot">
-          <div class="result"><span class="big">48h</span><span class="lab">Reinstatement</span></div>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-      </a>
-      <a class="case y" href="#">
-        <div><span class="tag">Healthcare · Miami</span><h4>Dr. Alvarez Dental quadrupled new-patient calls.</h4></div>
-        <div class="foot">
-          <div class="result"><span class="big">+387%</span><span class="lab">Monthly calls</span></div>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-      </a>
-      <a class="case g" href="#">
-        <div><span class="tag">Fitness · Seattle</span><h4>Harbor Yoga Studio rebuilt a 4.9-star reputation.</h4></div>
-        <div class="foot">
-          <div class="result"><span class="big">4.6 → 4.9</span><span class="lab">Avg rating</span></div>
-          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Audit CTA -->
+<!-- AUDIT CTA -->
 <section class="audit-section" id="audit">
   <div class="wrap">
-    <div class="audit-card">
+    <div class="audit-card reveal-up">
       <span class="mono">Free profile audit</span>
       <h2>Tell us your business. We'll show you <span class="italic">what's broken.</span></h2>
       <form class="audit-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Scanning…';">
@@ -551,39 +436,18 @@ footer{padding-block:72px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
         <h4>Say hello</h4>
         <div class="mail">hello@googlefixmybiz.co</div>
-        <div style="color:var(--muted);font-size:14px;line-height:1.55">
-          Mon–Fri · 9a–6p CT<br>
-          We reply within 4 business hours.
-        </div>
+        <div style="color:var(--muted);font-size:14px;line-height:1.55">Mon–Fri · 9a–6p CT<br>We reply within 4 business hours.</div>
       </div>
-      <div class="foot-col">
-        <h4>Services</h4>
-        <a href="#">Suspension recovery</a>
-        <a href="#">Citation cleanup</a>
-        <a href="#">Review management</a>
-        <a href="#">Map-pack ranking</a>
-      </div>
-      <div class="foot-col">
-        <h4>Studio</h4>
-        <a href="#">About</a>
-        <a href="#">Case studies</a>
-        <a href="#">Pricing</a>
-        <a href="#">Careers</a>
-      </div>
-      <div class="foot-col">
-        <h4>Follow</h4>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
-        <a href="#">X / Twitter</a>
-        <a href="#">YouTube</a>
-      </div>
+      <div class="foot-col"><h4>Services</h4><a href="#">Suspension recovery</a><a href="#">Citation cleanup</a><a href="#">Review management</a><a href="#">Map-pack ranking</a></div>
+      <div class="foot-col"><h4>Studio</h4><a href="#">About</a><a href="#">Case studies</a><a href="#">Pricing</a><a href="#">Careers</a></div>
+      <div class="foot-col"><h4>Follow</h4><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a><a href="#">YouTube</a></div>
     </div>
     <div class="foot-huge" aria-hidden="true">
       <span class="hb">G</span><span class="hr">o</span><span class="hy">o</span><span class="hg">g</span><span class="hb">l</span><span class="hr">e</span>&nbsp;<span class="italic">Fix My Biz.</span>
@@ -594,3 +458,116 @@ footer{padding-block:72px 40px;border-top:1px solid var(--line)}
     </div>
   </div>
 </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Lenis smooth scroll
+  var lenis = null;
+  if (typeof Lenis !== 'undefined'){
+    lenis = new Lenis({ duration: 1.1, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); }, smoothWheel:true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  // Custom cursor
+  var cur = document.getElementById('cur');
+  var curLabel = document.getElementById('curLabel');
+  var cx = window.innerWidth/2, cy = window.innerHeight/2;
+  var tx = cx, ty = cy;
+  window.addEventListener('pointermove', function(e){ tx = e.clientX; ty = e.clientY; });
+  gsap.ticker.add(function(){
+    cx += (tx - cx)*0.18; cy += (ty - cy)*0.18;
+    if (cur){ cur.style.left = cx+'px'; cur.style.top = cy+'px'; }
+    if (curLabel){ curLabel.style.left = cx+'px'; curLabel.style.top = cy+'px'; }
+  });
+  document.querySelectorAll('[data-cursor]').forEach(function(el){
+    el.addEventListener('pointerenter', function(){
+      cur.classList.add('big');
+      curLabel.textContent = el.getAttribute('data-cursor');
+      curLabel.classList.add('on');
+    });
+    el.addEventListener('pointerleave', function(){
+      cur.classList.remove('big');
+      curLabel.classList.remove('on');
+    });
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('[data-mag]').forEach(function(el){
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = e.clientX - (r.left + r.width/2);
+      var y = e.clientY - (r.top + r.height/2);
+      gsap.to(el, { x: x*0.25, y: y*0.25, duration: 0.5, ease: 'power3.out' });
+    });
+    el.addEventListener('pointerleave', function(){
+      gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.4)' });
+    });
+  });
+
+  // Nav scroll class
+  var nav = document.getElementById('nav');
+  ScrollTrigger.create({ start: 'top -50', end: 99999, onUpdate: function(s){ nav.classList.toggle('scrolled', s.scroll() > 50); } });
+
+  // Hero word reveal
+  gsap.to('.hero-title .word, .hero-title .pin-svg', {
+    y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08, delay: 0.2
+  });
+
+  // Reveal-up
+  gsap.utils.toArray('.reveal-up').forEach(function(el){
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%',
+      onEnter: function(){ el.classList.add('in'); }
+    });
+  });
+
+  // Statement words
+  gsap.utils.toArray('#stmt .word').forEach(function(w){ /* noop setup */ });
+  gsap.to('#stmt .word', {
+    y: 0, duration: 1, ease: 'expo.out', stagger: 0.04,
+    scrollTrigger: { trigger: '#stmt', start: 'top 70%' }
+  });
+
+  // Horizontal cases pin
+  var track = document.getElementById('hTrack');
+  var wrap = document.getElementById('hcases');
+  var prog = document.getElementById('hProg');
+  if (track && wrap){
+    var scrollLen = function(){ return track.scrollWidth - window.innerWidth + 64; };
+    gsap.to(track, {
+      x: function(){ return -scrollLen(); },
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrap,
+        start: 'top top',
+        end: function(){ return '+='+scrollLen(); },
+        scrub: 0.6,
+        pin: true,
+        invalidateOnRefresh: true,
+        onUpdate: function(s){ if (prog) prog.style.transform = 'scaleX('+s.progress+')'; }
+      }
+    });
+  }
+
+  // Health bar fills on enter
+  gsap.to('#healthBar', {
+    width: '92%', duration: 1.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '#healthBar', start: 'top 85%' }
+  });
+
+  // Reduce motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    gsap.globalTimeline.timeScale(3);
+  }
+})();
+</script>
