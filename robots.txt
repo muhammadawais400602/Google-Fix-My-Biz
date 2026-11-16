@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://google-fix-my-biz.vercel.app/sitemap.xml
