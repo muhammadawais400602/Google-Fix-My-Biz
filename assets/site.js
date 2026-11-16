@@ -273,15 +273,33 @@
       window.dispatchEvent(new Event('gfmb:intro-done'));
       onScroll();
     };
-    var elapsed = performance.now() - (window.__introT0 || performance.now());
-    var tReveal = setTimeout(startReveals, Math.max(0, 2200 - elapsed));
-    var tEnd = setTimeout(finish, Math.max(0, 2800 - elapsed));
+    /* Follow the animation itself instead of wall-clock timers: the overlay's CSS animations start when the
+       page first paints, which on a phone can be well after this script's own start time. */
+    var revealTimer = null;
+    var curtainStarted = function(){
+      if (revealTimer === null) revealTimer = setTimeout(startReveals, 350);
+    };
+    var panel = $('.intro-panel.bot', intro);
+    if (panel) {
+      panel.addEventListener('animationstart', function(e){ if (/^ipBot/.test(e.animationName)) curtainStarted(); });
+      panel.addEventListener('animationend', function(e){ if (/^ipBot/.test(e.animationName)) finish(); });
+    }
+    try {
+      (intro.getAnimations ? intro.getAnimations({ subtree: true }) : []).forEach(function(a){
+        if (a.animationName === 'ipBot') {
+          if (a.currentTime >= 1900) curtainStarted();
+          a.finished.then(finish, function(){});
+        }
+      });
+    } catch (err) {}
+    if (getComputedStyle(intro).visibility === 'hidden') { startReveals(); finish(); }
+    var hardStop = setTimeout(function(){ startReveals(); finish(); }, 7000);
     var skip = function(){
       if (finished || intro.classList.contains('out')) return;
       intro.classList.add('out');
-      clearTimeout(tReveal); clearTimeout(tEnd);
+      clearTimeout(revealTimer); clearTimeout(hardStop);
       startReveals();
-      setTimeout(finish, 750);
+      setTimeout(finish, 800);
     };
     $('.intro-skip', intro).addEventListener('click', skip);
     intro.addEventListener('click', skip);

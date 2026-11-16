@@ -52,7 +52,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.035em;line-height:1.08}
 /* ---------- logo intro (plays once per visit; pure CSS so it can never get stuck) ---------- */
 .intro{display:none}
 html.intro-lock{overflow:hidden}
-html.intro-on .intro{display:block;position:fixed;inset:0;z-index:300;animation:introGone 0s linear 2.8s forwards}
+html.intro-on .intro{display:block;position:fixed;inset:0;z-index:300;animation:introGone 0s linear 3.2s forwards}
 @keyframes introGone{to{visibility:hidden;pointer-events:none}}
 html.intro-on .orbs i{animation-play-state:paused}
 .intro-panel,.intro-center{will-change:transform;backface-visibility:hidden}
