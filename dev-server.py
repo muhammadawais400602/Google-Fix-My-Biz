@@ -11,7 +11,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         path = path.split('?', 1)[0].split('#', 1)[0]
         p = os.path.join(ROOT, path.lstrip('/'))
         if os.path.isdir(p):
-            p = os.path.join(p, 'index.html')
+            idx = os.path.join(p, 'index.html')
+            p = idx if os.path.exists(idx) else p.rstrip('/') + '.html'
         if not os.path.exists(p) and os.path.exists(p + '.html'):
             p += '.html'
         return p if os.path.exists(p) else os.path.join(ROOT, '404.html')
