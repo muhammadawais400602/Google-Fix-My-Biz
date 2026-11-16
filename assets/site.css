@@ -379,6 +379,8 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.035em;line-height:1.08}
 }
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
 
 /* split headings never double-animate with .rv; tilt keeps its fade-in */
 .rv[data-split]{opacity:1;transform:none}

@@ -43,8 +43,11 @@
     var el = d.getElementById(decodeURIComponent(u.hash.slice(1)));
     if (!el) return;
     e.preventDefault();
-    if (lenis) lenis.scrollTo(el, { offset: -90, duration: 1.4 });
-    else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    if (lenis) {
+      var y0 = window.scrollY;
+      lenis.scrollTo(y0, { immediate: true, force: true });
+      lenis.scrollTo(el.getBoundingClientRect().top + y0 - 90, { duration: 1.4 });
+    } else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     history.pushState(null, '', u.hash);
     window.dispatchEvent(new HashChangeEvent('hashchange'));
   });
