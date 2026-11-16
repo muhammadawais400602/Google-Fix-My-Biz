@@ -1,0 +1,304 @@
+<!--
+title: Case Studies
+description: Real recovery and local SEO results: suspended profiles reinstated in 72 hours, map-pack rankings rebuilt and calls up, for restaurants, home services, healthcare, retail, legal and franchise brands.
+nav: case-studies
+-->
+<style>
+.cs-feat{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+@media(max-width:960px){.cs-feat{grid-template-columns:1fr;gap:40px}}
+.cs-map{background:#fff;border-radius:32px;border:1px solid var(--line);padding:28px;box-shadow:0 40px 80px -50px rgba(11,26,59,.55)}
+.cs-map-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.cs-map-top small{display:block;color:var(--muted);font-size:13px}
+.cs-map-top b{font-size:17px}
+.cs-seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--soft)}
+.cs-seg button{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;transition:background .25s,color .25s}
+.cs-seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.cs-map .rg{gap:6px}
+.cs-map .rg i{font-size:clamp(10px,1.2vw,13px);border-radius:10px}
+.cs-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted);align-items:center}
+.cs-legend span{display:inline-flex;align-items:center;gap:6px}
+.cs-legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.cs-state{margin-left:auto;font-weight:700;color:var(--ink)}
+.cs-story{display:grid;gap:22px;margin-top:30px}
+.cs-story div{padding-left:22px;border-left:4px solid var(--g-blue)}
+.cs-story div:nth-child(2){border-color:var(--g-yellow)}
+.cs-story div:nth-child(3){border-color:var(--g-green)}
+.cs-story h3{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.cs-story p{font-size:17px;line-height:1.55}
+.cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:1100px){.cs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.cs-grid{grid-template-columns:1fr}}
+.cs-item{display:block}
+.cs-card{display:flex;flex-direction:column;width:100%;height:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;transition:box-shadow .35s,border-color .3s}
+.cs-card:hover{box-shadow:0 30px 60px -34px rgba(11,26,59,.5);border-color:transparent}
+.cs-card .ph{aspect-ratio:3/2;overflow:hidden;position:relative;background:#dde3ee}
+.cs-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.cs-card:hover .ph img{transform:scale(1.06)}
+.cs-card .ph .tag{position:absolute;left:14px;top:14px;background:#fff}
+.cs-card .bd{padding:24px 26px 26px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cs-card .big{font-size:clamp(40px,4vw,56px);font-weight:600;letter-spacing:-.05em;line-height:1;color:var(--g-blue);font-variant-numeric:tabular-nums}
+.cs-card .big small{font-size:15px;color:var(--muted);letter-spacing:0;font-weight:500;margin-left:6px}
+.cs-card h3{font-size:21px;margin-top:6px}
+.cs-card p{color:var(--muted);font-size:15px;line-height:1.5}
+.cs-card .more{margin-top:auto;padding-top:10px;font-weight:600;font-size:14px;color:var(--g-blue)}
+.cs-item:nth-child(4n+2) .big{color:var(--g-red)}
+.cs-item:nth-child(4n+3) .big{color:#b06d00}
+.cs-item:nth-child(4n+4) .big{color:#188038}
+.cs-empty{text-align:center;color:var(--muted);padding:40px 0}
+/* dialog */
+.cs-dlg{border:0;padding:0;border-radius:28px;max-width:min(760px,calc(100vw - 24px));width:100%;max-height:calc(100vh - 32px);overflow:hidden;box-shadow:0 60px 120px -30px rgba(0,0,0,.55);background:#fff;color:var(--ink);margin:auto}
+.cs-dlg::backdrop{background:rgba(11,26,59,.6);backdrop-filter:blur(4px)}
+.cs-dlg[open]{animation:csin .45s var(--ease)}
+@keyframes csin{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.cs-dlg .scroll{max-height:calc(100vh - 32px);overflow-y:auto;overscroll-behavior:contain}
+.cs-dlg .hero-img{aspect-ratio:16/7;overflow:hidden}
+.cs-dlg .hero-img img{width:100%;height:100%;object-fit:cover}
+.cs-dlg .body{padding:30px 36px 36px}
+.cs-dlg .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.cs-dlg .meta span{font-size:14px;color:var(--muted);font-weight:500}
+.cs-dlg h2{font-size:clamp(26px,3vw,36px)}
+.cs-dlg .res{display:flex;gap:16px;align-items:baseline;margin:16px 0 4px;flex-wrap:wrap}
+.cs-dlg .res b{font-size:56px;letter-spacing:-.05em;color:var(--g-blue);line-height:1;font-weight:600}
+.cs-dlg .res span{color:var(--muted);font-weight:500}
+.cs-dlg h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px;font-weight:700}
+.cs-dlg p{font-size:17px;line-height:1.6;color:#2a312c}
+.cs-dlg .x{position:absolute;right:14px;top:14px;z-index:3;width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25);font-size:26px;line-height:1;display:grid;place-items:center;transition:transform .2s}
+.cs-dlg .x:hover{transform:rotate(90deg)}
+.cs-dlg .foot{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:560px){.cs-dlg .body{padding:22px 20px 26px}}
+/* testimonial band */
+.cs-quote{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+@media(max-width:860px){.cs-quote{grid-template-columns:1fr;gap:30px}}
+.cs-quote .pic{width:min(100%,340px);aspect-ratio:1;border-radius:40px;overflow:hidden;position:relative;transform:rotate(-3deg);box-shadow:0 0 0 8px rgba(255,255,255,.1)}
+.cs-quote .pic img{width:100%;height:100%;object-fit:cover}
+.cs-quote q{font-family:"Poppins",sans-serif;font-weight:500;font-size:clamp(24px,3vw,40px);letter-spacing:-.03em;line-height:1.25;quotes:none;display:block}
+.cs-quote .who{margin-top:26px;font-weight:600}
+.cs-quote .who small{display:block;color:rgba(255,255,255,.7);font-weight:400;font-size:15px}
+.cs-quote .stars{display:block;margin-bottom:16px;font-size:20px}
+.cs-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+@media(max-width:860px){.cs-mini{grid-template-columns:1fr}}
+.cs-mini div{padding:24px;border-radius:22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-size:16px;line-height:1.5}
+.cs-mini small{display:block;margin-top:12px;color:rgba(255,255,255,.65);font-size:13px}
+.mq-s{padding:34px 0;border-bottom:1px solid var(--line);background:#fff}
+</style>
+
+<section class="phero">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Case studies</span></nav>
+    <span class="pill rv d1" style="margin-top:20px"><svg><use href="#spark"/></svg>Proof, not promises</span>
+    <h1 data-split>Real businesses. Real rankings back.</h1>
+    <p class="lead rv d2">From a ramen house whose profile vanished on a Friday night to a coffee franchise stuck at rank 14, here is how we got local businesses found again, and what it was worth.</p>
+    <div class="acts rv d3"><a href="#featured" class="btn btn-green" data-mag>See the featured story</a><a href="#all-cases" class="btn btn-outline">Browse all 9 cases</a></div>
+  </div>
+</section>
+
+<section class="mq-s" aria-label="Businesses we have helped">
+  <div class="marq"><div class="marq-track"><span>Sakura Ramen House</span><span>Northline Plumbing</span><span>Dr. Alvarez Dental</span><span>Harbor Yoga</span><span>Linden Boutique</span><span>Rivera's Auto Repair</span><span>Meridian Realty</span><span>Clearwater Spa</span><span>Oakline Coffee</span><span>Fieldstone Law</span></div></div>
+</section>
+
+<section class="sec" style="padding-bottom:40px">
+  <div class="wrap">
+    <div class="nums">
+      <div class="num rv"><b data-count="1200" data-suffix="+">1,200+</b><span>Profiles recovered since 2019</span></div>
+      <div class="num rv d1"><b data-count="94" data-suffix="%">94%</b><span>Reinstatement rate</span></div>
+      <div class="num rv d2"><b data-count="72" data-suffix="h">72h</b><span>Typical time to reinstatement</span></div>
+      <div class="num rv d3"><b data-count="4.9" data-dec="1">4.9</b><span>Average rating across 1,377 reviews</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- featured -->
+<section class="sec" id="featured">
+  <div class="wrap">
+    <div class="cs-feat">
+      <div>
+        <span class="pill rv"><svg><use href="#spark"/></svg>Featured case &middot; Home services</span>
+        <h2 class="rv d1" style="font-size:clamp(34px,4.2vw,56px);letter-spacing:-.045em;margin-top:20px" data-split>Northline Plumbing: from rank 14 to the top 3 in Denver</h2>
+        <div class="cs-story rv d2">
+          <div><h3>Challenge</h3><p>Northline's profile was suspended after a Google review flagged its service-area address. Emergency calls dropped to near zero overnight, and once the profile returned, they sat at an average rank of 14 across the Denver metro.</p></div>
+          <div><h3>What we did</h3><p>We diagnosed the policy trigger, filed a documented appeal with proof of business, converted the listing to a service-area business, rebuilt 120 citations by hand and started a review-request flow for completed jobs.</p></div>
+          <div><h3>Result</h3><p>Reinstated in 48 hours. Within 10 weeks the average rank went from 14.2 to 2.6 and inbound calls rose 186%. Use the map to flip between the first week and week ten.</p></div>
+        </div>
+      </div>
+      <div class="cs-map rv-s">
+        <div class="cs-map-top">
+          <div><small>Map-pack rank &middot; &ldquo;emergency plumber denver&rdquo;</small><b>49 points across the metro</b></div>
+          <div class="cs-seg" role="group" aria-label="Show rankings">
+            <button type="button" data-rank-set="before" data-rank-for="#cs-rg" aria-pressed="true">Before</button>
+            <button type="button" data-rank-set="after" data-rank-for="#cs-rg" aria-pressed="false" id="cs-after">After</button>
+          </div>
+        </div>
+        <div class="rg" id="cs-rg" data-rank="before" data-n="7" data-label="#cs-state" data-before-text="Week 1: avg rank 14.2" data-after-text="Week 10: avg rank 2.6" role="img" aria-label="Heat map of local rankings across Denver, switchable between before and after"></div>
+        <div class="cs-legend"><span><i style="background:#34A853"></i>Rank 1-3</span><span><i style="background:#FBBC04"></i>4-10</span><span><i style="background:#EA4335"></i>11+</span><span class="cs-state" id="cs-state" aria-live="polite">Week 1: avg rank 14.2</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- grid -->
+<section class="sec sec--soft" id="all-cases">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>9 stories</span><h2 data-split>Find a business like yours</h2><p class="rv d2">Filter by industry, then open any card for the full story.</p></div>
+    <div class="chips rv" data-filters="#cs-grid" style="justify-content:center;margin-bottom:40px" role="group" aria-label="Filter by industry">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="restaurants" aria-pressed="false">Restaurants</button>
+      <button type="button" data-filter="home" aria-pressed="false">Home services</button>
+      <button type="button" data-filter="healthcare" aria-pressed="false">Healthcare</button>
+      <button type="button" data-filter="retail" aria-pressed="false">Retail</button>
+      <button type="button" data-filter="legal" aria-pressed="false">Legal</button>
+      <button type="button" data-filter="franchise" aria-pressed="false">Franchise</button>
+    </div>
+    <div>
+      <div class="cs-grid" id="cs-grid">
+        <div class="cs-item" data-cat="restaurants"><button type="button" class="cs-card" data-case="sakura" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=75&w=900&h=600" alt="Restaurant owner taking a card payment at the counter" loading="lazy"><span class="tag red">Restaurants</span></div><div class="bd"><div class="big"><span data-count="212" data-prefix="+" data-suffix="%">+212%</span><small>phone calls</small></div><h3>Sakura Ramen House, Portland</h3><p>Suspended on a Friday, reinstated by Sunday night, then ranked first for &ldquo;ramen near me&rdquo;.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="healthcare"><button type="button" class="cs-card" data-case="alvarez" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=75&w=900&h=600" alt="Woman reviewing data on a tablet" loading="lazy" style="object-position:80% 40%"><span class="tag green">Healthcare</span></div><div class="bd"><div class="big"><span data-count="63" data-prefix="+" data-suffix="%">+63%</span><small>new patients</small></div><h3>Dr. Alvarez Dental, Miami</h3><p>Duplicate listings and a wrong phone number were splitting reviews across three profiles.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="healthcare retail"><button type="button" class="cs-card" data-case="harbor" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=75&w=900&h=600" alt="Two women planning at a laptop" loading="lazy"><span class="tag green">Healthcare</span></div><div class="bd"><div class="big"><span data-count="4.8" data-dec="1">4.8</span><small>avg rank, from 11</small></div><h3>Harbor Yoga, Seattle</h3><p>A stalled studio profile went from page two of the map to the top three in nine weeks.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="retail"><button type="button" class="cs-card" data-case="linden" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&q=75&w=900&h=600" alt="Payment terminal close-up at a shop" loading="lazy"><span class="tag yellow">Retail</span></div><div class="bd"><div class="big"><span data-count="3.1" data-dec="1" data-suffix="x">3.1x</span><small>map views</small></div><h3>Linden Boutique, Chicago</h3><p>A holiday-season suspension nearly cost the boutique its busiest month. It did not.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="home"><button type="button" class="cs-card" data-case="rivera" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=75&w=900&h=600" alt="Two people working at monitors" loading="lazy"><span class="tag">Home services</span></div><div class="bd"><div class="big"><span data-count="148" data-prefix="+" data-suffix="%">+148%</span><small>direction requests</small></div><h3>Rivera's Auto Repair, Austin</h3><p>Category and hours fixes plus 90 clean citations moved a family garage ahead of the chains.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="legal"><button type="button" class="cs-card" data-case="fieldstone" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=75&w=900&h=600" alt="Boardroom meeting around a table" loading="lazy"><span class="tag red">Legal</span></div><div class="bd"><div class="big"><span data-count="41" data-prefix="+" data-suffix="%">+41%</span><small>consult requests</small></div><h3>Fieldstone Law, Phoenix</h3><p>A suspension over a shared office address, solved with proper verification and compliant naming.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="healthcare retail"><button type="button" class="cs-card" data-case="clearwater" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=75&w=900&h=600" alt="Two colleagues high-fiving after a win" loading="lazy"><span class="tag green">Healthcare</span></div><div class="bd"><div class="big"><span data-count="87" data-prefix="+" data-suffix="%">+87%</span><small>online bookings</small></div><h3>Clearwater Spa, San Diego</h3><p>Review replies, fresh photos and weekly posts turned a quiet profile into a booking engine.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="franchise restaurants"><button type="button" class="cs-card" data-case="oakline" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=75&w=900&h=600" alt="Group working together around a table" loading="lazy"><span class="tag yellow">Franchise</span></div><div class="bd"><div class="big"><span data-count="38" data-suffix=" of 41">38</span><small>locations in top 3</small></div><h3>Oakline Coffee, 41-location franchise</h3><p>One account, one playbook and weekly grids rolled out to every store in 90 days.</p><span class="more">Read the story &rarr;</span></div></button></div>
+        <div class="cs-item" data-cat="franchise"><button type="button" class="cs-card" data-case="meridian" aria-haspopup="dialog"><div class="ph"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=75&w=900&h=600" alt="Colleagues watching a presentation in a brick office" loading="lazy"><span class="tag yellow">Franchise</span></div><div class="bd"><div class="big"><span data-count="12" data-suffix=" agents">12</span><small>profiles reinstated</small></div><h3>Meridian Realty, Phoenix</h3><p>Twelve agent profiles flagged at once. We recovered all of them in one coordinated appeal.</p><span class="more">Read the story &rarr;</span></div></button></div>
+      </div>
+      <p class="cs-empty" data-empty hidden>No stories in that category yet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- testimonial -->
+<section class="sec sec--dark" style="overflow:hidden">
+  <div class="orbs" aria-hidden="true" style="opacity:.45"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="cs-quote">
+      <div class="pic rv-s"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=700&h=700" alt="Portrait of Rachel Beckett, Operations at Northline Plumbing" loading="lazy" data-speed=".04" style="height:112%"></div>
+      <div class="rv d1">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <q>Our suspended listing was live again in two days. Three months later we are ranking above competitors who have been on the map for a decade.</q>
+        <div class="who">Rachel Beckett, Operations<small>Northline Plumbing, Denver</small></div>
+      </div>
+    </div>
+    <div class="cs-mini">
+      <div class="rv">&ldquo;They explained every step. No jargon, no mystery.&rdquo;<small>Dr. Alvarez Dental, Miami</small></div>
+      <div class="rv d1">&ldquo;The weekly rank grids are the first marketing report I actually read.&rdquo;<small>Oakline Coffee, franchise</small></div>
+      <div class="rv d2">&ldquo;We were back before the holiday rush. I can't overstate that.&rdquo;<small>Linden Boutique, Chicago</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-band rv-s">
+      <h2 data-split>Your story could be next</h2>
+      <p>Get a free audit and see where your profile stands today, in plain English, within one business day.</p>
+      <div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/pricing" class="btn btn-ghost-w btn-lg">See pricing</a></div>
+    </div>
+  </div>
+</section>
+
+<dialog class="cs-dlg" id="cs-dlg" aria-labelledby="cs-dt">
+  <button type="button" class="x" id="cs-x" aria-label="Close case study">&times;</button>
+  <div class="scroll" data-lenis-prevent>
+    <div class="hero-img"><img id="cs-di" src="" alt=""></div>
+    <div class="body">
+      <div class="meta"><span class="tag" id="cs-dtag"></span><span id="cs-dloc"></span></div>
+      <h2 id="cs-dt"></h2>
+      <div class="res"><b id="cs-dres"></b><span id="cs-dlab"></span></div>
+      <h3>Challenge</h3><p id="cs-dc"></p>
+      <h3>What we did</h3><p id="cs-dw"></p>
+      <h3>Result</h3><p id="cs-dr"></p>
+      <div class="foot"><a href="/free-audit" class="btn btn-green btn-sm">Get a similar result</a><button type="button" class="btn btn-outline btn-sm" id="cs-close2">Close</button></div>
+    </div>
+  </div>
+</dialog>
+
+<!-- scripts -->
+<script>
+(function(){
+  var P = 'https://images.unsplash.com/photo-';
+  var C = {
+    sakura: { t:'Sakura Ramen House', loc:'Portland, OR', tag:'Restaurants', cls:'red', img:'1556740738-b6a63e27c4df', alt:'Restaurant owner taking a card payment at the counter', res:'+212%', lab:'phone calls in 12 weeks',
+      c:'A competitor mass-reported Sakura\'s listing and Google suspended it for alleged policy violations on a Friday afternoon. The dinner rush went silent, and the owners could not see why.',
+      w:'We traced the flag to a mismatch between the storefront name and the profile name, assembled signage and licence evidence, and filed a documented appeal. After reinstatement we rebuilt hours, menu items, photos and 80 citations.',
+      r:'The profile was live again Sunday night, 52 hours after the suspension. Within 12 weeks calls were up 212% and Sakura ranked first for "ramen near me" across downtown Portland.' },
+    alvarez: { t:'Dr. Alvarez Dental', loc:'Miami, FL', tag:'Healthcare', cls:'green', img:'1573164713988-8665fc963095', alt:'Woman reviewing data on a tablet', res:'+63%', lab:'new-patient inquiries',
+      c:'Three profiles existed for one practice: an old address, a former partner and a call-tracking number. Reviews were split and none of them ranked.',
+      w:'We merged and removed the duplicates through Google\'s process, standardised the name, address and phone across 140 listings, and set up a patient review flow compliant with healthcare guidance.',
+      r:'One strong profile now holds all 212 reviews at 4.8 stars. New-patient inquiries rose 63% in four months, and the practice ranks in the top 3 for "dentist near me" in six Miami neighbourhoods.' },
+    harbor: { t:'Harbor Yoga', loc:'Seattle, WA', tag:'Healthcare', cls:'green', img:'1551836022-d5d88e9218df', alt:'Two women planning at a laptop', res:'4.8', lab:'average rank, down from 11',
+      c:'Harbor had a loyal membership but sat on page two of the map. The profile had the wrong primary category and almost no recent activity.',
+      w:'We changed the category to Yoga Studio, added class schedules as services, started weekly posts and photos, and asked members for reviews with a one-tap link.',
+      r:'Nine weeks later the average rank went from 11 to 4.8, and "yoga near me" moved into the top 3 around Capitol Hill. Trial class sign-ups from Google rose 74%.' },
+    linden: { t:'Linden Boutique', loc:'Chicago, IL', tag:'Retail', cls:'yellow', img:'1556745757-8d76bdb6984b', alt:'Payment terminal close-up at a shop', res:'3.1x', lab:'map views vs. last year',
+      c:'Four weeks before the holidays, Linden\'s profile was suspended after a moved storefront triggered an address verification failure.',
+      w:'We prioritised the case, supplied a new lease and utility proof, re-verified by video, and updated every citation to the new address while the appeal ran.',
+      r:'Reinstated in 61 hours, in time for Black Friday weekend. Map views were 3.1x the previous year and in-store direction requests doubled.' },
+    rivera: { t:'Rivera\'s Auto Repair', loc:'Austin, TX', tag:'Home services', cls:'', img:'1551434678-e076c223a692', alt:'Two people working at monitors', res:'+148%', lab:'direction requests',
+      c:'A family garage that had served its neighbourhood for 22 years was invisible next to national chains for "auto repair austin".',
+      w:'We fixed the secondary categories and hours, added a service list with prices, built 90 clean citations and started responding to every review within a day.',
+      r:'Direction requests grew 148% over four months. The shop now holds a rank of 2.4 across a 5 mile grid and has added a second service bay.' },
+    fieldstone: { t:'Fieldstone Law', loc:'Phoenix, AZ', tag:'Legal', cls:'red', img:'1542744173-8e7e53415bb0', alt:'Boardroom meeting around a table', res:'+41%', lab:'consultation requests',
+      c:'Fieldstone shared a suite in a serviced office. Google suspended the listing as a virtual office, and the firm had added keywords to its business name.',
+      w:'We documented the staffed suite and signed lease, removed the keyword-stuffed name, re-verified, and rebuilt the profile with attorney bios and practice-area services.',
+      r:'The profile returned in 4 days and has stayed clean. Consultation requests from Google rose 41% within a quarter.' },
+    clearwater: { t:'Clearwater Spa', loc:'San Diego, CA', tag:'Healthcare', cls:'green', img:'1600880292203-757bb62b4baf', alt:'Two colleagues high-fiving after a win', res:'+87%', lab:'online bookings',
+      c:'Clearwater had a beautiful space and an almost silent profile: 38 reviews, outdated photos and unanswered questions.',
+      w:'We ran a monthly photo shoot calendar, replied to every review, enabled booking links, and posted weekly offers.',
+      r:'Bookings from Google rose 87% in five months, and review count tripled to 118 at 4.9 stars.' },
+    oakline: { t:'Oakline Coffee', loc:'41-location franchise', tag:'Franchise', cls:'yellow', img:'1521737604893-d14cc237f11d', alt:'Group working together around a table', res:'38/41', lab:'locations in the top 3',
+      c:'Every store had a different profile owner, inconsistent names and hours, and seven locations had been suspended at least once.',
+      w:'We consolidated ownership into one organisation, set a naming and category standard, recovered the seven suspended profiles and put every store on weekly rank grids.',
+      r:'In 90 days 38 of 41 locations ranked in the top 3 for "coffee near me", and suspensions dropped to zero over the following year.' },
+    meridian: { t:'Meridian Realty', loc:'Phoenix, AZ', tag:'Franchise', cls:'yellow', img:'1556761175-5973dc0f32e7', alt:'Colleagues watching a presentation in a brick office', res:'12', lab:'agent profiles reinstated',
+      c:'Google flagged twelve agent profiles at once for sharing the brokerage address, and agents were losing leads every day.',
+      w:'We filed one coordinated appeal with a licence roster and office evidence, then trained the agents on compliant naming and sharing rules.',
+      r:'All twelve profiles were reinstated within five days, and none has been flagged since.' }
+  };
+  var dlg = document.getElementById('cs-dlg'), last = null, L = window.GFMB && GFMB.lenis;
+  function $(id){ return document.getElementById(id); }
+  function open(key, btn){
+    var d = C[key]; if (!d) return;
+    last = btn;
+    $('cs-di').src = P + d.img + '?auto=format&fit=crop&q=75&w=1200&h=520';
+    $('cs-di').alt = d.alt;
+    $('cs-dtag').textContent = d.tag; $('cs-dtag').className = 'tag ' + d.cls;
+    $('cs-dloc').textContent = d.loc;
+    $('cs-dt').textContent = d.t; $('cs-dres').textContent = d.res; $('cs-dlab').textContent = d.lab;
+    $('cs-dc').textContent = d.c; $('cs-dw').textContent = d.w; $('cs-dr').textContent = d.r;
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    dlg.querySelector('.scroll').scrollTop = 0;
+    if (L) L.stop();
+    document.body.style.overflow = 'hidden';
+    $('cs-x').focus();
+  }
+  function close(){ if (dlg.open) dlg.close(); }
+  dlg.addEventListener('close', function(){
+    if (L) L.start();
+    document.body.style.overflow = '';
+    if (last) last.focus();
+  });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) close(); });
+  $('cs-x').addEventListener('click', close);
+  $('cs-close2').addEventListener('click', close);
+  document.getElementById('cs-grid').addEventListener('click', function(e){
+    var b = e.target.closest('[data-case]'); if (b) open(b.dataset.case, b);
+  });
+
+  /* auto-play featured map from before to after once visible */
+  var rg = document.getElementById('cs-rg');
+  if ('IntersectionObserver' in window) {
+    var played = false;
+    new IntersectionObserver(function(es, o){
+      es.forEach(function(e){
+        if (e.isIntersecting && !played) {
+          played = true; o.disconnect();
+          setTimeout(function(){ if (rg.dataset.mode !== 'after' && !rg._touched) document.getElementById('cs-after').click(); }, 1800);
+        }
+      });
+    }, { threshold: .5 }).observe(rg);
+  }
+  [].forEach.call(document.querySelectorAll('[data-rank-for="#cs-rg"]'), function(b){
+    b.addEventListener('click', function(ev){ if (ev.isTrusted) rg._touched = true; });
+  });
+})();
+</script>

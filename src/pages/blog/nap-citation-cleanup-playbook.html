@@ -1,0 +1,159 @@
+<!--
+title: The NAP and citation cleanup playbook: one name, address and phone everywhere
+description: A practical playbook for auditing and fixing your business name, address and phone number across Google, directories and your own site.
+nav: blog
+-->
+<style>
+.bl-head{position:relative;overflow:hidden;background:linear-gradient(#fff,var(--soft));padding:56px 0 150px}
+.bl-head>.wrap{position:relative;z-index:1;max-width:1100px}
+.bl-head .crumbs{justify-content:flex-start;flex-wrap:wrap}
+.bl-head .tag{margin-top:26px}
+.bl-head h1{font-size:clamp(32px,4.6vw,60px);letter-spacing:-.045em;line-height:1.05;margin-top:18px;max-width:22ch}
+.bl-by{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:30px}
+.bl-by .who{display:flex;align-items:center;gap:12px}
+.bl-by img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.bl-by b{display:block;font-size:16px}
+.bl-by small{display:block;color:var(--muted);font-size:14px}
+.bl-by .meta{color:var(--muted);font-size:14px;font-weight:500;display:flex;gap:10px;flex-wrap:wrap}
+.bl-cover{margin-top:-110px;position:relative;z-index:2}
+.bl-cover .media{border-radius:32px;overflow:hidden;aspect-ratio:2/1;box-shadow:0 30px 60px -30px rgba(17,20,18,.45);background:var(--sky)}
+.bl-cover img{width:100%;height:100%;object-fit:cover}
+.bl-body{display:grid;grid-template-columns:240px minmax(0,760px);gap:64px;justify-content:center;padding:64px 0 24px;align-items:start}
+.bl-toc{position:sticky;top:110px;font-size:14px}
+.bl-toc h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:14px}
+.bl-toc ol{list-style:none;display:grid;gap:2px;border-left:2px solid var(--line)}
+.bl-toc a{display:block;padding:7px 0 7px 16px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);font-weight:500;line-height:1.35;transition:color .2s,border-color .2s}
+.bl-toc a:hover{color:var(--ink)}
+.bl-toc a.on{color:var(--g-blue);border-left-color:var(--g-blue);font-weight:600}
+.bl-body .prose{margin:0;max-width:none}
+.bl-body .prose h2{scroll-margin-top:100px;font-size:clamp(26px,3vw,34px)}
+.bl-body .prose ol{margin-left:24px}
+.bl-nums{grid-template-columns:repeat(2,1fr)!important;margin:28px 0}
+.bl-nums .num{padding:22px}
+.bl-nums .num span{font-size:14px}
+.bl-promo{margin:44px 0;padding:48px 28px;border-radius:28px}
+.bl-promo h2{font-size:clamp(26px,3.4vw,38px)!important;margin:0 auto!important;color:#fff!important;max-width:20ch}
+.bl-promo p{font-size:17px!important;margin:16px auto 0!important;color:rgba(255,255,255,.92)!important}
+.bl-promo .acts{margin-top:26px}
+.bl-promo .btn{text-decoration:none;color:var(--ink)}
+.bl-promo .btn-ghost-w{color:#fff}
+.bl-promo .btn-ghost-w:hover{color:var(--ink)}
+.bl-end{max-width:1100px;margin:0 auto;padding:32px 0 8px}
+.bl-end .bl-aub{display:flex;gap:16px;align-items:center;padding:24px;border-radius:24px;background:var(--soft)}
+.bl-end .bl-aub img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 64px}
+.bl-end .bl-aub p{color:var(--muted);font-size:15px;line-height:1.5}
+.bl-end .bl-aub b{color:var(--ink)}
+.bl-rel{padding-top:56px}
+.bl-rel h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.04em;margin-bottom:32px}
+.bl-rg{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.bl-rc{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s}
+.bl-rc:hover{transform:translateY(-6px);box-shadow:0 24px 44px -26px rgba(17,20,18,.4)}
+.bl-rc .im{aspect-ratio:16/10;overflow:hidden;background:var(--sky)}
+.bl-rc img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.bl-rc:hover img{transform:scale(1.05)}
+.bl-rc .tx{padding:22px 24px 26px;display:grid;gap:10px;align-content:start}
+.bl-rc .tx small{color:var(--muted);font-size:13px}
+.bl-rc h3{font-size:19px;letter-spacing:-.02em;line-height:1.25}
+@media(max-width:1000px){.bl-body{grid-template-columns:minmax(0,760px)}.bl-toc{display:none}.bl-rg{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.bl-head{padding:40px 0 110px}.bl-cover{margin-top:-80px}.bl-cover .media{aspect-ratio:16/10;border-radius:22px}.bl-rg{grid-template-columns:1fr}.bl-body{padding-top:40px;gap:0}.bl-body .prose{font-size:17px}.bl-nums{grid-template-columns:1fr 1fr!important}.bl-promo{padding:40px 20px}}
+</style>
+
+<header class="bl-head">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog">Learning Hub</a><span aria-hidden="true">/</span><a href="/blog#guides">Guide</a></nav>
+    <span class="tag  rv">Guide</span>
+    <h1 class="rv d1">The NAP and citation cleanup playbook: one name, address and phone everywhere</h1>
+    <div class="bl-by rv d2">
+      <div class="who"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=112&h=112" alt="Portrait of Kate Herbert-Smith" width="56" height="56"><div><b>Kate Herbert-Smith</b><small>Head of Suspension Recovery</small></div></div>
+      <div class="meta"><time datetime="2026-09-24">Sep 24, 2026</time><span aria-hidden="true">&bull;</span><span>10 min read</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap bl-cover rv-s"><div class="media"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=75&w=1600&h=800" alt="A team working at laptops, auditing business listings together" width="1600" height="800"></div></div>
+
+<div class="wrap">
+  <div class="bl-body">
+    <aside class="bl-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#why">Why consistency is worth the effort</a></li><li><a href="#canonical">Step 1: Define your canonical NAP</a></li><li><a href="#audit">Step 2: Find every mention</a></li><li><a href="#prioritise">Step 3: Prioritise</a></li><li><a href="#fix">Step 4: Fix, merge and remove</a></li><li><a href="#build">Step 5: Add citations deliberately</a></li><li><a href="#maintain">Step 6: Maintain it</a></li><li><a href="#done">How you will know it worked</a></li></ol></aside>
+    <article class="prose">
+<p>NAP stands for name, address and phone number. A citation is any online mention of those three details, whether on a directory, a social profile, a chamber of commerce page or a data aggregator. When the details agree everywhere, search engines and assistants can be confident about who you are. When they disagree, you pay for it in rankings, in misrouted customers and sometimes in suspended profiles.</p>
+
+<h2 id="why">Why consistency is worth the effort</h2>
+<p>Think of each citation as a vote that says "this business exists at this address". Votes that match reinforce each other. Votes that differ, such as "Suite 4" on one site and "Ste. 4" on another, or an old phone number from before a move, split the signal. It also confuses customers: a wrong phone number is a lost job.</p>
+
+<h2 id="canonical">Step 1: Define your canonical NAP</h2>
+<p>Before you audit anything, write down the single correct version and treat it as law.</p>
+<ul>
+<li><strong>Name:</strong> exactly as it appears on your signage and legal paperwork. No added keywords.</li>
+<li><strong>Address:</strong> one format, including how you write suite numbers and directions such as "East" or "E".</li>
+<li><strong>Phone:</strong> one primary local number, in one format. Tracking numbers belong in secondary fields only.</li>
+<li><strong>Website and hours:</strong> one URL and one set of hours, including holidays.</li>
+</ul>
+<div class="callout"><strong>Tip.</strong> Keep this in a shared sheet with the date of the last change. When a new hire updates a listing, they copy from the sheet, not from memory.</div>
+
+<h2 id="audit">Step 2: Find every mention</h2>
+<p>Search your business name, old names, old phone numbers and previous addresses. Check the main directories, the big map and navigation platforms, industry-specific sites and the data aggregators that feed smaller directories. Build a spreadsheet with one row per listing and columns for the URL, what it says for each field, whether it is correct, and whether you control it.</p>
+<h3>Common offenders</h3>
+<ul>
+<li>Listings from a previous address after a move.</li>
+<li>Duplicate listings created by an old agency or a former owner.</li>
+<li>A tracking number used as the main phone on a directory.</li>
+<li>Abbreviation differences and missing suite numbers.</li>
+</ul>
+
+<h2 id="prioritise">Step 3: Prioritise</h2>
+<p>You cannot fix everything on day one, and you do not need to. Rank each problem by how much visibility the site has and how wrong the data is. A wrong phone number on a high-traffic directory comes first; a stray abbreviation on an obscure site can wait.</p>
+<ol>
+<li>Your own website and your Google Business Profile.</li>
+<li>Major directories and data aggregators.</li>
+<li>Industry and local directories.</li>
+<li>Everything else.</li>
+</ol>
+
+<blockquote>Fix the source, and the copies tend to follow. Fix the copies without the source, and the errors come back.</blockquote>
+
+<h2 id="fix">Step 4: Fix, merge and remove</h2>
+<p>Claim and edit listings you can control. For duplicates, claim both, merge where the platform allows, and request removal of the extra. For listings you cannot edit directly, use the platform's correction or support form and keep the confirmation. Note each change and date in your sheet. Be patient: some platforms apply edits within hours, while others take weeks.</p>
+<p>If duplicates sit on your Google profile itself, take care. Do not create new listings to replace them, and see our <a href="/blog/suspension-recovery-checklist">suspension-recovery checklist</a> if any change leads to a verification problem.</p>
+
+<aside class="cta-band bl-promo" aria-label="Get help"><h2>Prefer to hand it off?</h2><p>We build and clean citations for $2 each, with a full before-and-after report. Start with a free audit to see how many mismatches you have.</p><div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/pricing" class="btn btn-ghost-w btn-lg">See pricing</a></div></aside>
+
+<h2 id="build">Step 5: Add citations deliberately</h2>
+<p>Once the data is clean, add presence where it counts: directories relevant to your trade, local business associations and reputable community sites. Quality beats quantity. Always paste from your canonical sheet so every new citation starts correct.</p>
+
+<h2 id="maintain">Step 6: Maintain it</h2>
+<p>Citations decay. People move, numbers change, aggregators overwrite good data with stale data. Put a quarterly check in the calendar: re-run your audit searches, spot-check the top ten listings and confirm hours before holidays. Whenever the business changes, update the canonical sheet first and propagate second.</p>
+<p>Consistent data is also one of the quieter inputs into <a href="/blog/map-pack-ranking-factors-2026">map-pack rankings</a>. It will not rescue a weak profile on its own, but it removes a drag that is surprisingly common.</p>
+
+<h2 id="done">How you will know it worked</h2>
+<p>Expect cleaner search results for your name, fewer misdirected calls, and over several weeks a steadier position in local results. See what is included in our <a href="/services#citations">citation services</a>, or ask us for a free audit and we will show you your own mismatches.</p>
+</article>
+  </div>
+
+  <div class="bl-end">
+    <div class="bl-aub"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=128&h=128" alt="" loading="lazy"><p><b>Written by Kate Herbert-Smith</b>, Head of Suspension Recovery at googlefixmybiz. Our team of 40+ specialists has recovered more than 1,200 Google Business Profiles since 2019. Questions? <a href="/contact" class="link-arrow" style="display:inline">Get in touch</a>.</p></div>
+  </div>
+
+  <section class="bl-end bl-rel" aria-labelledby="rel-h">
+    <h2 id="rel-h" data-split>Related reading</h2>
+    <div class="bl-rg"><a class="bl-rc rv" href="/blog/suspension-recovery-checklist"><div class="im"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=75&w=700&h=440" alt="" loading="lazy"></div><div class="tx"><span class="tag " style="justify-self:start">Guide</span><h3>The complete suspension-recovery checklist (+ downloadable template)</h3><small>Nov 12, 2026 &bull; 12 min read</small></div></a><a class="bl-rc rv" href="/blog/fake-review-removal-guide"><div class="im"><img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=75&w=700&h=440" alt="" loading="lazy"></div><div class="tx"><span class="tag " style="justify-self:start">Guide</span><h3>How to legitimately remove fake reviews without getting flagged yourself</h3><small>Oct 8, 2026 &bull; 8 min read</small></div></a><a class="bl-rc rv" href="/blog/map-pack-ranking-factors-2026"><div class="im"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=75&w=700&h=440" alt="" loading="lazy"></div><div class="tx"><span class="tag green" style="justify-self:start">Research</span><h3>Map-pack ranking factors in 2026: what actually moves you into the top three</h3><small>Sep 10, 2026 &bull; 11 min read</small></div></a></div>
+    <p style="margin-top:32px"><a href="/blog" class="link-arrow">Back to the Learning Hub <svg><use href="#chev"/></svg></a></p>
+  </section>
+</div>
+<div style="height:72px"></div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.bl-toc a'));
+  if(!links.length||!('IntersectionObserver' in window))return;
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.remove('on');});var a=map[e.target.id];if(a)a.classList.add('on');}
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  Object.keys(map).forEach(function(id){var h=document.getElementById(id);if(h)io.observe(h);});
+})();
+</script>
+

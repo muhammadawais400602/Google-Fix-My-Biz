@@ -1,0 +1,168 @@
+<!--
+title: The complete suspension-recovery checklist (+ downloadable template)
+description: A step-by-step checklist for getting a suspended Google Business Profile reinstated, from diagnosis and evidence to the appeal itself and life after approval.
+nav: blog
+-->
+<style>
+.bl-head{position:relative;overflow:hidden;background:linear-gradient(#fff,var(--soft));padding:56px 0 150px}
+.bl-head>.wrap{position:relative;z-index:1;max-width:1100px}
+.bl-head .crumbs{justify-content:flex-start;flex-wrap:wrap}
+.bl-head .tag{margin-top:26px}
+.bl-head h1{font-size:clamp(32px,4.6vw,60px);letter-spacing:-.045em;line-height:1.05;margin-top:18px;max-width:22ch}
+.bl-by{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:30px}
+.bl-by .who{display:flex;align-items:center;gap:12px}
+.bl-by img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.bl-by b{display:block;font-size:16px}
+.bl-by small{display:block;color:var(--muted);font-size:14px}
+.bl-by .meta{color:var(--muted);font-size:14px;font-weight:500;display:flex;gap:10px;flex-wrap:wrap}
+.bl-cover{margin-top:-110px;position:relative;z-index:2}
+.bl-cover .media{border-radius:32px;overflow:hidden;aspect-ratio:2/1;box-shadow:0 30px 60px -30px rgba(17,20,18,.45);background:var(--sky)}
+.bl-cover img{width:100%;height:100%;object-fit:cover}
+.bl-body{display:grid;grid-template-columns:240px minmax(0,760px);gap:64px;justify-content:center;padding:64px 0 24px;align-items:start}
+.bl-toc{position:sticky;top:110px;font-size:14px}
+.bl-toc h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:14px}
+.bl-toc ol{list-style:none;display:grid;gap:2px;border-left:2px solid var(--line)}
+.bl-toc a{display:block;padding:7px 0 7px 16px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);font-weight:500;line-height:1.35;transition:color .2s,border-color .2s}
+.bl-toc a:hover{color:var(--ink)}
+.bl-toc a.on{color:var(--g-blue);border-left-color:var(--g-blue);font-weight:600}
+.bl-body .prose{margin:0;max-width:none}
+.bl-body .prose h2{scroll-margin-top:100px;font-size:clamp(26px,3vw,34px)}
+.bl-body .prose ol{margin-left:24px}
+.bl-nums{grid-template-columns:repeat(2,1fr)!important;margin:28px 0}
+.bl-nums .num{padding:22px}
+.bl-nums .num span{font-size:14px}
+.bl-promo{margin:44px 0;padding:48px 28px;border-radius:28px}
+.bl-promo h2{font-size:clamp(26px,3.4vw,38px)!important;margin:0 auto!important;color:#fff!important;max-width:20ch}
+.bl-promo p{font-size:17px!important;margin:16px auto 0!important;color:rgba(255,255,255,.92)!important}
+.bl-promo .acts{margin-top:26px}
+.bl-promo .btn{text-decoration:none;color:var(--ink)}
+.bl-promo .btn-ghost-w{color:#fff}
+.bl-promo .btn-ghost-w:hover{color:var(--ink)}
+.bl-end{max-width:1100px;margin:0 auto;padding:32px 0 8px}
+.bl-end .bl-aub{display:flex;gap:16px;align-items:center;padding:24px;border-radius:24px;background:var(--soft)}
+.bl-end .bl-aub img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 64px}
+.bl-end .bl-aub p{color:var(--muted);font-size:15px;line-height:1.5}
+.bl-end .bl-aub b{color:var(--ink)}
+.bl-rel{padding-top:56px}
+.bl-rel h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.04em;margin-bottom:32px}
+.bl-rg{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.bl-rc{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s}
+.bl-rc:hover{transform:translateY(-6px);box-shadow:0 24px 44px -26px rgba(17,20,18,.4)}
+.bl-rc .im{aspect-ratio:16/10;overflow:hidden;background:var(--sky)}
+.bl-rc img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.bl-rc:hover img{transform:scale(1.05)}
+.bl-rc .tx{padding:22px 24px 26px;display:grid;gap:10px;align-content:start}
+.bl-rc .tx small{color:var(--muted);font-size:13px}
+.bl-rc h3{font-size:19px;letter-spacing:-.02em;line-height:1.25}
+@media(max-width:1000px){.bl-body{grid-template-columns:minmax(0,760px)}.bl-toc{display:none}.bl-rg{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.bl-head{padding:40px 0 110px}.bl-cover{margin-top:-80px}.bl-cover .media{aspect-ratio:16/10;border-radius:22px}.bl-rg{grid-template-columns:1fr}.bl-body{padding-top:40px;gap:0}.bl-body .prose{font-size:17px}.bl-nums{grid-template-columns:1fr 1fr!important}.bl-promo{padding:40px 20px}}
+</style>
+
+<header class="bl-head">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog">Learning Hub</a><span aria-hidden="true">/</span><a href="/blog#guides">Guide</a></nav>
+    <span class="tag  rv">Guide</span>
+    <h1 class="rv d1">The complete suspension-recovery checklist (+ downloadable template)</h1>
+    <div class="bl-by rv d2">
+      <div class="who"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=112&h=112" alt="Portrait of Kate Herbert-Smith" width="56" height="56"><div><b>Kate Herbert-Smith</b><small>Head of Suspension Recovery</small></div></div>
+      <div class="meta"><time datetime="2026-11-12">Nov 12, 2026</time><span aria-hidden="true">&bull;</span><span>12 min read</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap bl-cover rv-s"><div class="media"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=75&w=1600&h=800" alt="A woman reviewing a tablet in a server corridor, working through a technical checklist" width="1600" height="800"></div></div>
+
+<div class="wrap">
+  <div class="bl-body">
+    <aside class="bl-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#stop">Stop and do not touch anything</a></li><li><a href="#diagnose">Diagnose the likely cause</a></li><li><a href="#evidence">Gather your evidence pack</a></li><li><a href="#fix">Fix the profile so it matches the evidence</a></li><li><a href="#submit">Submit the appeal once, properly</a></li><li><a href="#followup">Follow up on a sensible schedule</a></li><li><a href="#after">After reinstatement, protect the profile</a></li><li><a href="#mistakes">The three mistakes we see most</a></li></ol></aside>
+    <article class="prose">
+<p>A suspended Google Business Profile feels like an emergency because it is one. Calls stop, directions requests vanish and the map listing your customers used yesterday simply is not there. The good news is that most suspensions are recoverable. Across more than 1,200 profiles we have recovered since 2019, the single biggest predictor of success was not luck or inside contacts. It was a clean, complete, well-ordered appeal.</p>
+<p>This checklist is the same sequence our team follows. Work through it in order and do not skip the early steps, because an appeal filed too fast is usually an appeal filed twice.</p>
+
+<h2 id="stop">1. Stop and do not touch anything</h2>
+<p>The instinct is to start editing immediately. Resist it. Every edit made while a profile is suspended can look, to a reviewer, like an attempt to hide something. Before you do anything else:</p>
+<ul>
+<li>Take screenshots of the suspension notice and the dashboard state, with the date visible.</li>
+<li>Note the exact wording of the message. "Suspended" and "Not verified" are different problems.</li>
+<li>Do not create a new profile for the same business. Duplicates are the fastest route to a second suspension.</li>
+</ul>
+
+<h2 id="diagnose">2. Diagnose the likely cause</h2>
+<p>Google rarely tells you precisely why a profile was suspended, so you work backwards. In our case files the same handful of causes appear again and again.</p>
+<h3>Quality-guideline violations</h3>
+<p>Keyword-stuffed business names, a service-area business showing a street address it does not serve customers from, a virtual office or a mailbox address, and category choices that do not match what the business actually does.</p>
+<h3>Verification and ownership problems</h3>
+<p>A failed video verification, a profile that changed hands without a proper transfer, or a former agency that still holds primary ownership.</p>
+<h3>Suspicious activity</h3>
+<p>Sudden bursts of edits, many reviews in a short window, or changes to name, address and category within the same week.</p>
+<div class="callout"><strong>Rule of thumb.</strong> If you changed your business name, address or category in the 30 days before the suspension, that change is your prime suspect. Revert only when you have evidence the old version was the accurate one.</div>
+
+<h2 id="evidence">3. Gather your evidence pack</h2>
+<p>Reviewers decide quickly and cannot ask follow-up questions, so the pack you submit has to answer them in advance. Collect:</p>
+<ol>
+<li>A business license, registration or tax document showing the legal name and address.</li>
+<li>A recent utility bill or lease that shows the same address.</li>
+<li>Photos of the storefront with the sign visible, plus interior and team photos.</li>
+<li>For service-area businesses, a vehicle photo with branding and a list of the areas you serve.</li>
+<li>A short video walking from the street to the entrance, if verification is the issue.</li>
+</ol>
+<p>Every document should show the same name and address as the profile. If they do not match, fix your source data before you appeal, not after.</p>
+
+<h2 id="fix">4. Fix the profile so it matches the evidence</h2>
+<p>This is where most do-it-yourself appeals fail. Make the listing an honest mirror of your documents: the real legal or trading name without keywords, a precise primary category, the correct address or a hidden address for a service-area business, and consistent opening hours. Then check that the same details appear on your website and the major directories. Our <a href="/blog/nap-citation-cleanup-playbook">NAP and citation cleanup playbook</a> walks through that part in detail.</p>
+
+<blockquote>An appeal is not an argument. It is evidence, presented in the order a reviewer needs it.</blockquote>
+
+<aside class="cta-band bl-promo" aria-label="Get help"><h2>Want a specialist to file it for you?</h2><p>Our team reinstates 94% of profiles, typically within 72 hours, and every recovery carries a 90-day warranty. Request a free audit and we will tell you the likely cause before you spend anything.</p><div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/pricing" class="btn btn-ghost-w btn-lg">See pricing</a></div></aside>
+
+<h2 id="submit">5. Submit the appeal once, properly</h2>
+<p>Use the official reinstatement request form from the account that owns the profile. Keep the explanation short and factual: who you are, what the business does, what you believe triggered the suspension and what you have corrected. Attach the evidence pack. Do not write in capitals, do not threaten and do not submit more than one request while the first is pending, because duplicates can reset your place in the queue.</p>
+
+<h2 id="followup">6. Follow up on a sensible schedule</h2>
+<p>Responses usually arrive within a few business days, although complex cases take longer. Record the case number and set reminders:</p>
+<ul>
+<li>Day 3: check email, including spam folders, for the decision.</li>
+<li>Day 7: if there is no response, reply on the existing case rather than opening a new one.</li>
+<li>If declined: read the reason carefully, correct the specific issue, and only then file a fresh appeal.</li>
+</ul>
+
+<h2 id="after">7. After reinstatement, protect the profile</h2>
+<p>Reinstatement is the start of recovery, not the end. For the next 90 days keep changes small and deliberate, add a second owner or manager so access is never a single point of failure, and keep a dated log of every edit. Resume review requests gently and avoid incentives of any kind. If you have been hit by suspicious reviews, read our guide to <a href="/blog/fake-review-removal-guide">removing fake reviews safely</a>.</p>
+
+<h2 id="mistakes">The three mistakes we see most</h2>
+<ol>
+<li><strong>Appealing before fixing.</strong> The reviewer sees the same violation and declines.</li>
+<li><strong>Editing during suspension.</strong> Changes look evasive and muddy the record.</li>
+<li><strong>Submitting mismatched documents.</strong> A licence in one name and a profile in another is an automatic decline.</li>
+</ol>
+<p>The downloadable version of this checklist, with space for case numbers, document status and dates, is included with every free audit. If you would rather hand the whole thing over, see how <a href="/suspension-recovery">suspension recovery</a> works.</p>
+</article>
+  </div>
+
+  <div class="bl-end">
+    <div class="bl-aub"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=75&crop=faces&w=128&h=128" alt="" loading="lazy"><p><b>Written by Kate Herbert-Smith</b>, Head of Suspension Recovery at googlefixmybiz. Our team of 40+ specialists has recovered more than 1,200 Google Business Profiles since 2019. Questions? <a href="/contact" class="link-arrow" style="display:inline">Get in touch</a>.</p></div>
+  </div>
+
+  <section class="bl-end bl-rel" aria-labelledby="rel-h">
+    <h2 id="rel-h" data-split>Related reading</h2>
+    <div class="bl-rg"><a class="bl-rc rv" href="/blog/fake-review-removal-guide"><div class="im"><img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=75&w=700&h=440" alt="" loading="lazy"></div><div class="tx"><span class="tag " style="justify-self:start">Guide</span><h3>How to legitimately remove fake reviews without getting flagged yourself</h3><small>Oct 8, 2026 &bull; 8 min read</small></div></a><a class="bl-rc rv" href="/blog/nap-citation-cleanup-playbook"><div class="im"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=75&w=700&h=440" alt="" loading="lazy"></div><div class="tx"><span class="tag " style="justify-self:start">Guide</span><h3>The NAP and citation cleanup playbook: one name, address and phone everywhere</h3><small>Sep 24, 2026 &bull; 10 min read</small></div></a><a class="bl-rc rv" href="/blog/small-business-marketing-report-2026"><div class="im"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=75&w=700&h=440" alt="" loading="lazy"></div><div class="tx"><span class="tag green" style="justify-self:start">Research</span><h3>Small Business Marketing Report 2026</h3><small>Oct 21, 2026 &bull; 9 min read</small></div></a></div>
+    <p style="margin-top:32px"><a href="/blog" class="link-arrow">Back to the Learning Hub <svg><use href="#chev"/></svg></a></p>
+  </section>
+</div>
+<div style="height:72px"></div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.bl-toc a'));
+  if(!links.length||!('IntersectionObserver' in window))return;
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.remove('on');});var a=map[e.target.id];if(a)a.classList.add('on');}
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  Object.keys(map).forEach(function(id){var h=document.getElementById(id);if(h)io.observe(h);});
+})();
+</script>
+
