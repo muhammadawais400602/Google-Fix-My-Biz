@@ -633,6 +633,49 @@ html.lenis,html.lenis body{height:auto}
   </div>
 </section>
 
+<!-- ACADEMY PROMO -->
+<section style="padding:80px 0;background:#fff">
+  <div class="wrap">
+    <div class="academy-card r-up">
+      <div class="aca-left">
+        <span class="aca-tag">Free academy course</span>
+        <h3>A Beginner's Guide to Google Business Profile Recovery</h3>
+        <p>Six lessons. Ninety minutes. Everything you need to understand how Google penalises profiles and what to do when yours gets hit. Includes downloadable templates for reinstatement filings.</p>
+        <a href="#" class="btn btn-primary">Start your journey →</a>
+      </div>
+      <div class="aca-right">
+        <div class="aca-progress">
+          <div class="aca-prog-row"><span class="aca-dot done">✓</span><span>Lesson 01 — What triggers a GBP suspension?</span></div>
+          <div class="aca-prog-row"><span class="aca-dot done">✓</span><span>Lesson 02 — Hard vs soft suspensions explained</span></div>
+          <div class="aca-prog-row"><span class="aca-dot cur">▶</span><span><b>Lesson 03 — Writing a reinstatement request</b></span></div>
+          <div class="aca-prog-row"><span class="aca-dot"></span><span>Lesson 04 — The 23-point health audit</span></div>
+          <div class="aca-prog-row"><span class="aca-dot"></span><span>Lesson 05 — NAP &amp; citation cleanup playbook</span></div>
+          <div class="aca-prog-row"><span class="aca-dot"></span><span>Lesson 06 — Staying compliant long-term</span></div>
+          <div class="aca-footer"><span>2 / 6 completed</span><span class="aca-bar"><i></i></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.academy-card{background:linear-gradient(135deg,#eaf0ff,#fff6d6);border-radius:28px;padding:56px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;border:1px solid var(--line)}
+@media(max-width:900px){.academy-card{grid-template-columns:1fr;padding:40px 32px}}
+.aca-tag{display:inline-block;background:var(--fg);color:var(--yellow);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px;margin-bottom:16px}
+.academy-card h3{font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+.academy-card p{color:var(--muted);font-size:15px;line-height:1.55;margin-bottom:24px;max-width:46ch}
+.aca-progress{background:#fff;border-radius:18px;padding:24px;box-shadow:0 20px 60px -20px rgba(11,19,32,.15)}
+.aca-prog-row{display:flex;align-items:center;gap:12px;padding:10px 0;font-size:13.5px;color:var(--fg-2);border-bottom:1px solid var(--line)}
+.aca-prog-row:last-of-type{border-bottom:0}
+.aca-prog-row b{font-weight:700;color:var(--fg)}
+.aca-dot{width:22px;height:22px;border-radius:50%;background:var(--bg-2);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--muted);flex:0 0 22px}
+.aca-dot.done{background:var(--green);color:var(--fg)}
+.aca-dot.cur{background:var(--brand);color:#fff}
+.aca-footer{display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);font-weight:600}
+.aca-bar{flex:1;height:6px;background:var(--bg-2);border-radius:3px;overflow:hidden}
+.aca-bar i{display:block;height:100%;width:33%;background:linear-gradient(90deg,var(--brand),var(--green));border-radius:3px}
+</style>
+
 <!-- STATS - green -->
 <section class="stats-sec">
   <div class="wrap">
@@ -814,6 +857,41 @@ html.lenis,html.lenis body{height:auto}
   </div>
 </footer>
 
+<!-- STICKY BOTTOM -->
+<div class="sticky-bottom" id="sticky" hidden>
+  <div class="wrap sb-inner">
+    <div class="sb-head">
+      <span class="sb-tag">Choose your solution</span>
+      <strong>Get started with Google Fix My Biz</strong>
+    </div>
+    <div class="sb-grid">
+      <a href="#" class="sb-card"><span class="sb-ico" style="background:var(--brand)">⚡</span><div><b>All-in-One Platform</b><span>From $31/mo</span></div></a>
+      <a href="#" class="sb-card"><span class="sb-ico" style="background:var(--green-dark)">📍</span><div><b>Build Citations</b><span>From $3/citation</span></div></a>
+      <a href="#" class="sb-card"><span class="sb-ico" style="background:#d48806">👥</span><div><b>Managed Services</b><span>From $499/mo</span></div></a>
+      <a href="#" class="sb-card"><span class="sb-ico" style="background:var(--g-red)">🔧</span><div><b>API Solutions</b><span>Custom pricing</span></div></a>
+    </div>
+    <button class="sb-close" onclick="document.getElementById('sticky').hidden=true" aria-label="Close">×</button>
+  </div>
+</div>
+
+<style>
+.sticky-bottom{position:fixed;bottom:16px;left:16px;right:16px;z-index:45;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -15px rgba(11,19,32,.25);padding:18px 24px;animation:slideUp .5s cubic-bezier(.2,.9,.2,1)}
+@keyframes slideUp{from{transform:translateY(120%);opacity:0}to{transform:translateY(0);opacity:1}}
+.sb-inner{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;max-width:1240px;padding:0}
+@media(max-width:900px){.sb-inner{grid-template-columns:1fr;gap:16px}.sb-grid{grid-template-columns:repeat(2,1fr)!important}}
+.sb-head{display:flex;flex-direction:column;gap:2px;min-width:200px}
+.sb-tag{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.sb-head strong{font-size:16px;font-weight:800;letter-spacing:-.01em;color:var(--fg)}
+.sb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sb-card{display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-2);border-radius:12px;transition:background .2s,transform .2s}
+.sb-card:hover{background:var(--bg-3);transform:translateY(-2px)}
+.sb-card b{display:block;font-size:13px;font-weight:700;color:var(--fg);line-height:1.2}
+.sb-card span:not(.sb-ico){display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.sb-ico{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:16px;flex:0 0 34px}
+.sb-close{position:absolute;top:8px;right:8px;background:none;border:0;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;border-radius:50%}
+.sb-close:hover{background:var(--bg-2);color:var(--fg)}
+</style>
+
 <!-- Smooth scroll + reveals -->
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
@@ -896,10 +974,23 @@ html.lenis,html.lenis body{height:auto}
     requestAnimationFrame(applyParallax);
   }
 
-  // Micro: nav shadow on scroll
+  // Micro: nav shadow on scroll + sticky bottom reveal
   var nav = document.querySelector('nav');
+  var sticky = document.getElementById('sticky');
+  var stickyShown = false;
   window.addEventListener('scroll', function(){
-    if (nav) nav.style.boxShadow = window.scrollY > 10 ? '0 4px 20px -8px rgba(11,19,32,.08)' : 'none';
+    var y = window.scrollY;
+    if (nav) nav.style.boxShadow = y > 10 ? '0 4px 20px -8px rgba(11,19,32,.08)' : 'none';
+    // Show sticky after 1800px scroll, hide near bottom (so it doesn't overlap footer)
+    if (sticky && !stickyShown && y > 1800){
+      sticky.hidden = false;
+      stickyShown = true;
+    }
+    if (sticky && stickyShown){
+      var atBottom = (window.innerHeight + y) >= (document.body.scrollHeight - 400);
+      sticky.style.opacity = atBottom ? '0' : '1';
+      sticky.style.pointerEvents = atBottom ? 'none' : 'auto';
+    }
   }, { passive: true });
 })();
 </script>
