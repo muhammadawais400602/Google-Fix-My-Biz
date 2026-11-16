@@ -1,0 +1,369 @@
+<!--
+title: Pricing
+description: Transparent pricing for Google Business Profile recovery and managed local SEO. Recovery from $499 one-time, managed plans from $499/mo, citations $2 each, dashboard $31/mo per location.
+nav: pricing
+-->
+<style>
+.pr-toggle{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:#fff;border:1px solid var(--line);margin-top:34px;box-shadow:0 10px 30px -18px rgba(11,26,59,.4)}
+.pr-toggle button{padding:12px 24px;border-radius:999px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:background .25s,color .25s}
+.pr-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pr-toggle .pr-save{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:#ceead6;color:#0d652d;padding:3px 8px;border-radius:999px}
+.pr-plans{align-items:stretch}
+.pr-card{position:relative;display:flex;flex-direction:column;gap:16px;padding:32px 28px;border-radius:28px;background:#fff;border:1px solid var(--line)}
+.pr-card h3{font-size:24px}
+.pr-card .pr-for{color:var(--muted);font-size:15px;min-height:46px}
+.pr-price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.pr-price b{font-size:clamp(40px,3.6vw,54px);letter-spacing:-.05em;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.pr-price small{color:var(--muted);font-size:15px;font-weight:500}
+.pr-price .pr-from{font-size:14px;color:var(--muted);font-weight:500;align-self:center}
+.pr-note{font-size:13px;color:var(--muted);min-height:20px;margin-top:-8px}
+.pr-note em{font-style:normal;color:#0d652d;font-weight:700}
+.pr-card .checks{margin:6px 0 10px;gap:10px}
+.pr-card .checks li{font-size:15px}
+.pr-card .btn{margin-top:auto;width:100%}
+.pr-pop{padding:3px;background:linear-gradient(135deg,#4285F4,#EA4335 35%,#FBBC04 65%,#34A853);border:0;box-shadow:0 30px 60px -28px rgba(66,133,244,.7)}
+.pr-pop>.pr-in{background:#fff;border-radius:25px;padding:32px 28px;display:flex;flex-direction:column;gap:16px;height:100%}
+.pr-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:999px;white-space:nowrap;z-index:2}
+.pr-pop .pr-in .btn{margin-top:auto}
+.pr-pop .pr-in .checks{margin:6px 0 10px;gap:10px}
+.pr-pop .pr-in .checks li{font-size:15px}
+.pr-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px}
+.pr-alc{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.pr-alc{grid-template-columns:1fr}}
+.pr-alc-card{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:28px;border-radius:24px;border:1px dashed rgba(17,20,18,.28);background:#fff}
+.pr-alc-card h3{font-size:22px}
+.pr-alc-card p{color:var(--muted);font-size:15px;margin-top:4px}
+.pr-alc-card .pr-p{font-size:34px;font-weight:600;letter-spacing:-.04em;white-space:nowrap}
+.pr-alc-card .pr-p small{font-size:14px;color:var(--muted);font-weight:500;letter-spacing:0}
+@media(max-width:560px){.pr-alc-card{grid-template-columns:auto 1fr}.pr-alc-card .pr-p{grid-column:1/-1}}
+.cmp th.pr-hl,.cmp td.pr-hl{background:#eef4ff}
+.cmp td small{display:block;color:var(--muted);font-size:12px}
+/* helper */
+.pr-help{max-width:900px;margin:0 auto;background:#fff;border-radius:32px;border:1px solid var(--line);padding:40px;box-shadow:0 40px 80px -50px rgba(11,26,59,.5)}
+.pr-steps{display:flex;gap:8px;margin-bottom:26px}
+.pr-steps i{flex:1;height:6px;border-radius:6px;background:var(--line);transition:background .4s}
+.pr-steps i.on{background:linear-gradient(90deg,#4285F4,#34A853)}
+.pr-q h3{font-size:clamp(24px,2.6vw,32px)}
+.pr-opts{display:grid;gap:12px;margin-top:24px}
+.pr-opts button{text-align:left;padding:18px 22px;border-radius:18px;border:1.5px solid var(--line);font-weight:600;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:border-color .2s,background .2s,transform .2s;background:#fff}
+.pr-opts button span{font-weight:500;color:var(--muted);font-size:14px;display:block;margin-top:2px}
+.pr-opts button:hover{border-color:var(--g-blue);background:#f4f8ff;transform:translateX(4px)}
+.pr-opts button::after{content:"→";color:var(--g-blue);font-size:20px}
+.pr-res{text-align:center;padding:10px 0}
+.pr-res .pr-ico{margin:0 auto 14px;width:64px;height:64px;font-size:32px;border-radius:20px}
+.pr-res h3{font-size:clamp(28px,3vw,40px)}
+.pr-res p{color:var(--muted);max-width:560px;margin:14px auto 0;font-size:17px}
+.pr-res .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.pr-back{margin-top:18px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:560px){.pr-help{padding:26px 20px;border-radius:24px}}
+/* warranty */
+.pr-war{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){.pr-war{grid-template-columns:1fr;gap:40px}}
+.pr-dial{position:relative;width:min(100%,380px);aspect-ratio:1;margin:0 auto;display:grid;place-items:center}
+.pr-dial svg.ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.pr-dial circle{fill:none;stroke-width:10;stroke-linecap:round}
+.pr-dial .bg{stroke:rgba(255,255,255,.12)}
+.pr-dial .fg{stroke:url(#prgrad);stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset 2.2s var(--ease)}
+.pr-dial.in .fg{stroke-dashoffset:34}
+.pr-dial .mid{text-align:center}
+.pr-dial .mid b{display:block;font-size:clamp(54px,7vw,84px);letter-spacing:-.05em;font-weight:600;line-height:1}
+.pr-dial .mid span{color:rgba(255,255,255,.75);font-size:15px}
+.pr-war .checks li{color:rgba(255,255,255,.92)}
+.pr-war h2{font-size:clamp(32px,4vw,52px);letter-spacing:-.045em}
+.pr-war p.sub{color:rgba(255,255,255,.78);font-size:18px;margin:18px 0 26px}
+.pr-fine{font-size:13px;color:rgba(255,255,255,.62);margin-top:22px}
+</style>
+
+<section class="phero">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Pricing</span></nav>
+    <span class="pill rv d1" style="margin-top:20px"><svg><use href="#spark"/></svg>Fixed prices. No lock-in.</span>
+    <h1 data-split>Pricing that pays for itself</h1>
+    <p class="lead rv d2">One suspended profile can cost a local business thousands of dollars a week in missed calls. Pick a fixed-price recovery, or put the whole local presence in expert hands. Every plan starts with a free audit.</p>
+    <div class="rv d3">
+      <div class="pr-toggle" role="group" aria-label="Billing period">
+        <button type="button" id="pr-m" aria-pressed="true">Monthly</button>
+        <button type="button" id="pr-a" aria-pressed="false">Annual <span class="pr-save">Save 15%</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- plans -->
+<section class="sec" style="padding-top:72px" id="plans">
+  <div class="wrap">
+    <div class="grid g4 pr-plans">
+      <article class="pr-card rv" data-tilt>
+        <div class="pr-ico" style="background:var(--lav)" aria-hidden="true">🛟</div>
+        <h3>Recovery</h3>
+        <p class="pr-for">Suspended or disabled profile? We get it reinstated, once, for a fixed fee.</p>
+        <div class="pr-price"><b>$499</b><small>one-time</small></div>
+        <p class="pr-note">Billed once. Never changes with billing period.</p>
+        <ul class="checks">
+          <li>Root-cause diagnosis of the suspension</li>
+          <li>Full appeal prepared and filed by a specialist</li>
+          <li><b>72-hour</b> typical reinstatement SLA</li>
+          <li><b>90-day</b> reinstatement warranty</li>
+          <li>Post-recovery hardening checklist</li>
+        </ul>
+        <a href="/suspension-recovery" class="btn btn-outline">Recover my profile</a>
+      </article>
+
+      <article class="pr-card rv d1" data-tilt>
+        <div class="pr-ico" style="background:var(--sky)" aria-hidden="true">📍</div>
+        <h3>Managed Starter</h3>
+        <p class="pr-for">Hands-off local SEO for a single-location business.</p>
+        <div class="pr-price"><span class="pr-from">from</span><b data-price="499">$499</b><small data-per>/mo</small></div>
+        <p class="pr-note" data-note>Billed monthly. Cancel any time.</p>
+        <ul class="checks">
+          <li>1 location, fully managed</li>
+          <li>Profile optimization and weekly posts</li>
+          <li>Review monitoring and reply drafting</li>
+          <li>50 citations built and cleaned up</li>
+          <li>Monthly ranking report</li>
+        </ul>
+        <a href="/free-audit" class="btn btn-outline">Start with Starter</a>
+      </article>
+
+      <article class="pr-card pr-pop rv d2" data-tilt>
+        <span class="pr-badge">Most popular</span>
+        <div class="pr-in">
+          <div class="pr-ico" style="background:var(--peach)" aria-hidden="true">🚀</div>
+          <h3>Managed Growth</h3>
+          <p class="pr-for">For growing brands that need map-pack rankings across several locations.</p>
+          <div class="pr-price"><b data-price="999">$999</b><small data-per>/mo</small></div>
+          <p class="pr-note" data-note>Billed monthly. Cancel any time.</p>
+          <ul class="checks">
+            <li>Up to <b>5 locations</b></li>
+            <li>Geo-grid rank tracking, weekly</li>
+            <li>Review generation and reputation care</li>
+            <li>Citation clean-up and ongoing monitoring</li>
+            <li>Dashboard included for every location</li>
+            <li>Priority suspension recovery</li>
+          </ul>
+          <a href="/free-audit" class="btn btn-green">Grow with Growth</a>
+        </div>
+      </article>
+
+      <article class="pr-card rv d3" data-tilt>
+        <div class="pr-ico" style="background:var(--mint)" aria-hidden="true">🏢</div>
+        <h3>Scale</h3>
+        <p class="pr-for">Multi-location brands, franchises, agencies and platforms.</p>
+        <div class="pr-price"><b style="font-size:clamp(34px,3vw,44px)">Custom</b></div>
+        <p class="pr-note">Volume pricing from 6 locations.</p>
+        <ul class="checks">
+          <li>Unlimited locations, up to 250 per account</li>
+          <li>Dedicated recovery lead and Slack channel</li>
+          <li>White-label reporting for agencies</li>
+          <li>API and bulk-upload access</li>
+          <li>Custom SLAs and quarterly strategy reviews</li>
+        </ul>
+        <a href="/contact" class="btn btn-dark">Talk to sales</a>
+      </article>
+    </div>
+    <p class="rv" style="text-align:center;color:var(--muted);font-size:14px;margin-top:28px">Annual billing takes 15% off the monthly plans and is billed up front. Prices in USD. Recovery is never discounted or marked up.</p>
+  </div>
+</section>
+
+<!-- a la carte -->
+<section class="sec sec--tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head left rv" style="margin-bottom:32px"><span class="pill"><svg><use href="#spark"/></svg>A la carte</span><h2 style="font-size:clamp(28px,3.4vw,44px)">Just need one piece?</h2></div>
+    <div class="pr-alc">
+      <div class="pr-alc-card rv">
+        <div class="pr-ico" style="background:var(--mint)" aria-hidden="true">🔨</div>
+        <div><h3>Citations</h3><p>Hand-built, accurate listings. Minimum order of 50.</p></div>
+        <div class="pr-p">$2 <small>each</small></div>
+      </div>
+      <div class="pr-alc-card rv d1">
+        <div class="pr-ico" style="background:var(--sky)" aria-hidden="true">📊</div>
+        <div><h3>Dashboard</h3><p>Rankings, listings and reviews in one place.</p></div>
+        <div class="pr-p">$31 <small>/mo per location</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- comparison -->
+<section class="sec sec--soft" id="compare">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>Compare plans</span><h2 data-split>Every feature, side by side</h2></div>
+    <div class="tbl-wrap rv">
+      <table class="cmp">
+        <caption class="sr-only" style="position:absolute;left:-9999px">Feature comparison across plans</caption>
+        <thead><tr><th scope="col">Feature</th><th scope="col">Recovery</th><th scope="col">Managed Starter</th><th scope="col" class="pr-hl">Managed Growth</th><th scope="col">Scale</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" style="background:#fff">Suspension recovery</th><td class="yes">✓</td><td>Add-on</td><td class="pr-hl yes">✓ Priority</td><td class="yes">✓ Dedicated lead</td></tr>
+          <tr><th scope="row" style="background:#fff">Locations</th><td>1</td><td>1</td><td class="pr-hl">Up to 5</td><td>Up to 250</td></tr>
+          <tr><th scope="row" style="background:#fff">72-hour SLA</th><td class="yes">✓</td><td class="no">&ndash;</td><td class="pr-hl yes">✓</td><td class="yes">Custom SLA</td></tr>
+          <tr><th scope="row" style="background:#fff">90-day warranty</th><td class="yes">✓</td><td class="yes">✓</td><td class="pr-hl yes">✓</td><td class="yes">✓</td></tr>
+          <tr><th scope="row" style="background:#fff">Profile optimization and posts</th><td class="no">&ndash;</td><td class="yes">✓</td><td class="pr-hl yes">✓</td><td class="yes">✓</td></tr>
+          <tr><th scope="row" style="background:#fff">Geo-grid rank tracking</th><td class="no">&ndash;</td><td>Monthly</td><td class="pr-hl">Weekly</td><td>Daily</td></tr>
+          <tr><th scope="row" style="background:#fff">Review management</th><td class="no">&ndash;</td><td>Monitoring</td><td class="pr-hl">Generation and replies</td><td>Full service</td></tr>
+          <tr><th scope="row" style="background:#fff">Citations included</th><td class="no">&ndash;</td><td>50</td><td class="pr-hl">250</td><td>Custom</td></tr>
+          <tr><th scope="row" style="background:#fff">Dashboard</th><td class="no">&ndash;</td><td class="yes">✓</td><td class="pr-hl yes">✓</td><td class="yes">✓ White-label</td></tr>
+          <tr><th scope="row" style="background:#fff">API access</th><td class="no">&ndash;</td><td class="no">&ndash;</td><td class="pr-hl no">&ndash;</td><td class="yes">✓</td></tr>
+          <tr><th scope="row" style="background:#fff">Support</th><td>Email</td><td>Email and chat</td><td class="pr-hl">Priority phone</td><td>Dedicated Slack</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- helper -->
+<section class="sec" id="helper">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>Not sure?</span><h2 data-split>Which plan is right for me?</h2><p class="rv d2">Three quick questions. No email required.</p></div>
+    <div class="pr-help rv">
+      <div class="pr-steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      <div id="pr-stage" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- guarantee -->
+<section class="sec sec--dark" id="guarantee" style="overflow:hidden">
+  <div class="orbs" aria-hidden="true" style="opacity:.5"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="pr-war">
+      <div>
+        <span class="pill rv"><svg><use href="#spark"/></svg>Our guarantee</span>
+        <h2 data-split style="margin-top:18px">Reinstated and staying reinstated</h2>
+        <p class="sub rv d2">We win 94% of the appeals we take on, usually in about 72 hours. If a recovered profile is suspended again for the same issue within 90 days, we fix it again at no cost.</p>
+        <ul class="checks rv d3">
+          <li>If we cannot reinstate your profile, you are not charged the recovery fee</li>
+          <li>Re-suspension for the same issue inside 90 days is re-handled free</li>
+          <li>Managed plans can be cancelled with 30 days notice, no penalties</li>
+          <li>White-hat methods only, so results hold</li>
+        </ul>
+        <p class="pr-fine">The warranty covers suspensions caused by the original violation. It does not cover new policy breaches made after recovery.</p>
+      </div>
+      <div class="rv-s">
+        <div class="pr-dial" id="pr-dial">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="prgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285F4"/><stop offset=".5" stop-color="#FBBC04"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs><circle class="bg" cx="100" cy="100" r="90"/><circle class="fg" cx="100" cy="100" r="90"/></svg>
+          <div class="mid"><b data-count="94" data-suffix="%">94%</b><span>reinstatement rate</span><span style="display:block;margin-top:6px"><b style="font-size:22px;display:inline" data-count="90">90</b> day warranty</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- billing faq -->
+<section class="sec" id="billing-faq">
+  <div class="wrap narrow">
+    <div class="sec-head"><span class="pill rv"><svg><use href="#spark"/></svg>Billing questions</span><h2 data-split>The fine print, in plain English</h2></div>
+    <div class="acc rv">
+      <details><summary>Is the $499 recovery fee really one-time?</summary><div class="a"><p>Yes. Recovery is a fixed fee covering diagnosis, the appeal and any follow-up with Google until the case closes. There is no retainer and no hourly billing.</p></div></details>
+      <details><summary>How does annual billing work?</summary><div class="a"><p>Annual billing takes 15% off the Managed Starter and Managed Growth monthly price and is charged once up front. Starter becomes about $424 per month and Growth about $849 per month.</p></div></details>
+      <details><summary>Can I switch plans later?</summary><div class="a"><p>Any time. Upgrades take effect immediately and are prorated. Downgrades apply at the next billing date.</p></div></details>
+      <details><summary>What happens if you cannot reinstate my profile?</summary><div class="a"><p>You are not charged the recovery fee. We will tell you honestly if a case looks unwinnable before we start, and walk you through the alternatives, such as a fresh verified listing.</p></div></details>
+      <details><summary>Are citations billed separately?</summary><div class="a"><p>Citations are $2 each with a 50 citation minimum. Managed plans include citations in the monthly price, so you only pay a la carte if you are not on a plan.</p></div></details>
+      <details><summary>Do you offer agency or franchise discounts?</summary><div class="a"><p>Yes. The Scale plan is priced by volume, with white-label reporting and API access. <a href="/contact" style="color:var(--g-blue);text-decoration:underline">Contact us</a> for a quote within one business day.</p></div></details>
+      <details><summary>What payment methods do you accept?</summary><div class="a"><p>All major credit cards, and ACH or invoice billing for annual and Scale plans. See the <a href="/terms" style="color:var(--g-blue);text-decoration:underline">terms</a> for refund details, or <a href="/faq" style="color:var(--g-blue);text-decoration:underline">browse the full FAQ</a>.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band rv-s">
+      <h2 data-split>Not sure where to start? Get a free audit.</h2>
+      <p>We will check your profile, rankings and citations and tell you exactly which plan, if any, you need.</p>
+      <div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/contact" class="btn btn-ghost-w btn-lg">Talk to an expert</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- scripts -->
+<script>
+(function(){
+  var reduce = window.GFMB && GFMB.reduce;
+  var fmt = function(n){ return '$' + Math.round(n).toLocaleString(); };
+  var annual = false;
+  var prices = [].slice.call(document.querySelectorAll('[data-price]'));
+  function tween(el, to){
+    var from = parseFloat(el.dataset.cur || el.dataset.price);
+    el.dataset.cur = to;
+    if (reduce) { el.textContent = fmt(to); return; }
+    var s = performance.now(), dur = 700;
+    (function t(now){
+      var p = Math.min(1, (now - s) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(from + (to - from) * e);
+      if (p < 1) requestAnimationFrame(t);
+    })(s);
+  }
+  function setBilling(a){
+    annual = a;
+    document.getElementById('pr-m').setAttribute('aria-pressed', a ? 'false' : 'true');
+    document.getElementById('pr-a').setAttribute('aria-pressed', a ? 'true' : 'false');
+    prices.forEach(function(el){
+      var base = parseFloat(el.dataset.price);
+      tween(el, a ? Math.round(base * 0.85) : base);
+    });
+    [].forEach.call(document.querySelectorAll('[data-note]'), function(n){
+      var base = parseFloat(n.parentNode.querySelector('[data-price]').dataset.price);
+      n.innerHTML = a ? '<em>Save ' + fmt(base * 0.15 * 12) + '/yr</em> &middot; billed ' + fmt(base * 0.85 * 12) + ' annually' : 'Billed monthly. Cancel any time.';
+    });
+  }
+  document.getElementById('pr-m').addEventListener('click', function(){ setBilling(false); });
+  document.getElementById('pr-a').addEventListener('click', function(){ setBilling(true); });
+
+  /* warranty dial */
+  var dial = document.getElementById('pr-dial');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es, o){ es.forEach(function(e){ if (e.isIntersecting) { dial.classList.add('in'); o.disconnect(); } }); }, { threshold: .3 }).observe(dial);
+  } else dial.classList.add('in');
+
+  /* plan helper */
+  var stage = document.getElementById('pr-stage');
+  var bars = document.querySelectorAll('.pr-steps i');
+  var Q = [
+    { q: 'What is going on with your profile?', o: [
+      ['It is suspended or disabled right now', 'Calls have stopped', 'rec'],
+      ['It is live but I am buried in the map pack', 'Competitors outrank me', 'rank'],
+      ['It is fine, I want to keep it that way', 'Prevent problems, grow steadily', 'keep'] ] },
+    { q: 'How many locations do you run?', o: [
+      ['Just one', '', 1], ['2 to 5', '', 5], ['6 or more, or I manage clients', 'Franchise or agency', 9] ] },
+    { q: 'How hands-on do you want to be?', o: [
+      ['Do it all for me', 'Fully managed', 'full'],
+      ['I will handle some of it', 'Experts plus a dashboard', 'part'],
+      ['Just fix the one problem', 'One-off help', 'once'] ] }
+  ];
+  var ans = [];
+  var R = {
+    rec: ['🛟', 'Recovery', 'You have a suspension to fix, and a fixed-price recovery is the fastest way back: $499 once, a 72-hour typical SLA and a 90-day warranty.', '/suspension-recovery', 'See Suspension Recovery'],
+    starter: ['📍', 'Managed Starter', 'A single location with a hands-off owner is exactly what Starter is for, from $499/mo with citations, posts and monthly reporting included.', '/free-audit', 'Start with a free audit'],
+    growth: ['🚀', 'Managed Growth', 'Several locations competing for the map pack need weekly geo-grid tracking and review care. Growth covers up to 5 locations for $999/mo.', '/free-audit', 'Start with a free audit'],
+    scale: ['🏢', 'Scale', 'Six or more locations, or client work, calls for volume pricing, white-label reporting and API access. We will build a quote around your footprint.', '/contact', 'Talk to sales'],
+    alc: ['🔨', 'A la carte', 'You mostly need tools, not a retainer. Citations are $2 each (min 50) and the dashboard is $31/mo per location.', '#plans', 'See a la carte options']
+  };
+  function pick(){
+    if (ans[1] === 9) return 'scale';
+    if (ans[0] === 'rec') return 'rec';
+    if (ans[2] === 'once' || (ans[2] === 'part' && ans[1] === 1 && ans[0] === 'keep')) return 'alc';
+    if (ans[1] === 5) return 'growth';
+    return 'starter';
+  }
+  function render(i){
+    [].forEach.call(bars, function(b, k){ b.classList.toggle('on', k <= Math.min(i, 2)); });
+    if (i < Q.length) {
+      var q = Q[i], h = '<div class="pr-q"><p class="eyebrow">Question ' + (i + 1) + ' of 3</p><h3 style="margin-top:8px">' + q.q + '</h3><div class="pr-opts">';
+      q.o.forEach(function(o, k){ h += '<button type="button" data-k="' + k + '"><div>' + o[0] + (o[1] ? '<span>' + o[1] + '</span>' : '') + '</div></button>'; });
+      h += '</div>' + (i ? '<button type="button" class="pr-back" data-back>Back</button>' : '') + '</div>';
+      stage.innerHTML = h;
+    } else {
+      var r = R[pick()];
+      stage.innerHTML = '<div class="pr-res"><div class="pr-ico" style="background:var(--sky)" aria-hidden="true">' + r[0] + '</div><p class="eyebrow">We recommend</p><h3 style="margin-top:6px">' + r[1] + '</h3><p>' + r[2] + '</p><div class="acts"><a class="btn btn-green" href="' + r[3] + '">' + r[4] + '</a><button type="button" class="btn btn-outline" data-restart>Start over</button></div></div>';
+    }
+  }
+  stage.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.hasAttribute('data-restart')) { ans = []; render(0); }
+    else if (b.hasAttribute('data-back')) { ans.pop(); render(ans.length); }
+    else if (b.dataset.k !== undefined) { ans.push(Q[ans.length].o[+b.dataset.k][2]); render(ans.length); }
+    var f = stage.querySelector('button,a'); if (f) f.focus({ preventScroll: true });
+  });
+  render(0);
+})();
+</script>

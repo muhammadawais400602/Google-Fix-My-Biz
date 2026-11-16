@@ -1,0 +1,230 @@
+<!--
+title: Contact
+description: Book a 20-minute demo or send us a message. Our Google Business Profile specialists reply within 4 business hours from Austin and Toronto.
+nav: contact
+-->
+<style>
+.ct-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:start}
+.ct-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:0 24px 60px -36px rgba(11,26,59,.35)}
+.ct-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--soft);padding:6px;border-radius:999px;margin-bottom:28px}
+.ct-tabs button{padding:13px 16px;border-radius:999px;font-weight:600;font-size:15px;transition:background .25s,color .25s,box-shadow .25s}
+.ct-tabs button[aria-selected="true"]{background:#fff;color:var(--g-blue);box-shadow:0 6px 18px -8px rgba(11,26,59,.4)}
+.ct-panel[hidden]{display:none}
+.ct-panel{animation:pop .5s var(--ease)}
+.ct-h{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.ct-days{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:26px}
+.ct-day,.ct-slot{border:1.5px solid #d3d9e3;background:#fff;border-radius:16px;transition:all .2s;text-align:center}
+.ct-day{padding:14px 6px;display:grid;gap:2px}
+.ct-day small{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ct-day b{font-size:24px;font-family:"Poppins",sans-serif;letter-spacing:-.03em}
+.ct-day span{font-size:12px;color:var(--muted)}
+.ct-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:26px}
+.ct-slot{padding:12px 4px;font-weight:600;font-size:15px}
+.ct-day:hover,.ct-slot:hover{border-color:var(--g-blue);transform:translateY(-2px)}
+.ct-day[aria-pressed="true"],.ct-slot[aria-pressed="true"]{background:var(--g-blue);border-color:var(--g-blue);color:#fff}
+.ct-day[aria-pressed="true"] small,.ct-day[aria-pressed="true"] span{color:rgba(255,255,255,.88)}
+.ct-slot[disabled]{opacity:.4;cursor:not-allowed;text-decoration:line-through;transform:none;border-color:#d3d9e3}
+.ct-pick{display:none;gap:18px;animation:pop .5s var(--ease)}
+.ct-pick.show{display:grid}
+.ct-sum{display:flex;gap:12px;align-items:center;padding:14px 18px;border-radius:16px;background:var(--sky);font-weight:600;font-size:15px}
+.ct-note{font-size:14px;color:var(--muted)}
+.ct-side{display:grid;gap:18px}
+.ct-info{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:22px;border:1px solid var(--line);background:#fff;transition:transform .3s var(--ease),box-shadow .3s}
+.ct-info:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(11,26,59,.4)}
+.ct-info .ico{flex:0 0 48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px}
+.ct-info h3{font-size:15px;letter-spacing:-.01em;color:var(--muted);font-weight:600}
+.ct-info a,.ct-info p{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink);word-break:break-word}
+.ct-info a:hover{color:var(--g-blue)}
+.ct-info small{display:block;font-size:14px;color:var(--muted);font-weight:400;margin-top:2px}
+.ct-reply{background:var(--forest);color:#fff;border-radius:22px;padding:22px 24px;display:flex;gap:14px;align-items:center}
+.ct-reply .dot{width:12px;height:12px;border-radius:50%;background:var(--g-green);flex:0 0 12px;box-shadow:0 0 0 0 rgba(52,168,83,.7);animation:ct-pulse 2s infinite}
+@keyframes ct-pulse{70%{box-shadow:0 0 0 12px rgba(52,168,83,0)}100%{box-shadow:0 0 0 0 rgba(52,168,83,0)}}
+.ct-offices{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.ct-office{display:flex;gap:22px;align-items:center;padding:30px;border-radius:28px}
+.ct-office .ripple{flex:0 0 120px}
+.ct-office h3{font-size:26px}
+.ct-office address{font-style:normal;color:#3d453f;margin-top:8px;line-height:1.55}
+.ct-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.ct-step{position:relative;padding:32px;border-radius:24px;background:#fff;border:1px solid var(--line)}
+.ct-step .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:20px;margin-bottom:18px}
+.ct-step h3{font-size:22px}
+.ct-step p{color:var(--muted);margin-top:8px}
+.ct-step:not(:last-child)::after{content:"";position:absolute;top:56px;right:-24px;width:24px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}
+@media(max-width:1000px){.ct-grid{grid-template-columns:1fr}.ct-offices{grid-template-columns:1fr}.ct-steps{grid-template-columns:1fr}.ct-step::after{display:none}}
+@media(max-width:620px){.ct-card{padding:22px 16px}.ct-days{gap:6px}.ct-day b{font-size:20px}.ct-slots{grid-template-columns:repeat(3,1fr)}.ct-office{flex-direction:column;align-items:flex-start;padding:24px}}
+</style>
+
+<section class="phero wide">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Contact</span></nav>
+    <span class="pill rv d1" style="margin-top:18px"><svg><use href="#spark"/></svg>Replies within 4 business hours</span>
+    <h1 data-split>Talk to a real Google Business Profile specialist.</h1>
+    <p class="lead rv d2">Suspended, buried on the map, or just not sure what is wrong? Book a 20-minute demo or send us a note. You will hear from a human, not a bot.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-card rv" id="ct-card">
+        <div class="ct-tabs" role="tablist" aria-label="How would you like to reach us?">
+          <button type="button" role="tab" id="ct-t1" aria-selected="true" aria-controls="ct-p1">Book a demo</button>
+          <button type="button" role="tab" id="ct-t2" aria-selected="false" aria-controls="ct-p2" tabindex="-1">Send a message</button>
+        </div>
+
+        <div class="ct-panel" id="ct-p1" role="tabpanel" aria-labelledby="ct-t1">
+          <p class="ct-h">1. Pick a day</p>
+          <div class="ct-days" id="ct-days" role="group" aria-label="Available days"></div>
+          <p class="ct-h">2. Pick a time <span style="text-transform:none;letter-spacing:0;font-weight:500">(Central Time)</span></p>
+          <div class="ct-slots" id="ct-slots" role="group" aria-label="Available times"></div>
+          <form class="form ct-pick" id="ct-demo" data-form>
+            <div class="ct-sum" id="ct-sum" aria-live="polite"></div>
+            <div class="row">
+              <div class="field"><label for="d-name">Your name</label><input id="d-name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="d-email">Work email</label><input id="d-email" name="email" type="email" autocomplete="email" required></div>
+            </div>
+            <div class="field"><label for="d-biz">Business name or Google profile link</label><input id="d-biz" name="business" autocomplete="organization" required></div>
+            <button class="btn btn-green btn-lg" type="submit">Confirm my demo</button>
+            <p class="ct-note">20 minutes, no pitch deck. We will look at your profile live and tell you what we would fix first.</p>
+            <div class="form-ok" role="status"><span aria-hidden="true">✅</span><span>You are booked. We just queued a calendar invite and a short prep checklist to your inbox.</span></div>
+          </form>
+          <p class="ct-note" id="ct-hint">Choose a time to continue. Demos are free and there is no obligation.</p>
+        </div>
+
+        <div class="ct-panel" id="ct-p2" role="tabpanel" aria-labelledby="ct-t2" hidden>
+          <form class="form" data-form>
+            <div class="row">
+              <div class="field"><label for="m-name">Your name</label><input id="m-name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="m-email">Email</label><input id="m-email" name="email" type="email" autocomplete="email" required></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="m-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="m-phone" name="phone" type="tel" autocomplete="tel"></div>
+              <div class="field"><label for="m-biz">Business name</label><input id="m-biz" name="business" autocomplete="organization" required></div>
+            </div>
+            <div class="field"><label for="m-help">I need help with</label>
+              <select id="m-help" name="help" required>
+                <option value="">Choose one...</option>
+                <option>Suspension recovery</option>
+                <option>Map-pack optimization</option>
+                <option>Reviews</option>
+                <option>Citations</option>
+                <option>Managed local SEO</option>
+                <option>Agency or partnership</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field"><label for="m-msg">Message</label><textarea id="m-msg" name="message" required placeholder="Tell us what happened and when. Suspension notices and screenshots help, but are not required."></textarea></div>
+            <button class="btn btn-green btn-lg" type="submit">Send message</button>
+            <p class="ct-note">We reply within 4 business hours. See our <a href="/privacy" style="text-decoration:underline">privacy policy</a>.</p>
+            <div class="form-ok" role="status"><span aria-hidden="true">✅</span><span>Thanks, your message is in. A specialist will reply within 4 business hours.</span></div>
+          </form>
+        </div>
+      </div>
+
+      <aside class="ct-side" aria-label="Contact details">
+        <div class="ct-info rv d1"><span class="ico" style="background:var(--sky)" aria-hidden="true">✉️</span><div><h3>Email</h3><a href="mailto:hello@googlefixmybiz.co">hello@googlefixmybiz.co</a></div></div>
+        <div class="ct-info rv d2"><span class="ico" style="background:var(--mint)" aria-hidden="true">📞</span><div><h3>Phone</h3><a href="tel:+15125550142">(512) 555-0142</a></div></div>
+        <div class="ct-info rv d3"><span class="ico" style="background:var(--peach)" aria-hidden="true">🕘</span><div><h3>Hours</h3><p>Mon-Fri, 9a-6p CT<small>Closed weekends and US holidays</small></p></div></div>
+        <div class="ct-reply rv d4"><span class="dot" aria-hidden="true"></span><p><b>We reply within 4 business hours.</b> Suspension cases are triaged first.</p></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill"><svg><use href="#pinlogo"/></svg>Two offices</span><h2 data-split>Find us in Austin and Toronto.</h2><p class="rv">A 40+ person team across both offices, covering US and Canadian business hours.</p></div>
+    <div class="ct-offices">
+      <article class="ct-office fcard t-blue rv-l">
+        <div class="ripple" aria-hidden="true"><svg><use href="#pinlogo"/></svg></div>
+        <div><h3>Austin, TX</h3><address>Headquarters<br>1801 E 6th St<br>Austin, TX 78702</address></div>
+      </article>
+      <article class="ct-office fcard t-green rv-r">
+        <div class="ripple" aria-hidden="true"><svg><use href="#pinlogo"/></svg></div>
+        <div><h3>Toronto, ON</h3><address>Canadian office<br>325 Front St W<br>Toronto, ON</address></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="pill"><svg><use href="#spark"/></svg>What happens next</span><h2 data-split>Three steps, no runaround.</h2></div>
+    <div class="ct-steps">
+      <div class="ct-step rv"><div class="n" style="background:var(--g-blue)">1</div><h3>We read your request</h3><p>A specialist reviews your message or demo booking and checks your public profile before replying.</p></div>
+      <div class="ct-step rv d1"><div class="n" style="background:var(--g-red)">2</div><h3>You get a clear diagnosis</h3><p>Within 4 business hours: what is wrong, what we would do, and what it costs. No jargon.</p></div>
+      <div class="ct-step rv d2"><div class="n" style="background:var(--g-green)">3</div><h3>We start, only if you say go</h3><p>Suspension recovery begins at $499 one-time, backed by a 90-day reinstatement warranty.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--soft">
+  <div class="wrap narrow">
+    <div class="sec-head"><h2 data-split>Quick answers.</h2><p class="rv">More in the <a href="/faq" class="link-arrow">Help center</a></p></div>
+    <div class="acc rv">
+      <details><summary>How fast will someone reply?</summary><div class="a"><p>Within 4 business hours, Monday to Friday, 9a-6p CT. Suspension cases jump the queue because every day offline costs you calls.</p></div></details>
+      <details><summary>Is the demo really free?</summary><div class="a"><p>Yes. It is a 20-minute screen share where we review your profile and tell you what we would fix first. There is no obligation to buy.</p></div></details>
+      <details><summary>Do you work with businesses outside the US?</summary><div class="a"><p>Yes. Our Toronto office handles Canadian profiles, and we have recovered listings in the UK and Australia as well.</p></div></details>
+      <details><summary>Can agencies and multi-location brands book a call?</summary><div class="a"><p>Absolutely. Choose "Agency or partnership" in the message form. Multi-location and agency plans are custom, so we will scope them with you.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-band rv-s">
+      <h2>Not ready to talk? Start with a free audit.</h2>
+      <p>Get a plain-English report on your profile, rankings and citations in minutes.</p>
+      <div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/pricing" class="btn btn-ghost-w btn-lg">See pricing</a></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var d=document, $=function(s){return d.querySelector(s)};
+  /* tabs */
+  var tabs=[$('#ct-t1'),$('#ct-t2')], panels=[$('#ct-p1'),$('#ct-p2')];
+  function sel(i){tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i);t.tabIndex=k===i?0:-1;panels[k].hidden=k!==i;});}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){sel(i)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=1-i;sel(n);tabs[n].focus();}
+    });
+  });
+  if(location.hash==='#message')sel(1);
+  /* scheduler */
+  var days=[], dt=new Date(), DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  dt.setHours(12,0,0,0);
+  while(days.length<5){dt.setDate(dt.getDate()+1);if(dt.getDay()>0&&dt.getDay()<6)days.push(new Date(dt));}
+  var times=['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM'];
+  var dBox=$('#ct-days'), sBox=$('#ct-slots'), form=$('#ct-demo'), sum=$('#ct-sum'), hint=$('#ct-hint');
+  var selDay=null, selTime=null;
+  function taken(di,ti){return ((di*7+ti*5+3)%9)===0;}
+  days.forEach(function(day,i){
+    var b=d.createElement('button');b.type='button';b.className='ct-day';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<small>'+DN[day.getDay()]+'</small><b>'+day.getDate()+'</b><span>'+MN[day.getMonth()]+'</span>';
+    b.setAttribute('aria-label',DN[day.getDay()]+' '+MN[day.getMonth()]+' '+day.getDate());
+    b.addEventListener('click',function(){selDay=i;selTime=null;paint();});
+    dBox.appendChild(b);
+  });
+  function paint(){
+    [].forEach.call(dBox.children,function(b,i){b.setAttribute('aria-pressed',i===selDay);});
+    sBox.innerHTML='';
+    times.forEach(function(t,k){
+      var b=d.createElement('button');b.type='button';b.className='ct-slot';b.textContent=t;
+      var off=selDay===null||taken(selDay,k);
+      b.disabled=selDay===null||taken(selDay,k);
+      b.setAttribute('aria-pressed',selTime===k);
+      if(!off)b.addEventListener('click',function(){selTime=k;paint();});
+      sBox.appendChild(b);
+    });
+    var ok=selDay!==null&&selTime!==null;
+    form.classList.toggle('show',ok);hint.style.display=ok?'none':'';
+    if(ok)sum.textContent='📅 '+DN[days[selDay].getDay()]+', '+MN[days[selDay].getMonth()]+' '+days[selDay].getDate()+' at '+times[selTime]+' CT';
+    else hint.textContent=selDay===null?'Pick a day to see open times.':'Choose a time to continue. Demos are free and there is no obligation.';
+  }
+  selDay=0;paint();
+})();
+</script>

@@ -1,0 +1,374 @@
+<!--
+title: Google Business Profile Services
+description: Suspension recovery, map-pack ranking, review management, citation cleanup and managed local SEO, everything your Google Business Profile needs in one place.
+nav: services
+-->
+<style>
+.sv-chipbar{position:sticky;top:64px;z-index:20;background:rgba(255,254,253,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.sv-chipbar .chips{padding:12px 0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+.sv-chipbar .chips::-webkit-scrollbar{display:none}
+.sv-chipbar .chips a{white-space:nowrap;flex:0 0 auto}
+.sv-chipbar .chips a:hover{background:var(--ink);color:#fff}
+.sv-sec{scroll-margin-top:130px}
+.sv-hero-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.sv-hero-stats div{text-align:left}
+.sv-hero-stats b{display:block;font-size:34px;letter-spacing:-.04em;font-weight:600}
+.sv-hero-stats span{font-size:13px;color:var(--muted)}
+.sv-kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--g-blue)}
+.sv-kicker i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;color:#fff;background:var(--g-blue)}
+.sv-copy h2{font-size:clamp(32px,3.8vw,52px);letter-spacing:-.045em;margin:14px 0 18px}
+.sv-copy>p{font-size:18px;color:var(--muted);line-height:1.6;margin-bottom:22px}
+.sv-copy .checks{margin:22px 0 28px}
+.sv-vis{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 30px 60px -40px rgba(11,26,59,.35)}
+.sv-vis-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.sv-vis-top b{font-size:15px}
+.sv-rgwrap{max-width:420px;margin:0 auto}
+.sv-rgmeta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
+.sv-legend{display:flex;gap:14px;flex-wrap:wrap}
+.sv-legend span{display:inline-flex;align-items:center;gap:6px}
+.sv-legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.sv-toggle{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--soft)}
+.sv-toggle button{padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px}
+.sv-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
+/* suspension */
+.sv-susp{background:var(--forest);color:#fff;border-radius:28px;padding:30px;position:relative;overflow:hidden}
+.sv-susp .state{display:flex;align-items:center;gap:12px;font-weight:600}
+.sv-susp .dot{width:12px;height:12px;border-radius:50%;background:var(--g-red);box-shadow:0 0 0 6px rgba(234,67,53,.25)}
+.sv-susp ul{list-style:none;display:grid;gap:12px;margin-top:22px}
+.sv-susp li{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.08);font-size:15px}
+.sv-susp li em{font-style:normal;font-weight:700;color:#81c995}
+.sv-susp small{display:block;margin-top:18px;color:rgba(255,255,255,.65)}
+/* reviews */
+.sv-stars{display:flex;gap:6px;font-size:40px;line-height:1}
+.sv-stars span{color:#dadfe6;position:relative;display:inline-block}
+.sv-stars span::after{content:"★";position:absolute;left:0;top:0;color:var(--g-yellow);clip-path:inset(0 100% 0 0);transition:clip-path .7s var(--ease)}
+.sv-flow.in .sv-stars span::after{clip-path:inset(0 0 0 0)}
+.sv-flow.in .sv-stars span:nth-child(2)::after{transition-delay:.15s}.sv-flow.in .sv-stars span:nth-child(3)::after{transition-delay:.3s}
+.sv-flow.in .sv-stars span:nth-child(4)::after{transition-delay:.45s}.sv-flow.in .sv-stars span:nth-child(5)::after{transition-delay:.6s}
+.sv-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.sv-steps div{padding:14px;border-radius:16px;background:var(--soft);font-size:13px;line-height:1.35;position:relative}
+.sv-steps div b{display:block;font-size:22px;margin-bottom:4px}
+.sv-bubble{border-radius:18px;padding:16px 18px;font-size:14px;line-height:1.5;opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease) .9s,transform .6s var(--ease) .9s}
+.sv-flow.in .sv-bubble{opacity:1;transform:none}
+.sv-bubble.r{background:var(--mint);margin-top:10px;margin-left:28px;transition-delay:1.5s}
+.sv-bubble.c{background:var(--soft)}
+.sv-bar{height:10px;border-radius:10px;background:var(--soft);overflow:hidden;margin-top:8px}
+.sv-bar i{display:block;height:100%;width:0;border-radius:10px;background:var(--g-green);transition:width 1.4s var(--ease) .4s}
+.sv-flow.in .sv-bar i{width:var(--w)}
+.sv-stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.sv-stat3 div{text-align:center;padding:14px 6px;border-radius:16px;border:1px solid var(--line)}
+.sv-stat3 b{display:block;font-size:26px;letter-spacing:-.03em}
+.sv-stat3 span{font-size:12px;color:var(--muted)}
+/* citations */
+.sv-dirs{display:grid;gap:10px}
+.sv-dir{display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--soft);transition:background .5s}
+.sv-dir .lg{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:700;color:#fff;font-size:15px}
+.sv-dir b{font-size:15px;display:block;line-height:1.2}
+.sv-dir small{color:var(--muted);font-size:12px}
+.sv-tick{width:30px;height:30px;border-radius:50%;background:#dadfe6;display:grid;place-items:center;transition:background .4s,transform .5s var(--ease)}
+.sv-tick svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .5s .1s}
+.sv-dir.ok .sv-tick{background:var(--g-green);transform:scale(1.1)}
+.sv-dir.ok .sv-tick svg{stroke-dashoffset:0}
+.sv-dir.ok{background:var(--mint)}
+.sv-sync{display:flex;justify-content:space-between;gap:10px;margin-top:16px;font-size:14px;font-weight:600}
+/* managed */
+.sv-month{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sv-wk{border-radius:22px;padding:24px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--g-blue)}
+.sv-wk:nth-child(2){border-top-color:var(--g-red)}.sv-wk:nth-child(3){border-top-color:var(--g-yellow)}.sv-wk:nth-child(4){border-top-color:var(--g-green)}
+.sv-wk small{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.sv-wk h3{font-size:20px;margin:8px 0 10px}
+.sv-wk p{font-size:15px;color:var(--muted);line-height:1.5}
+@media(max-width:1000px){.sv-month{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.sv-month{grid-template-columns:1fr}.sv-steps{grid-template-columns:1fr}.sv-vis{padding:20px}.sv-chipbar{top:56px}}
+.sv-yes{color:#188038;font-weight:700}.sv-no{color:#a50e0e;font-weight:700}
+.sv-cmp-wrap{margin-top:56px}
+.sv-photo{aspect-ratio:3/2}
+.sv-photo img{height:100%}
+</style>
+
+<section class="phero wide">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Services</span></nav>
+    <span class="pill rv d1" style="margin-top:20px"><svg><use href="#spark"/></svg>Five services, one specialist team</span>
+    <h1 data-split>Everything your Google profile needs to get found.</h1>
+    <p class="lead rv d2">From getting a suspended listing back online to climbing the local map pack and keeping reviews and directories in order, our 40+ specialists handle the work that quietly decides whether nearby customers call you or a competitor.</p>
+    <div class="acts rv d3">
+      <a href="/free-audit" class="btn btn-green btn-lg" data-mag>Get my free audit</a>
+      <a href="/pricing" class="btn btn-outline btn-lg">See pricing</a>
+    </div>
+    <div class="sv-hero-stats rv d4">
+      <div><b data-count="1200" data-suffix="+">0</b><span>profiles recovered</span></div>
+      <div><b data-count="94" data-suffix="%">0</b><span>reinstatement rate</span></div>
+      <div><b data-count="72" data-suffix="h">0</b><span>typical turnaround</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="sv-chipbar">
+  <div class="wrap">
+    <nav class="chips" aria-label="Jump to a service">
+      <a href="#suspension">🚨 Suspension recovery</a>
+      <a href="#map-pack">📍 Map-pack ranking</a>
+      <a href="#reviews">⭐ Reviews</a>
+      <a href="#citations">🔗 Citations</a>
+      <a href="#managed">🧭 Managed local SEO</a>
+    </nav>
+  </div>
+</div>
+
+<!-- SUSPENSION -->
+<section class="sec sv-sec" id="suspension">
+  <div class="wrap">
+    <div class="split2">
+      <div class="sv-copy rv-l">
+        <span class="sv-kicker"><i>1</i>Suspension recovery</span>
+        <h2>Suspended? We get you back online, usually in 72 hours.</h2>
+        <p>A suspended Business Profile disappears from Maps and Search, and the phone goes quiet. We diagnose the exact policy trigger, fix the underlying data, and file the appeal with the documents Google actually wants to see. Our reinstatement rate is 94%, backed by a 90-day warranty.</p>
+        <ul class="checks">
+          <li>Same-day audit of the likely trigger (address, name, category, reviews)</li>
+          <li>Evidence pack and appeal filed by a named specialist</li>
+          <li>Re-verification support if Google asks for video or postcards</li>
+        </ul>
+        <a href="/suspension-recovery" class="btn btn-green">How recovery works</a>
+        <a href="/pricing" class="link-arrow" style="margin-left:18px">From $499 one-time <svg><use href="#chev"/></svg></a>
+      </div>
+      <div class="rv-r">
+        <div class="sv-susp" data-tilt>
+          <div class="state"><span class="dot"></span> Profile status: Suspended</div>
+          <ul>
+            <li><span>Day 0: audit and trigger found</span><em>Done</em></li>
+            <li><span>Day 1: evidence pack filed</span><em>Done</em></li>
+            <li><span>Day 2: Google review</span><em>In review</em></li>
+            <li><span>Day 3: profile live again</span><em>Typical</em></li>
+          </ul>
+          <small>Illustrative timeline. Every case differs and Google makes the final decision.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP PACK -->
+<section class="sec sec--soft sv-sec" id="map-pack">
+  <div class="wrap">
+    <div class="split2 rev">
+      <div class="sv-copy rv-r">
+        <span class="sv-kicker"><i>2</i>Map-pack ranking</span>
+        <h2>Be in the top three where your customers actually stand.</h2>
+        <p>Ranking is not one number. It changes block by block. We scan a 25-point grid around your business, show you where you vanish, then fix the signals behind it: primary category, service areas, on-profile content, proximity-friendly citations and review velocity.</p>
+        <ul class="checks">
+          <li>Grid scans before and after, so you see progress on a map</li>
+          <li>Category, attributes, products and services rebuilt around search demand</li>
+          <li>Weekly Google Posts and photo uploads that keep the profile fresh</li>
+        </ul>
+        <a href="/blog/map-pack-ranking-factors-2026" class="link-arrow">Read the 2026 ranking factors <svg><use href="#chev"/></svg></a>
+      </div>
+      <div class="rv-l">
+        <div class="sv-vis">
+          <div class="sv-vis-top">
+            <b>Average rank across 25 points: <span id="sv-rank-label">Before</span></b>
+            <div class="sv-toggle" role="group" aria-label="Show ranking before or after">
+              <button type="button" data-rank-set="before" data-rank-for="#sv-grid" aria-pressed="true">Before</button>
+              <button type="button" data-rank-set="after" data-rank-for="#sv-grid" aria-pressed="false">After</button>
+            </div>
+          </div>
+          <div class="sv-rgwrap"><div class="rg" id="sv-grid" data-rank="before" data-n="5" data-label="#sv-rank-label" data-before-text="Before" data-after-text="After" role="img" aria-label="Map ranking heat map with 25 points, toggled between before and after"></div></div>
+          <div class="sv-rgmeta">
+            <div class="sv-legend"><span><i style="background:#34A853"></i>Top 3</span><span><i style="background:#FBBC04"></i>4 to 10</span><span><i style="background:#EA4335"></i>11+</span></div>
+            <span>Blue ring = your business</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec sv-sec" id="reviews">
+  <div class="wrap">
+    <div class="split2">
+      <div class="sv-copy rv-l">
+        <span class="sv-kicker"><i>3</i>Review management</span>
+        <h2>More reviews, answered fast, and none of them faked.</h2>
+        <p>Reviews feed both ranking and trust. We set up a compliant request flow that turns happy customers into public reviews, reply to every review in your voice, and dispute fake or policy-breaking ones with evidence, never by gating or paying for reviews.</p>
+        <ul class="checks">
+          <li>QR and text-link review requests that go to everyone, not just happy customers</li>
+          <li>Replies drafted and posted within 24 hours</li>
+          <li>Fake-review flagging with a documented dispute trail</li>
+        </ul>
+        <a href="/blog/fake-review-removal-guide" class="link-arrow">Our fake-review removal guide <svg><use href="#chev"/></svg></a>
+      </div>
+      <div class="rv-r">
+        <div class="sv-vis sv-flow rv" id="sv-flow">
+          <div class="sv-vis-top"><b>Review flow, a typical first 90 days</b><span class="tag green">Compliant</span></div>
+          <div class="sv-stars" role="img" aria-label="Five stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="sv-steps">
+            <div><b>1</b>Customer gets a QR or text link after service</div>
+            <div><b>2</b>They leave a real review on Google</div>
+            <div><b>3</b>We reply in your voice within 24 hours</div>
+          </div>
+          <div class="sv-bubble c"><b>Maria R.</b> ★★★★★ "Called at 7pm, fixed by 9. Honest quote too."</div>
+          <div class="sv-bubble r"><b>Owner reply</b> Thank you Maria, glad we could get it sorted the same night. See you next time!</div>
+          <div style="margin-top:20px;font-size:13px;font-weight:600">Reply rate</div>
+          <div class="sv-bar"><i style="--w:100%"></i></div>
+          <div class="sv-stat3">
+            <div><b data-count="24" data-suffix="h">0</b><span>max reply time</span></div>
+            <div><b data-count="3" data-suffix="x">0</b><span>typical review volume</span></div>
+            <div><b data-count="4.9" data-dec="1">0</b><span>average rating, our own</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITATIONS -->
+<section class="sec sec--soft sv-sec" id="citations">
+  <div class="wrap">
+    <div class="split2 rev">
+      <div class="sv-copy rv-r">
+        <span class="sv-kicker"><i>4</i>Citation cleanup</span>
+        <h2>One name, one address, one phone number, everywhere.</h2>
+        <p>Google cross-checks your business details against dozens of directories. When Yelp says Suite 2 and your profile says Unit B, trust drops and suspensions become more likely. We audit, correct, remove duplicates and sync your listings at $2 per citation.</p>
+        <ul class="checks">
+          <li>Full NAP audit across 60+ directories and data aggregators</li>
+          <li>Duplicate and legacy listings merged or removed</li>
+          <li>Apple, Bing, Yelp, Facebook and key industry directories kept in sync</li>
+        </ul>
+        <a href="/blog/nap-citation-cleanup-playbook" class="link-arrow">The NAP cleanup playbook <svg><use href="#chev"/></svg></a>
+      </div>
+      <div class="rv-l">
+        <div class="sv-vis" id="sv-dirs">
+          <div class="sv-vis-top"><b>Directory sync</b><span class="tag">Live demo</span></div>
+          <div class="sv-dirs">
+            <div class="sv-dir"><span class="lg" style="background:#4285F4">G</span><div><b>Google Business Profile</b><small>1801 E 6th St, Austin, TX 78702</small></div><span class="sv-tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></span></div>
+            <div class="sv-dir"><span class="lg" style="background:#EA4335">Y</span><div><b>Yelp</b><small>1801 E 6th St, Austin, TX 78702</small></div><span class="sv-tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></span></div>
+            <div class="sv-dir"><span class="lg" style="background:#34A853">A</span><div><b>Apple Business Connect</b><small>(512) 555-0142</small></div><span class="sv-tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></span></div>
+            <div class="sv-dir"><span class="lg" style="background:#FBBC04;color:#3b2800">B</span><div><b>Bing Places</b><small>googlefixmybiz</small></div><span class="sv-tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></span></div>
+            <div class="sv-dir"><span class="lg" style="background:#4285F4">f</span><div><b>Facebook</b><small>1801 E 6th St, Austin, TX 78702</small></div><span class="sv-tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></span></div>
+            <div class="sv-dir"><span class="lg" style="background:#EA4335">Y</span><div><b>Yellow Pages</b><small>(512) 555-0142</small></div><span class="sv-tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></span></div>
+          </div>
+          <div class="sv-sync"><span id="sv-sync-label" aria-live="polite">0 of 6 matched</span><span style="color:var(--muted);font-weight:500">Example business details</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGED -->
+<section class="sec sv-sec" id="managed">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sv-kicker"><i>5</i>Managed local SEO</span>
+      <h2 data-split>Hand it over. Get a monthly report that shows the lift.</h2>
+      <p class="rv d1">From $499 a month. Everything above, run continuously by a dedicated specialist, so your profile keeps climbing instead of slowly slipping back.</p>
+    </div>
+    <div class="sv-month">
+      <div class="sv-wk rv" data-tilt><small>Week 1</small><h3>Audit and fixes</h3><p>Profile health check, category and attribute fixes, citation drift report.</p></div>
+      <div class="sv-wk rv d1" data-tilt><small>Week 2</small><h3>Content</h3><p>New photos, services and products, plus two Google Posts scheduled.</p></div>
+      <div class="sv-wk rv d2" data-tilt><small>Week 3</small><h3>Reviews</h3><p>Every new review answered, request flow tuned, disputes filed.</p></div>
+      <div class="sv-wk rv d3" data-tilt><small>Week 4</small><h3>Report and plan</h3><p>25-point grid re-scan, calls and direction requests, next month's priorities.</p></div>
+    </div>
+
+    <div class="split2 sv-cmp-wrap">
+      <div class="rv-l">
+        <h3 style="font-size:30px;letter-spacing:-.04em;margin-bottom:16px">What you get every month</h3>
+        <ul class="checks">
+          <li>Dedicated specialist who knows your business by name</li>
+          <li>Weekly profile updates, posts and photo uploads</li>
+          <li>All reviews answered within 24 hours</li>
+          <li>Citation monitoring and duplicate removal</li>
+          <li>Monthly grid scan with before and after heat maps</li>
+          <li>Suspension watch, with recovery priority if it ever happens</li>
+          <li>One 30-minute strategy call</li>
+        </ul>
+        <div class="media sv-photo" style="margin-top:28px"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=75&w=900&h=600" alt="Specialists working together at laptops on a client's local SEO plan" loading="lazy"></div>
+      </div>
+      <div class="rv-r">
+        <div class="tbl-wrap"><table class="cmp">
+          <caption style="text-align:left;padding:0 0 12px;font-weight:700;font-size:18px">DIY vs managed</caption>
+          <thead><tr><th scope="col">&nbsp;</th><th scope="col">Do it yourself</th><th scope="col">Managed</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Time per month</th><td>8 to 12 hours</td><td class="sv-yes">About 30 minutes</td></tr>
+            <tr><th scope="row">Reviews answered</th><td>When you remember</td><td class="sv-yes">Within 24h</td></tr>
+            <tr><th scope="row">Rank tracking</th><td>Manual spot checks</td><td class="sv-yes">25-point grid</td></tr>
+            <tr><th scope="row">Suspension help</th><td class="sv-no">You are on your own</td><td class="sv-yes">Priority recovery</td></tr>
+            <tr><th scope="row">Cost</th><td>Your time</td><td>From $499/mo</td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin-top:14px;font-size:14px;color:var(--muted)">Prefer to run it yourself? The dashboard is $31/mo per location. Multi-location and agency plans are custom.</p>
+        <a href="/pricing" class="btn btn-green" style="margin-top:18px">Compare plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="sec sec--soft">
+  <div class="wrap narrow">
+    <div class="sec-head left">
+      <span class="pill rv"><svg><use href="#spark"/></svg>How we work</span>
+      <h2 data-split>Audit, fix, grow, report.</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-step"><span class="n">1</span><div class="when">Days 1 to 2</div><h3>Audit</h3><p>We read your live profile, 25 map points, your top 60 directories and your reviews, and hand you a 23-point report with plain-English priorities.</p></div>
+      <div class="tl-step"><span class="n">2</span><div class="when">Days 2 to 7</div><h3>Fix</h3><p>Suspensions appealed, categories and names corrected, duplicate listings merged and citations synced to one version of your details.</p></div>
+      <div class="tl-step"><span class="n">3</span><div class="when">Weeks 2 to 8</div><h3>Grow</h3><p>Fresh content, a compliant review engine and local links push you into the top three across more of your service area.</p></div>
+      <div class="tl-step"><span class="n">4</span><div class="when">Every month</div><h3>Report</h3><p>A clear dashboard and a call: rankings, calls, direction requests and what we will do next. No jargon, no vanity charts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="wrap">
+    <div class="nums">
+      <div class="num rv"><b data-count="1200" data-suffix="+">0</b><span>profiles recovered since 2019</span></div>
+      <div class="num rv d1"><b data-count="94" data-suffix="%">0</b><span>reinstatement rate</span></div>
+      <div class="num rv d2"><b data-count="40" data-suffix="+">0</b><span>in-house specialists</span></div>
+      <div class="num rv d3"><b data-count="4.9" data-dec="1">0</b><span>average across 1,377 reviews</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--soft">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2 data-split>Questions about our services</h2>
+    </div>
+    <div class="acc rv">
+      <details><summary>Which service should I start with?</summary><div class="a"><p>If your profile is suspended, start with recovery, because nothing else matters until it is live. Otherwise start with the free audit. It tells you whether ranking, reviews or citations is your biggest gap.</p></div></details>
+      <details><summary>Can I buy a single service instead of a plan?</summary><div class="a"><p>Yes. Suspension recovery is $499 one-time and citations are $2 each. Managed local SEO is the ongoing plan, from $499 a month.</p></div></details>
+      <details><summary>Do you guarantee a number one ranking?</summary><div class="a"><p>No one honestly can. We guarantee the work: a documented plan, monthly grid scans so you can see movement, and for suspensions a 90-day reinstatement warranty.</p></div></details>
+      <details><summary>Do I need to give you access to my Google account?</summary><div class="a"><p>No passwords. You add us as a manager on your Business Profile, which you can remove at any time.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-band rv-s">
+      <h2>Not sure what your profile needs?</h2>
+      <p>Run the free audit and see your score, your rank grid and your top three fixes in under a minute.</p>
+      <div class="acts"><a href="/free-audit" class="btn btn-white btn-lg" data-mag>Get my free audit</a><a href="/contact" class="btn btn-ghost-w btn-lg">Talk to a specialist</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- scripts -->
+<script>
+(function(){
+  var dirs = Array.prototype.slice.call(document.querySelectorAll('.sv-dir'));
+  var box = document.getElementById('sv-dirs'), lab = document.getElementById('sv-sync-label');
+  if (!box) return;
+  var started = false;
+  function run(){
+    if (started) return; started = true;
+    var n = 0;
+    dirs.forEach(function(d, i){
+      setTimeout(function(){ d.classList.add('ok'); n++; lab.textContent = n + ' of ' + dirs.length + ' matched'; }, GFMB.reduce ? 0 : 500 + i * 450);
+    });
+  }
+  new IntersectionObserver(function(es, o){ if (es[0].isIntersecting) { run(); o.disconnect(); } }, { threshold: .4 }).observe(box);
+})();
+</script>
