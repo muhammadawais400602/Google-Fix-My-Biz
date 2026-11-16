@@ -178,7 +178,11 @@
       io.unobserve(t);
     });
   }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-  $$('.rv,.rv-l,.rv-r,.rv-s,[data-split],[data-count],.rg').forEach(function(el){ io.observe(el); });
+  var revealsStarted = false;
+  function startReveals(){
+    if (revealsStarted) return; revealsStarted = true;
+    $$('.rv,.rv-l,.rv-r,.rv-s,[data-split],[data-count],.rg').forEach(function(el){ io.observe(el); });
+  }
 
   /* ---------- tilt + magnetic (fine pointers only) ---------- */
   if (fine && !reduce) {
@@ -251,6 +255,40 @@
       f.dispatchEvent(new CustomEvent('gfmb:submit', { bubbles: true }));
     });
   });
+
+  /* ---------- logo intro: hold page reveals until the curtain opens ---------- */
+  var root = d.documentElement, intro = $('#intro');
+  if (root.classList.contains('intro-on') && intro) {
+    var held = $$('body > *').filter(function(el){ return el !== intro && el.tagName !== 'SCRIPT'; });
+    held.forEach(function(el){ el.inert = true; });
+    root.classList.add('intro-lock');
+    if (lenis) lenis.stop();
+    var finished = false;
+    var finish = function(){
+      if (finished) return; finished = true;
+      held.forEach(function(el){ el.inert = false; });
+      root.classList.remove('intro-on', 'intro-lock'); root.classList.add('intro-done');
+      if (intro.parentNode) intro.parentNode.removeChild(intro);
+      if (lenis) lenis.start();
+      window.dispatchEvent(new Event('gfmb:intro-done'));
+      onScroll();
+    };
+    var elapsed = performance.now() - (window.__introT0 || performance.now());
+    var tReveal = setTimeout(startReveals, Math.max(0, 1850 - elapsed));
+    var tEnd = setTimeout(finish, Math.max(0, 2800 - elapsed));
+    var skip = function(){
+      if (finished || intro.classList.contains('out')) return;
+      intro.classList.add('out');
+      clearTimeout(tReveal); clearTimeout(tEnd);
+      startReveals();
+      setTimeout(finish, 750);
+    };
+    $('.intro-skip', intro).addEventListener('click', skip);
+    intro.addEventListener('click', skip);
+    d.addEventListener('keydown', function(e){ if (e.key === 'Escape') skip(); });
+  } else {
+    startReveals();
+  }
 
   /* public helpers for page scripts */
   window.GFMB = { lenis: lenis, reduce: reduce, countUp: countUp, rankInit: rankInit, rankSet: rankSet, rankStart: rankStart, clamp: clamp };

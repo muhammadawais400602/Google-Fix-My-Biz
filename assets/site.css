@@ -49,6 +49,44 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.035em;line-height:1.08}
 .link-arrow:hover svg{transform:translateX(4px)}
 .burst{position:absolute;pointer-events:none;clip-path:polygon(50.0% 0.7%, 57.5% 16.9%, 72.0% 4.4%, 70.8% 23.9%, 89.2% 18.7%, 81.7% 34.7%, 97.0% 39.3%, 86.0% 50.0%, 96.9% 60.7%, 82.1% 65.4%, 87.7% 80.1%, 70.9% 76.2%, 71.6% 94.8%, 58.4% 87.0%, 50.0% 98.5%, 42.4% 83.5%, 28.1% 95.5%, 25.9% 80.2%, 10.7% 81.4%, 18.1% 65.4%, 0% 61.5%, 16.7% 50.0%, 0% 38.6%, 18.7% 34.9%, 12.0% 19.7%, 29.0% 23.6%, 28.6% 5.6%, 41.6% 13.1%)}
 
+/* ---------- logo intro (plays once per visit; pure CSS so it can never get stuck) ---------- */
+.intro{display:none}
+html.intro-lock{overflow:hidden}
+html.intro-on .intro{display:block;position:fixed;inset:0;z-index:300;animation:introGone 0s linear 2.8s forwards}
+@keyframes introGone{to{visibility:hidden;pointer-events:none}}
+.intro-panel{position:absolute;left:0;right:0;height:50%}
+.intro-panel.top{top:0;background:linear-gradient(180deg,#fff,#f1f5fd);animation:ipTop .85s cubic-bezier(.76,0,.24,1) 1.9s forwards}
+.intro-panel.bot{bottom:0;background:linear-gradient(180deg,#f1f5fd,#fff);animation:ipBot .85s cubic-bezier(.76,0,.24,1) 1.9s forwards}
+@keyframes ipTop{to{transform:translateY(-101%)}}
+@keyframes ipBot{to{transform:translateY(101%)}}
+.intro-center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;animation:icOut .45s ease 1.7s forwards}
+@keyframes icOut{to{opacity:0;transform:scale(1.07) translateY(-8px)}}
+.intro-pin{position:relative;width:132px;height:132px;display:grid;place-items:center;margin-bottom:14px}
+.intro-pin svg{width:64px;height:68px;position:relative;z-index:1;animation:ipDrop .95s cubic-bezier(.34,1.56,.64,1) .1s both}
+@keyframes ipDrop{0%{transform:translateY(-150px) scale(.6);opacity:0}55%{opacity:1}100%{transform:none;opacity:1}}
+.intro-pin .ring{position:absolute;inset:0;border-radius:50%;border:2px solid #4285F4;opacity:0;animation:ipRing 1.5s ease-out .7s both}
+.intro-pin .ring.r2{border-color:#EA4335;animation-delay:.95s}
+@keyframes ipRing{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.intro-word{display:flex;justify-content:center;overflow:hidden;padding:.06em .1em .14em;font-family:"Poppins",sans-serif;font-weight:600;font-size:clamp(34px,6.4vw,66px);letter-spacing:-.04em;line-height:1;color:#111412}
+.intro-word span{display:inline-block;transform:translateY(118%);animation:ipLetter .7s var(--ease) both;animation-delay:calc(.55s + var(--i) * .055s)}
+@keyframes ipLetter{to{transform:none}}
+.intro-tag{margin-top:12px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#4f5651;font-weight:600;opacity:0;animation:ipFade .6s ease 1.2s forwards}
+@keyframes ipFade{to{opacity:1}}
+.intro-bar{width:min(260px,62vw);height:4px;border-radius:4px;background:rgba(17,20,18,.08);margin:26px auto 0;overflow:hidden}
+.intro-bar i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#4285F4 0 25%,#EA4335 25% 50%,#FBBC04 50% 75%,#34A853 75%);animation:ipBar 1.45s cubic-bezier(.65,0,.35,1) .25s forwards}
+@keyframes ipBar{to{transform:none}}
+.intro-skip{position:absolute;right:24px;bottom:24px;z-index:3;font-size:13px;font-weight:600;padding:10px 16px;border-radius:999px;border:1px solid rgba(17,20,18,.22);background:#fff;opacity:0;animation:ipFade .4s ease .5s forwards,ipSkipOut .3s ease 1.65s forwards;transition:background .2s,color .2s}
+@keyframes ipSkipOut{to{opacity:0}}
+.intro-skip:hover{background:var(--ink);color:#fff}
+.intro.out .intro-center{animation:icOutS .25s ease forwards}
+.intro.out .intro-skip{display:none}
+.intro.out .intro-panel.top{animation:ipTopS .6s cubic-bezier(.76,0,.24,1) .1s forwards}
+.intro.out .intro-panel.bot{animation:ipBotS .6s cubic-bezier(.76,0,.24,1) .1s forwards}
+@keyframes icOutS{to{opacity:0}}
+@keyframes ipTopS{to{transform:translateY(-101%)}}
+@keyframes ipBotS{to{transform:translateY(101%)}}
+@media(prefers-reduced-motion:reduce){.intro{display:none!important}}
+
 /* ---------- scroll progress ---------- */
 .sprog{position:fixed;left:0;right:0;top:0;height:4px;z-index:120;pointer-events:none}
 .sprog i{display:block;height:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#4285F4 0 25%,#EA4335 25% 50%,#FBBC04 50% 75%,#34A853 75%)}

@@ -18,11 +18,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
+<script>(function(){try{var r=matchMedia('(prefers-reduced-motion: reduce)').matches,f=/[?&]intro=1/.test(location.search);if(!r&&(f||!sessionStorage.getItem('gfmb-intro'))){document.documentElement.classList.add('intro-on');window.__introT0=performance.now();sessionStorage.setItem('gfmb-intro','1');}}catch(e){}})();</script>
 <link rel="stylesheet" href="/assets/home.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"googlefixmybiz","description":"Google Business Profile recovery, local ranking and review management.","url":"https://google-fix-my-biz.vercel.app","areaServed":"US","priceRange":"$$"}</script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <symbol id="spark" viewBox="0 0 24 24"><path d="M12 1.5l2.6 7.9 7.9 2.6-7.9 2.6L12 22.5l-2.6-7.9L1.5 12l7.9-2.6z" fill="#4285F4"/></symbol>
@@ -32,6 +32,17 @@
   </defs>
 </svg>
 
+<div class="intro" id="intro">
+  <div class="intro-panel top"></div><div class="intro-panel bot"></div>
+  <div class="intro-center">
+    <div class="intro-pin"><span class="ring"></span><span class="ring r2"></span><svg aria-hidden="true"><use href="#pinlogo"/></svg></div>
+    <div class="intro-word" role="img" aria-label="googlefixmybiz"><span style="--i:0;color:#4285F4">g</span><span style="--i:1;color:#EA4335">o</span><span style="--i:2;color:#FBBC04">o</span><span style="--i:3;color:#4285F4">g</span><span style="--i:4;color:#34A853">l</span><span style="--i:5;color:#EA4335">e</span><span style="--i:6">f</span><span style="--i:7">i</span><span style="--i:8">x</span><span style="--i:9">m</span><span style="--i:10">y</span><span style="--i:11">b</span><span style="--i:12">i</span><span style="--i:13">z</span></div>
+    <div class="intro-tag">Get found, locally.</div>
+    <div class="intro-bar"><i></i></div>
+  </div>
+  <button class="intro-skip" type="button">Skip intro</button>
+</div>
+<a class="skip" href="#main">Skip to content</a>
 <!-- 0. ANNOUNCEMENT BANNER -->
 <aside class="banner" id="banner">
   <button class="x" aria-label="Dismiss announcement" onclick="document.getElementById('banner').remove()">×</button>
