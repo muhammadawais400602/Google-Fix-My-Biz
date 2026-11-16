@@ -288,6 +288,27 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 .foot-bottom .social a:hover{background:var(--brand)}
 .foot-bottom .legal{display:flex;gap:16px;flex-wrap:wrap}
 .foot-bottom .legal a{color:rgba(255,255,255,.65)}
+
+/* ========= REVEAL ANIMATIONS ========= */
+.r-up{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,.84,.3,1),transform .9s cubic-bezier(.16,.84,.3,1)}
+.r-up.in{opacity:1;transform:none}
+.r-up.d1{transition-delay:.08s}
+.r-up.d2{transition-delay:.16s}
+.r-up.d3{transition-delay:.24s}
+.r-up.d4{transition-delay:.32s}
+.r-scale{opacity:0;transform:scale(.96);transition:opacity .9s cubic-bezier(.16,.84,.3,1),transform .9s cubic-bezier(.16,.84,.3,1)}
+.r-scale.in{opacity:1;transform:none}
+.r-fade{opacity:0;transition:opacity 1s ease}
+.r-fade.in{opacity:1}
+/* parallax layer */
+.parallax{will-change:transform}
+/* Smooth count-up for stats */
+.stat b{display:inline-block}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+.lenis.lenis-smooth iframe{pointer-events:none}
 </style>
 
 <!-- ANNO -->
@@ -335,9 +356,9 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1>Shine bright, <span class="accent">locally.</span></h1>
-    <p class="lead">We rescue suspended Google Business Profiles, clean up broken citations, and rebuild local rankings — turning complex local-search data into clear, confident action.</p>
-    <div class="hcta">
+    <h1 class="r-up">Shine bright, <span class="accent">locally.</span></h1>
+    <p class="lead r-up d1">We rescue suspended Google Business Profiles, clean up broken citations, and rebuild local rankings — turning complex local-search data into clear, confident action.</p>
+    <div class="hcta r-up d2">
       <a href="#audit" class="btn btn-primary">Get started with Google Fix My Biz</a>
     </div>
   </div>
@@ -346,11 +367,11 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- AUDIENCE -->
 <section id="services">
   <div class="wrap">
-    <span class="sec-eyebrow">Local SEO your way</span>
-    <h2 class="sec-title">Pick the fix that fits.</h2>
-    <p class="sec-sub">Whether you're one business, a multi-location brand, or an agency serving dozens of clients — we have a track for you.</p>
+    <span class="sec-eyebrow r-up">Local SEO your way</span>
+    <h2 class="sec-title r-up d1">Pick the fix that fits.</h2>
+    <p class="sec-sub r-up d2">Whether you're one business, a multi-location brand, or an agency serving dozens of clients — we have a track for you.</p>
     <div class="audience-grid">
-      <div class="aud-card">
+      <div class="aud-card r-up">
         <div class="photo"><img src="https://picsum.photos/seed/gfmb-local/800/500" alt=""></div>
         <div class="body">
           <h3>For Local Businesses</h3>
@@ -358,7 +379,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <a href="#" class="act">Grow my local business →</a>
         </div>
       </div>
-      <div class="aud-card">
+      <div class="aud-card r-up d1">
         <div class="photo"><img src="https://picsum.photos/seed/gfmb-agencies/800/500" alt=""></div>
         <div class="body">
           <h3>For Agencies &amp; Consultants</h3>
@@ -366,7 +387,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <a href="#" class="act">Grow my agency →</a>
         </div>
       </div>
-      <div class="aud-card full">
+      <div class="aud-card full r-up d2">
         <div class="photo"><img src="https://picsum.photos/seed/gfmb-saas/1400/600" alt=""></div>
         <div class="body">
           <h3>For SaaS Platforms &amp; Multi-Location Brands</h3>
@@ -382,11 +403,11 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- PLATFORM - big product shot -->
 <section class="feature-sec">
   <div class="wrap">
-    <span class="sec-eyebrow">Turning data into insights and action</span>
-    <h2>We empower businesses to thrive and grow locally.</h2>
-    <p class="lead">The Google Fix My Biz platform turns raw profile data into a short list of fixes that actually move your rank, review score, and call volume.</p>
-    <div class="cta-row"><a href="#" class="btn btn-primary">Start your free trial</a></div>
-    <div class="product-shot">
+    <span class="sec-eyebrow r-up">Turning data into insights and action</span>
+    <h2 class="r-up d1">We empower businesses to thrive and grow locally.</h2>
+    <p class="lead r-up d2">The Google Fix My Biz platform turns raw profile data into a short list of fixes that actually move your rank, review score, and call volume.</p>
+    <div class="cta-row r-up d3"><a href="#" class="btn btn-primary">Start your free trial</a></div>
+    <div class="product-shot r-scale">
       <div class="ps-top"><i></i><i></i><i></i><span class="url">app.googlefixmybiz.co/dashboard</span></div>
       <div class="ps-body">
         <div class="ps-sidebar">
@@ -442,20 +463,20 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- MANAGED -->
 <section class="managed">
   <div class="wrap">
-    <span class="sec-eyebrow">We do the work</span>
-    <h2>We do the work — you get the wins.</h2>
-    <p>Not every business has time to figure out Google's category tree or chase a reinstatement through five follow-ups. Hand it to us.</p>
-    <a href="#" class="btn btn-ghost">Let us handle your SEO →</a>
+    <span class="sec-eyebrow r-up">We do the work</span>
+    <h2 class="r-up d1">We do the work — you get the wins.</h2>
+    <p class="r-up d2">Not every business has time to figure out Google's category tree or chase a reinstatement through five follow-ups. Hand it to us.</p>
+    <a href="#" class="btn btn-ghost r-up d3">Let us handle your SEO →</a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="tsec">
   <div class="wrap">
-    <h2 class="sec-title">Proven results for real businesses</h2>
-    <p class="sec-sub">What owners say after we get their pin back.</p>
+    <h2 class="sec-title r-up">Proven results for real businesses</h2>
+    <p class="sec-sub r-up d1">What owners say after we get their pin back.</p>
     <div class="ts-grid">
-      <div class="ts-card">
+      <div class="ts-card r-up">
         <div class="photo"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt=""></div>
         <div class="body">
           <div class="stars">★★★★★</div>
@@ -463,7 +484,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <div class="who"><b>Kenji Mori</b><span>Owner · Sakura Ramen</span></div>
         </div>
       </div>
-      <div class="ts-card">
+      <div class="ts-card r-up d1">
         <div class="photo"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""></div>
         <div class="body">
           <div class="stars">★★★★★</div>
@@ -471,7 +492,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <div class="who"><b>Rachel Beckett</b><span>Operations · Northline Plumbing</span></div>
         </div>
       </div>
-      <div class="ts-card">
+      <div class="ts-card r-up d2">
         <div class="photo"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt=""></div>
         <div class="body">
           <div class="stars">★★★★★</div>
@@ -479,7 +500,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <div class="who"><b>Dr. Maria Alvarez</b><span>Founder · Alvarez Dental</span></div>
         </div>
       </div>
-      <div class="ts-card">
+      <div class="ts-card r-up d3">
         <div class="photo"><img src="https://randomuser.me/api/portraits/men/76.jpg" alt=""></div>
         <div class="body">
           <div class="stars">★★★★★</div>
@@ -495,11 +516,11 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- PRODUCTS BENTO -->
 <section class="prod-sec" id="products">
   <div class="wrap">
-    <span class="sec-eyebrow">What does Google Fix My Biz include?</span>
-    <h2 class="sec-title">How we can help you</h2>
-    <p class="sec-sub">Pick one product, bundle them, or hand us the whole thing.</p>
+    <span class="sec-eyebrow r-up">What does Google Fix My Biz include?</span>
+    <h2 class="sec-title r-up d1">How we can help you</h2>
+    <p class="sec-sub r-up d2">Pick one product, bundle them, or hand us the whole thing.</p>
     <div class="bento">
-      <div class="b-card b-platform">
+      <div class="b-card b-platform r-up">
         <span class="tag">Flagship</span>
         <h3>All-in-one<br>Platform</h3>
         <p>Dashboards for rank, reviews, calls, directions, and competitor benchmarking — the full operating picture for every profile you run.</p>
@@ -507,7 +528,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
         <a href="#" class="b-act">Explore the platform →</a>
         <div class="viz"><div class="mini-chart"><i style="height:30%"></i><i style="height:45%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:80%"></i><i style="height:95%"></i><i style="height:100%"></i></div></div>
       </div>
-      <div class="b-card b-citations">
+      <div class="b-card b-citations r-up d1">
         <span class="tag">Fast</span>
         <h3>Build Citations</h3>
         <p>NAP sync across 300+ directories. Duplicates deleted. Aggregators updated.</p>
@@ -515,7 +536,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
         <a href="#" class="b-act">Start building citations →</a>
         <div class="viz"><div class="listing"><span class="d">✓</span>Yelp</div><div class="listing"><span class="d">✓</span>Apple Maps</div><div class="listing"><span class="d x">×</span>Bing (duplicate)</div></div>
       </div>
-      <div class="b-card">
+      <div class="b-card r-up d2">
         <span class="tag">New</span>
         <h3>All Listing Sites</h3>
         <p>One click to update your profile across every directory Google cross-references.</p>
@@ -523,14 +544,14 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
         <a href="#" class="b-act">See coverage →</a>
         <div class="viz" style="display:flex;flex-wrap:wrap;gap:8px"><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">Yelp</span><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">Apple</span><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">Bing</span><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">Facebook</span><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">TripAdvisor</span><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">Foursquare</span><span style="background:var(--bg-2);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600">+ 294 more</span></div>
       </div>
-      <div class="b-card b-ai">
+      <div class="b-card b-ai r-up d3">
         <span class="tag">Developer</span>
         <h3>API Solutions</h3>
         <p>Audit, rank tracking, and reinstatement filing endpoints for agencies and SaaS platforms at scale.</p>
         <div class="price">Custom pricing</div>
         <a href="#" class="b-act">Get API access →</a>
       </div>
-      <div class="b-card b-managed">
+      <div class="b-card b-managed r-up d4">
         <div class="wrap-layout">
           <div style="display:flex;flex-direction:column">
             <span class="tag" style="color:var(--fg)">Hands-off</span>
@@ -549,11 +570,11 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- AI INSIGHTS -->
 <section class="ai-sec">
   <div class="wrap">
-    <span class="sec-eyebrow ai-eyebrow">Introducing the power of AI</span>
-    <h2 class="sec-title">All-new AI Insights</h2>
-    <p class="sec-sub">ChatGPT, Gemini, Perplexity — AI engines now recommend local businesses, and your Google profile is the data they use. Track how often you're being named.</p>
-    <div style="text-align:center"><a href="#" class="btn btn-primary">Explore AI Insights →</a></div>
-    <div class="ai-shot">
+    <span class="sec-eyebrow ai-eyebrow r-up">Introducing the power of AI</span>
+    <h2 class="sec-title r-up d1">All-new AI Insights</h2>
+    <p class="sec-sub r-up d2">ChatGPT, Gemini, Perplexity — AI engines now recommend local businesses, and your Google profile is the data they use. Track how often you're being named.</p>
+    <div style="text-align:center" class="r-up d3"><a href="#" class="btn btn-primary">Explore AI Insights →</a></div>
+    <div class="ai-shot r-scale">
       <div class="ai-top"><i></i><i></i><i></i></div>
       <div class="ai-body">
         <div class="ai-side">
@@ -577,18 +598,18 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- SUPPORT -->
 <section class="support-sec">
   <div class="wrap support-grid">
-    <div class="support-photo">
-      <img src="https://picsum.photos/seed/gfmb-team/900/680" alt="">
+    <div class="support-photo r-scale">
+      <img src="https://picsum.photos/seed/gfmb-team/900/680" alt="" class="parallax" data-speed="0.08">
       <div class="badge">
         <div class="num">15+</div>
         <div class="lab">Dedicated<br>GBP specialists</div>
       </div>
     </div>
     <div class="support-copy">
-      <span class="sec-eyebrow" style="text-align:left">Real people, real support</span>
-      <h2>Real people, unrivalled support.</h2>
-      <p>Every account gets a dedicated specialist on Slack and a 4-hour response SLA. No ticket queues, no bots, no outsourced call centers. We hire from inside the local-search community and train on our own suspension playbook.</p>
-      <a href="#" class="btn btn-primary">About us →</a>
+      <span class="sec-eyebrow r-up" style="text-align:left">Real people, real support</span>
+      <h2 class="r-up d1">Real people, unrivalled support.</h2>
+      <p class="r-up d2">Every account gets a dedicated specialist on Slack and a 4-hour response SLA. No ticket queues, no bots, no outsourced call centers. We hire from inside the local-search community and train on our own suspension playbook.</p>
+      <a href="#" class="btn btn-primary r-up d3">About us →</a>
     </div>
   </div>
 </section>
@@ -596,18 +617,18 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- LEARNING -->
 <section class="support-sec" style="background:var(--bg-2)">
   <div class="wrap support-grid rev">
-    <div class="support-photo">
-      <img src="https://picsum.photos/seed/gfmb-learn/900/680" alt="">
+    <div class="support-photo r-scale">
+      <img src="https://picsum.photos/seed/gfmb-learn/900/680" alt="" class="parallax" data-speed="0.08">
       <div class="badge">
         <div class="num">1000+</div>
         <div class="lab">Articles,<br>guides, videos</div>
       </div>
     </div>
     <div class="support-copy">
-      <span class="sec-eyebrow" style="text-align:left">Over 1,000 pieces of content</span>
-      <h2>Made for local marketers.</h2>
-      <p>The Learning Hub is six years of weekly playbooks, Google policy decoding, case studies, and courses — all free. Start with "A Beginner's Guide to Google Business Profile Recovery."</p>
-      <a href="#" class="btn btn-primary">Visit the Learning Hub →</a>
+      <span class="sec-eyebrow r-up" style="text-align:left">Over 1,000 pieces of content</span>
+      <h2 class="r-up d1">Made for local marketers.</h2>
+      <p class="r-up d2">The Learning Hub is six years of weekly playbooks, Google policy decoding, case studies, and courses — all free. Start with "A Beginner's Guide to Google Business Profile Recovery."</p>
+      <a href="#" class="btn btn-primary r-up d3">Visit the Learning Hub →</a>
     </div>
   </div>
 </section>
@@ -615,12 +636,12 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- STATS - green -->
 <section class="stats-sec">
   <div class="wrap">
-    <h2>Our story in numbers</h2>
-    <p class="sub">Six years dedicated to one thing: your Google Business Profile.</p>
+    <h2 class="r-up">Our story in numbers</h2>
+    <p class="sub r-up d1">Six years dedicated to one thing: your Google Business Profile.</p>
     <div class="stats-grid">
-      <div class="stat"><b>1,200+</b><span>Active customers</span></div>
-      <div class="stat"><b>4.9/5</b><span>Google star rating</span></div>
-      <div class="stat"><b>6+</b><span>Years of local SEO experience</span></div>
+      <div class="stat r-up"><b data-count="1200" data-suffix="+">0</b><span>Active customers</span></div>
+      <div class="stat r-up d1"><b data-count="4.9" data-suffix="/5" data-dec="1">0</b><span>Google star rating</span></div>
+      <div class="stat r-up d2"><b data-count="6" data-suffix="+">0</b><span>Years of local SEO experience</span></div>
     </div>
   </div>
 </section>
@@ -628,31 +649,31 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- FREE TOOLS - yellow -->
 <section class="tools-sec">
   <div class="wrap">
-    <h2 class="sec-title">Unlock your potential with our free tools.</h2>
-    <p class="sec-sub">Every tool is free, no sign-up, runs in your browser.</p>
+    <h2 class="sec-title r-up">Unlock your potential with our free tools.</h2>
+    <p class="sec-sub r-up d1">Every tool is free, no sign-up, runs in your browser.</p>
     <div class="tools-grid">
-      <div class="tool-card">
+      <div class="tool-card r-up">
         <div class="ico">⚡</div>
         <span class="free">Free tool</span>
         <h4>Profile Health Checker</h4>
         <p>23-point audit of any Google Business Profile. See what Google is penalising.</p>
         <a href="#" class="t-link">Check my profile →</a>
       </div>
-      <div class="tool-card">
+      <div class="tool-card r-up d1">
         <div class="ico">📍</div>
         <span class="free">Free tool</span>
         <h4>Rank Grid Scanner</h4>
         <p>City-wide rank check across 25 local coordinates for any keyword.</p>
         <a href="#" class="t-link">Scan my rank →</a>
       </div>
-      <div class="tool-card">
+      <div class="tool-card r-up d2">
         <div class="ico">⭐</div>
         <span class="free">Free tool</span>
         <h4>Review Link Generator</h4>
         <p>Short review link your customers will tap. Works on any phone.</p>
         <a href="#" class="t-link">Generate link →</a>
       </div>
-      <div class="tool-card">
+      <div class="tool-card r-up d3">
         <div class="ico">🛡️</div>
         <span class="free">Free tool</span>
         <h4>Suspension Risk Scanner</h4>
@@ -666,10 +687,10 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- BLOG - yellow -->
 <section class="blog-sec" id="blog">
   <div class="wrap">
-    <h2 class="sec-title">Upskill with our Learning Hub</h2>
-    <p class="sec-sub">Weekly playbooks from the specialists who file more reinstatements than anyone else.</p>
+    <h2 class="sec-title r-up">Upskill with our Learning Hub</h2>
+    <p class="sec-sub r-up d1">Weekly playbooks from the specialists who file more reinstatements than anyone else.</p>
     <div class="blog-grid">
-      <a href="#" class="bcard">
+      <a href="#" class="bcard r-up">
         <div class="cov"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#0b1320" stroke-width="3"/><path d="M35 50 l10 10 l20 -20" stroke="#0b1320" stroke-width="3"/></svg></div>
         <div class="body">
           <span class="cat">Suspensions</span>
@@ -677,7 +698,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <div class="meta"><span>Nov 12, 2026</span><span>8 min read</span></div>
         </div>
       </a>
-      <a href="#" class="bcard">
+      <a href="#" class="bcard r-up d1">
         <div class="cov"><svg viewBox="0 0 100 100" fill="none"><rect x="30" y="55" width="10" height="20" fill="#0b1320"/><rect x="45" y="40" width="10" height="35" fill="#0b1320"/><rect x="60" y="25" width="10" height="50" fill="#0b1320"/></svg></div>
         <div class="body">
           <span class="cat">Rankings</span>
@@ -685,7 +706,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
           <div class="meta"><span>Oct 29, 2026</span><span>12 min read</span></div>
         </div>
       </a>
-      <a href="#" class="bcard">
+      <a href="#" class="bcard r-up d2">
         <div class="cov"><svg viewBox="0 0 100 100" fill="none"><path d="M50 25 l7 20 l20 2 l-15 14 l5 21 l-17 -11 l-17 11 l5 -21 l-15 -14 l20 -2 z" fill="#0b1320"/></svg></div>
         <div class="body">
           <span class="cat">Reviews</span>
@@ -700,7 +721,7 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
 <!-- CLOSING CTA - green -->
 <section class="close-sec" id="audit">
   <div class="wrap">
-    <div class="close-card">
+    <div class="close-card r-scale">
       <h2>Join thousands of happy customers using Google Fix My Biz.</h2>
       <p class="sub">Whether you need to recover a GBP, rank in the map pack, or hand local search to specialists — we're ready when you are.</p>
       <div class="close-cta">
@@ -792,3 +813,93 @@ footer{background:var(--fg);color:#fff;padding:72px 0 32px}
     </div>
   </div>
 </footer>
+
+<!-- Smooth scroll + reveals -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+  // Respect reduced motion
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Lenis smooth scroll
+  if (typeof Lenis !== 'undefined' && !reduce){
+    var lenis = new Lenis({
+      duration: 1.15,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5
+    });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // Smooth-scroll hash links
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href');
+        if (id.length > 1){
+          var el = document.querySelector(id);
+          if (el){ e.preventDefault(); lenis.scrollTo(el, { offset: -80, duration: 1.4 }); }
+        }
+      });
+    });
+  }
+
+  // Intersection reveals
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        // Count-up for stats
+        if (e.target.matches('.stat')){
+          var num = e.target.querySelector('b[data-count]');
+          if (num && !num.dataset.done){
+            num.dataset.done = '1';
+            var target = parseFloat(num.dataset.count);
+            var dec = parseInt(num.dataset.dec || '0', 10);
+            var suffix = num.dataset.suffix || '';
+            var start = performance.now();
+            var dur = 1400;
+            function tick(t){
+              var p = Math.min(1, (t - start) / dur);
+              var ease = 1 - Math.pow(1 - p, 3);
+              var v = target * ease;
+              num.textContent = (dec ? v.toFixed(dec) : Math.round(v).toLocaleString()) + suffix;
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          }
+        }
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.r-up, .r-scale, .r-fade, .stat').forEach(function(el){ io.observe(el); });
+
+  // Parallax images (tasteful)
+  var parallaxEls = document.querySelectorAll('.parallax');
+  if (parallaxEls.length && !reduce){
+    function applyParallax(){
+      var vh = window.innerHeight;
+      parallaxEls.forEach(function(el){
+        var rect = el.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        var speed = parseFloat(el.dataset.speed || '0.06');
+        var center = rect.top + rect.height/2;
+        var offset = (center - vh/2) * speed;
+        el.style.transform = 'translate3d(0,' + (-offset) + 'px,0) scale(1.08)';
+      });
+      requestAnimationFrame(applyParallax);
+    }
+    requestAnimationFrame(applyParallax);
+  }
+
+  // Micro: nav shadow on scroll
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function(){
+    if (nav) nav.style.boxShadow = window.scrollY > 10 ? '0 4px 20px -8px rgba(11,19,32,.08)' : 'none';
+  }, { passive: true });
+})();
+</script>
